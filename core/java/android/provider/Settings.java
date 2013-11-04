@@ -2584,6 +2584,7 @@ public final class Settings {
             // At one time in System, then Global, but now back in Secure
             MOVED_TO_SECURE.add(Secure.INSTALL_NON_MARKET_APPS);
             MOVED_TO_SECURE.add(Secure.LOCKSCREEN_VISUALIZER_ENABLED);
+            MOVED_TO_SECURE.add(Secure.VOLUME_LINK_NOTIFICATION);
         }
 
         @UnsupportedAppUsage
@@ -11534,6 +11535,14 @@ public final class Settings {
 
         private static final Validator AWARE_LOCK_ENABLED_VALIDATOR = BOOLEAN_VALIDATOR;
 
+        /*
+         * Boolean value whether to link ringtone and notification volume
+         * @hide
+         */
+        public static final String VOLUME_LINK_NOTIFICATION = "volume_link_notification";
+
+        private static final Validator VOLUME_LINK_NOTIFICATION_VALIDATOR = BOOLEAN_VALIDATOR;
+
         /**
          * Controls whether tap gesture is enabled.
          * @hide
@@ -11726,6 +11735,7 @@ public final class Settings {
             AWARE_TAP_PAUSE_TOUCH_COUNT,
             LOCKSCREEN_VISUALIZER_ENABLED,
             TORCH_POWER_BUTTON_GESTURE,
+            VOLUME_LINK_NOTIFICATION
         };
 
         /**
@@ -11926,6 +11936,7 @@ public final class Settings {
             VALIDATORS.put(TAP_GESTURE, TAP_GESTURE_VALIDATOR);
             VALIDATORS.put(LOCKSCREEN_VISUALIZER_ENABLED, LOCKSCREEN_VISUALIZER_ENABLED_VALIDATOR);
             VALIDATORS.put(TORCH_POWER_BUTTON_GESTURE, TORCH_POWER_BUTTON_GESTURE_VALIDATOR);
+            VALIDATORS.put(VOLUME_LINK_NOTIFICATION, VOLUME_LINK_NOTIFICATION_VALIDATOR);
         }
 
         /**
