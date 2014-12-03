@@ -48,6 +48,8 @@ import android.os.PowerManager;
 import android.os.SystemClock;
 import android.os.UserHandle;
 import android.provider.Settings;
+import android.provider.Settings.Secure;
+import android.provider.Settings.System;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.util.MathUtils;
@@ -441,7 +443,6 @@ public class NotificationPanelView extends PanelView implements
     private GestureDetector mDoubleTapGesture;
     private GestureDetector mLockscreenDoubleTapToSleep;
     private boolean mIsLockscreenDoubleTapEnabled;
-    private int mOneFingerQuickSettingsIntercept;
 
     /**
      * Cache the resource id of the theme to avoid unnecessary work in onThemeChanged.
@@ -461,6 +462,9 @@ public class NotificationPanelView extends PanelView implements
     private boolean mShowingKeyguardHeadsUp;
     private boolean mAllowExpandForSmallExpansion;
     private Runnable mExpandAfterLayoutRunnable;
+
+    private int mOneFingerQuickSettingsIntercept;
+    private int mQsSmartPullDown;
 
     /**
      * If face auth with bypass is running for the first time after you turn on the screen.
@@ -1449,6 +1453,12 @@ public class NotificationPanelView extends PanelView implements
                 break;
         }
         showQsOverride &= mBarState == StatusBarState.SHADE;
+
+        if (mQsSmartPullDown == 1 && !hasActiveClearableNotifications()
+                || mQsSmartPullDown == 2 && !mStatusBar.hasActiveOngoingNotifications()
+                || mQsSmartPullDown == 3 && !mStatusBar.hasActiveVisibleNotifications()) {
+                showQsOverride = true;
+        }
 
         return twoFingerDrag || showQsOverride || stylusButtonClickDrag || mouseButtonClickDrag;
     }
@@ -3332,6 +3342,9 @@ public class NotificationPanelView extends PanelView implements
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.STATUS_BAR_QUICK_QS_PULLDOWN),
                     false, this, UserHandle.USER_ALL);
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.QS_SMART_PULLDOWN),
+                    false, this, UserHandle.USER_ALL);
             update();
         }
 
@@ -3355,9 +3368,11 @@ public class NotificationPanelView extends PanelView implements
             mStatusBarLockedOnSecureKeyguard = Settings.Secure.getIntForUser(
                     resolver, Settings.Secure.STATUS_BAR_LOCKED_ON_SECURE_KEYGUARD, 0,
                     UserHandle.USER_CURRENT) == 1;
-
             mOneFingerQuickSettingsIntercept = Settings.System.getIntForUser(
                     resolver, Settings.System.STATUS_BAR_QUICK_QS_PULLDOWN, 0,
+                    UserHandle.USER_CURRENT);
+            mQsSmartPullDown = Settings.System.getIntForUser(resolver,
+                    Settings.System.QS_SMART_PULLDOWN, 0,
                     UserHandle.USER_CURRENT);
         }
     }
