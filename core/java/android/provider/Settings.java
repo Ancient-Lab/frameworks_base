@@ -15968,6 +15968,12 @@ public final class Settings {
         public static final String LISTVIEW_INTERPOLATOR = "listview_interpolator";
 
         /**
+         * Disabled Transition animations of the android system
+         * @hide
+         */
+        public static final String DISABLE_TRANSITION_ANIMATIONS = "disable_transition_animations";
+
+        /**
          * Delay for sending ACTION_CHARGING after device is plugged in.
          * This is used as an override for constants defined in BatteryStatsImpl for
          * ease of experimentation.
