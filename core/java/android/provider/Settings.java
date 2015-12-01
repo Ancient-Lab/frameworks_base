@@ -4914,6 +4914,15 @@ public final class Settings {
          */
         public static final String STATUS_BAR_BATTERY_TEXT_CHARGING = "status_bar_battery_text_charging";
 
+       /**
+         * Volume rocker wake
+         * @hide
+         */
+        public static final String VOLUME_ROCKER_WAKE = "volume_rocker_wake";
+        /** @hide */
+        private static final Validator VOLUME_ROCKER_WAKE_VALIDATOR =
+                BOOLEAN_VALIDATOR;
+
         /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
@@ -5004,6 +5013,9 @@ public final class Settings {
             POWERMENU_LOGOUT,
             POWERMENU_LOCKSCREEN,
             POWERMENU_TORCH,
+            ENABLE_CONDITIONS,
+            ENABLE_SUGGESTIONS,
+            VOLUME_ROCKER_WAKE,
         };
 
         /**
@@ -5153,6 +5165,8 @@ public final class Settings {
             PRIVATE_SETTINGS.add(POWERMENU_LOGOUT);
             PRIVATE_SETTINGS.add(POWERMENU_LOCKSCREEN);
             PRIVATE_SETTINGS.add(POWERMENU_TORCH);
+            PRIVATE_SETTINGS.add(ENABLE_SUGGESTIONS);
+            PRIVATE_SETTINGS.add(VOLUME_ROCKER_WAKE);
         }
 
         /**
@@ -5276,6 +5290,9 @@ public final class Settings {
             VALIDATORS.put(POWERMENU_LOGOUT, POWERMENU_LOGOUT_VALIDATOR);
             VALIDATORS.put(POWERMENU_LOCKSCREEN, POWERMENU_LOCKSCREEN_VALIDATOR);
             VALIDATORS.put(POWERMENU_TORCH, POWERMENU_TORCH_VALIDATOR);
+            VALIDATORS.put(ENABLE_CONDITIONS, ENABLE_CONDITIONS_VALIDATOR);
+            VALIDATORS.put(ENABLE_SUGGESTIONS, ENABLE_SUGGESTIONS_VALIDATOR);
+            VALIDATORS.put(VOLUME_ROCKER_WAKE, VOLUME_ROCKER_WAKE_VALIDATOR);
         }
 
         /**
