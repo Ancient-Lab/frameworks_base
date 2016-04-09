@@ -5715,6 +5715,16 @@ public final class Settings {
         public static final String ALERT_SLIDER_SILENT_MODE = "alert_slider_silent_mode";
 
         /**
+         * Defines the global heads up notification snooze
+         * @hide
+         */
+        public static final String HEADS_UP_NOTIFICATION_SNOOZE = "heads_up_notification_snooze";
+
+        /** @hide */
+        private static final Validator HEADS_UP_NOTIFICATION_SNOOZE_VALIDATOR =
+              new SettingsValidators.InclusiveIntegerRangeValidator(0, 1200000);
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
@@ -5844,7 +5854,8 @@ public final class Settings {
             VIBRATE_ON_CONNECT,
             VIBRATE_ON_CALLWAITING,
             VIBRATE_ON_DISCONNECT,
-            SENSOR_BLOCK
+            SENSOR_BLOCK,
+            HEADS_UP_NOTIFICATION_SNOOZE
         };
 
         /**
@@ -6040,6 +6051,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(VIBRATE_ON_DISCONNECT);
             PRIVATE_SETTINGS.add(POCKET_JUDGE);
             PRIVATE_SETTINGS.add(SENSOR_BLOCK);
+            PRIVATE_SETTINGS.add(HEADS_UP_NOTIFICATION_SNOOZE);
         }
 
         /**
@@ -6209,6 +6221,7 @@ public final class Settings {
             VALIDATORS.put(VIBRATE_ON_DISCONNECT, VIBRATE_ON_DISCONNECT_VALIDATOR);
             VALIDATORS.put(POCKET_JUDGE, POCKET_JUDGE_VALIDATOR);
             VALIDATORS.put(SENSOR_BLOCK, SENSOR_BLOCK_VALIDATOR);
+            VALIDATORS.put(HEADS_UP_NOTIFICATION_SNOOZE,HEADS_UP_NOTIFICATION_SNOOZE_VALIDATOR);
         }
 
         /**
