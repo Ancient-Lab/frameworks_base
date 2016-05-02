@@ -85,4 +85,7 @@ interface IPowerManager
 
     // Custom API
     void wakeUpWithProximityCheck(long time, int reason, String details, String opPackageName);
+
+    // update the uids being synchronized by network socket request manager
+    void updateBlockedUids(int uid, boolean isBlocked);
 }
