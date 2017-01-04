@@ -5031,6 +5031,24 @@ public final class Settings {
         public static final String DOZE_ON_CHARGE_NOW = "doze_on_charge_now";
 
         /**
+         * Wheter to show network traffic indicator in statusbar
+         * @hide
+         */
+        public static final String NETWORK_TRAFFIC_STATE = "network_traffic_state";
+        /** @hide */
+        private static final Validator NETWORK_TRAFFIC_STATE_VALIDATOR =
+                BOOLEAN_VALIDATOR;
+
+        /**
+         * Network traffic inactivity threshold (default is 1 kBs)
+         * @hide
+         */
+        public static final String NETWORK_TRAFFIC_AUTOHIDE_THRESHOLD = "network_traffic_autohide_threshold";
+         /** @hide */
+        private static final Validator NETWORK_TRAFFIC_AUTOHIDE_THRESHOLD_VALIDATOR =
+                ANY_INTEGER_VALIDATOR;
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
@@ -5131,6 +5149,8 @@ public final class Settings {
             ENABLE_CONDITIONS,
             ENABLE_SUGGESTIONS,
             DOZE_ON_CHARGE,
+            NETWORK_TRAFFIC_STATE,
+            NETWORK_TRAFFIC_AUTOHIDE_THRESHOLD,
         };
 
         /**
@@ -5290,6 +5310,8 @@ public final class Settings {
             PRIVATE_SETTINGS.add(ENABLE_CONDITIONS);
             PRIVATE_SETTINGS.add(ENABLE_SUGGESTIONS);
             PRIVATE_SETTINGS.add(DOZE_ON_CHARGE);
+            PRIVATE_SETTINGS.add(NETWORK_TRAFFIC_STATE);
+            PRIVATE_SETTINGS.add(NETWORK_TRAFFIC_AUTOHIDE_THRESHOLD);
         }
 
         /**
@@ -5424,6 +5446,8 @@ public final class Settings {
             VALIDATORS.put(ENABLE_CONDITIONS, ENABLE_CONDITIONS_VALIDATOR);
             VALIDATORS.put(ENABLE_SUGGESTIONS, ENABLE_SUGGESTIONS_VALIDATOR);
             VALIDATORS.put(DOZE_ON_CHARGE, DOZE_ON_CHARGE_VALIDATOR);
+            VALIDATORS.put(NETWORK_TRAFFIC_STATE, NETWORK_TRAFFIC_STATE_VALIDATOR);
+            VALIDATORS.put(NETWORK_TRAFFIC_AUTOHIDE_THRESHOLD, NETWORK_TRAFFIC_AUTOHIDE_THRESHOLD_VALIDATOR);
         }
 
         /**
