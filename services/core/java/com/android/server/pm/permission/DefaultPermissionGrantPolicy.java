@@ -752,6 +752,9 @@ public final class DefaultPermissionGrantPolicy {
             grantPermissionsToPackage(themePickerPackage, userId, false /* ignoreSystemPackage */,
                     true /*whitelistRestrictedPermissions*/, STORAGE_PERMISSIONS);
         }
+
+        // OmniJaws
+        grantSystemFixedPermissionsToSystemPackage("org.omnirom.omnijaws", userId, ALWAYS_LOCATION_PERMISSIONS);
     }
 
     private String getDefaultSystemHandlerActivityPackageForCategory(String category, int userId) {
