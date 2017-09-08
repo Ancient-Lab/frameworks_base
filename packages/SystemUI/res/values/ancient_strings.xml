@@ -53,4 +53,7 @@
     <string name="global_action_dnaa">Do not show again</string>
     <string name="global_action_settings">Settings</string>
 
+    <!-- StatusBar Icons -->
+    <string name="statusbar_items_title">Statusbar icons</string>
+
 </resources>
