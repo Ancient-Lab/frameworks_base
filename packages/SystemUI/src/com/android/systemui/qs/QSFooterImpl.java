@@ -33,10 +33,13 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.UserHandle;
 import android.os.UserManager;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
 import android.provider.Settings;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
 import android.view.accessibility.AccessibilityNodeInfo;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -68,7 +71,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 public class QSFooterImpl extends FrameLayout implements QSFooter,
-        OnClickListener, OnUserInfoChangedListener {
+        OnClickListener, OnLongClickListener, OnUserInfoChangedListener {
 
     private static final String TAG = "QSFooterImpl";
 
@@ -101,6 +104,8 @@ public class QSFooterImpl extends FrameLayout implements QSFooter,
     private View mDragHandle;
 
     private OnClickListener mExpandClickListener;
+
+    protected Vibrator mVibrator;
 
     /*private final ContentObserver mDeveloperSettingsObserver = new ContentObserver(
             new Handler(mContext.getMainLooper())) {
@@ -142,6 +147,7 @@ public class QSFooterImpl extends FrameLayout implements QSFooter,
         mSettingsButton = findViewById(R.id.settings_button);
         mSettingsContainer = findViewById(R.id.settings_button_container);
         mSettingsButton.setOnClickListener(this);
+        mSettingsButton.setOnLongClickListener(this);
 
         mMultiUserSwitch = findViewById(R.id.multi_user_switch);
         mMultiUserAvatar = mMultiUserSwitch.findViewById(R.id.multi_user_avatar);
@@ -149,6 +155,7 @@ public class QSFooterImpl extends FrameLayout implements QSFooter,
         mDragHandle = findViewById(R.id.qs_drag_handle_view);
         mActionsContainer = findViewById(R.id.qs_footer_actions_container);
         mEditContainer = findViewById(R.id.qs_footer_actions_edit_container);
+        mVibrator = (Vibrator) mContext.getSystemService(Context.VIBRATOR_SERVICE);
 
         // RenderThread is doing more harm than good when touching the header (to expand quick
         // settings), so disable it for this view
@@ -191,6 +198,14 @@ public class QSFooterImpl extends FrameLayout implements QSFooter,
                 .build();
 
         setExpansion(mExpansionAmount);
+    }
+
+    public void vibrateheader() {
+        if (mVibrator != null) {
+            if (mVibrator.hasVibrator()) {
+                mVibrator.vibrate(VibrationEffect.get(VibrationEffect.EFFECT_HEAVY_CLICK));
+            }
+        }
     }
 
     @Override
@@ -383,6 +398,22 @@ public class QSFooterImpl extends FrameLayout implements QSFooter,
                 startSettingsActivity();
             }
         }
+    }
+
+    @Override
+    public boolean onLongClick(View v) {
+        if (v == mSettingsButton) {
+            startAncientSettingsActivity();
+            vibrateheader();
+        }
+        return false;
+    }
+
+    private void startAncientSettingsActivity() {
+        Intent nIntent = new Intent(Intent.ACTION_MAIN);
+        nIntent.setClassName("com.android.settings",
+            "com.android.settings.Settings$AncientSettingsActivity");
+        mActivityStarter.startActivity(nIntent, true /* dismissShade */);
     }
 
     private void startSettingsActivity() {
