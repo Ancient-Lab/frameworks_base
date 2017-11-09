@@ -6688,6 +6688,21 @@ public final class Settings {
         public static final String QS_NAVBAR_STYLE = "qs_navbar_style";
 
         /**
+         * Screen stabilization parameters
+         * @hide
+         */
+        public static final String STABILIZATION_ENABLE = "stabilization_enable";
+
+        /** @hide */
+        public static final String STABILIZATION_VELOCITY_FRICTION = "stabilization_velocity_friction";
+
+        /** @hide */
+        public static final String STABILIZATION_POSITION_FRICTION = "stabilization_position_friction";
+
+        /** @hide */
+        public static final String STABILIZATION_VELOCITY_AMPLITUDE = "stabilization_velocity_amplitude";
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
