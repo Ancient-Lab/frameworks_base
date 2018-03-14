@@ -5839,7 +5839,7 @@ public final class Settings {
          * @hide
          */
         public static final String LOCK_DATE_FONT_SIZE = "lock_date_font_size";
-	    
+
 	/**
          * Change fonts for the system lockscreen Owner info
          *
@@ -5852,7 +5852,7 @@ public final class Settings {
          *
          * @hide
          */
-        public static final String LOCKOWNER_FONT_SIZE= "lockowner_font_size";    
+        public static final String LOCKOWNER_FONT_SIZE= "lockowner_font_size";
 
 	/**
          * Controls whether to show R style notification headers
@@ -5860,7 +5860,7 @@ public final class Settings {
          */
         public static final String NOTIFICATION_HEADERS = "notification_headers";
 
-        private static final Validator NOTIFICATION_HEADERS_VALIDATOR = BOOLEAN_VALIDATOR;    
+        private static final Validator NOTIFICATION_HEADERS_VALIDATOR = BOOLEAN_VALIDATOR;
 
 	/**
          * Show data usage in QS header
@@ -6668,6 +6668,12 @@ public final class Settings {
          * @hide
          */
         public static final String SBC_HD_PRIORITY = "sbc_hd_priority";
+
+        /**
+         * Whether to show battery percent on ambient bottom
+         * @hide
+         */
+        public static final String AMBIENT_BATTERY_PERCENT = "ambient_battery_percent";
 
         /**
          * Settings to backup. This is here so that it's in the same place as the settings
