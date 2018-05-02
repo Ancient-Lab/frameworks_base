@@ -34,7 +34,7 @@ import javax.inject.Inject;
 
 public class RebootTile extends QSTileImpl<BooleanState> {
 
-    private boolean mRebootToRecovery = false;
+    private int mRebootToRecovery = 0;
     private IStatusBarService mBarService;
 
     @Inject
@@ -54,7 +54,13 @@ public class RebootTile extends QSTileImpl<BooleanState> {
 
     @Override
     protected void handleClick() {
-        mRebootToRecovery = !mRebootToRecovery;
+        if (mRebootToRecovery == 0) {
+            mRebootToRecovery = 1;
+        } else if (mRebootToRecovery == 1) {
+            mRebootToRecovery = 2;
+        } else {
+            mRebootToRecovery = 0;
+        }
         refreshState();
     }
 
@@ -67,8 +73,10 @@ public class RebootTile extends QSTileImpl<BooleanState> {
         handler.postDelayed(new Runnable() {
             public void run() {
                 try {
-                    if(mRebootToRecovery)
+                    if(mRebootToRecovery == 1)
                         mBarService.advancedReboot(PowerManager.REBOOT_RECOVERY);
+                    else if (mRebootToRecovery == 2)
+                        mBarService.shutdown();
                     else
                         mBarService.reboot(false);
                 } catch (RemoteException e) {
@@ -93,11 +101,16 @@ public class RebootTile extends QSTileImpl<BooleanState> {
 
     @Override
     protected void handleUpdateState(BooleanState state, Object arg) {
-        if (mRebootToRecovery) {
+        if (mRebootToRecovery == 1) {
             state.label = mContext.getString(R.string.quick_settings_reboot_recovery_label);
             state.icon = ResourceIcon.get(R.drawable.ic_qs_reboot_recovery);
             state.contentDescription =  mContext.getString(
                     R.string.quick_settings_reboot_recovery_label);
+        } else if (mRebootToRecovery == 2) {
+            state.label = mContext.getString(R.string.quick_settings_poweroff_label);
+            state.icon = ResourceIcon.get(R.drawable.ic_qs_poweroff);
+            state.contentDescription =  mContext.getString(
+                    R.string.quick_settings_poweroff_label);
         } else {
             state.label = mContext.getString(R.string.quick_settings_reboot_label);
             state.icon = ResourceIcon.get(R.drawable.ic_qs_reboot);
