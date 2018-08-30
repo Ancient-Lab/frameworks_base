@@ -19,6 +19,7 @@ package com.android.keyguard;
 
 import android.app.ActivityManager;
 import android.app.IActivityManager;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.ContentResolver;
 import android.content.res.Resources;
@@ -28,6 +29,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.RemoteException;
 import android.os.UserHandle;
+import android.provider.Settings;
 import android.text.Html;
 import android.text.TextUtils;
 import android.text.format.DateFormat;
@@ -48,6 +50,7 @@ import androidx.core.graphics.ColorUtils;
 import com.android.internal.widget.LockPatternUtils;
 import com.android.systemui.Dependency;
 import com.android.systemui.R;
+import com.android.systemui.omni.CurrentWeatherView;
 import com.android.systemui.statusbar.policy.ConfigurationController;
 import com.android.systemui.tuner.TunerService;
 
@@ -78,6 +81,8 @@ public class KeyguardStatusView extends GridLayout implements
     private boolean mPulsing;
     private float mDarkAmount = 0;
     private int mTextColor;
+    private CurrentWeatherView mWeatherView;
+    private boolean mShowWeather;
 
     /**
      * Bottom margin that defines the margin between bottom of smart space and top of notification
@@ -175,6 +180,7 @@ public class KeyguardStatusView extends GridLayout implements
                 updateOwnerInfo();
                 updateLogoutView();
                 refreshLockDateFont();
+                updateSettings();
             }
         }
 
@@ -194,6 +200,7 @@ public class KeyguardStatusView extends GridLayout implements
             updateOwnerInfo();
             updateLogoutView();
             refreshLockDateFont();
+            updateSettings();
         }
 
         @Override
@@ -284,6 +291,9 @@ public class KeyguardStatusView extends GridLayout implements
         }
         mOwnerInfo = findViewById(R.id.owner_info);
         mKeyguardSlice = findViewById(R.id.keyguard_status_area);
+
+        mWeatherView = (CurrentWeatherView) findViewById(R.id.weather_container);
+
         mTextColor = mClockView.getCurrentTextColor();
 
         refreshLockDateFont();
@@ -337,6 +347,10 @@ public class KeyguardStatusView extends GridLayout implements
         if (mOwnerInfo != null) {
             setOwnerInfoSize(mOwnerInfoSize);
             setOwnerInfoFontStyle(mOwnerInfoFontStyle);
+        }
+
+        if (mWeatherView != null) {
+            mWeatherView.onDensityOrFontScaleChanged();
         }
 
 	if (mKeyguardSlice != null) {
@@ -1263,6 +1277,22 @@ public class KeyguardStatusView extends GridLayout implements
 
     private void updateSettings() {
         final ContentResolver resolver = getContext().getContentResolver();
+
+        final Resources res = getContext().getResources();
+        mShowWeather = Settings.System.getIntForUser(resolver,
+                Settings.System.LOCKSCREEN_WEATHER_ENABLED, 0,
+                UserHandle.USER_CURRENT) == 1;
+
+        if (mWeatherView != null) {
+            if (mShowWeather) {
+                mWeatherView.setVisibility(View.VISIBLE);
+                mWeatherView.enableUpdates();
+            }
+            if (!mShowWeather) {
+                mWeatherView.setVisibility(View.GONE);
+                mWeatherView.disableUpdates();
+            }
+        }
 
         mClockSelection = Settings.Secure.getIntForUser(resolver,
                 Settings.Secure.LOCKSCREEN_CLOCK_SELECTION, 2, UserHandle.USER_CURRENT);
