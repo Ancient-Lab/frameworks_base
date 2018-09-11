@@ -204,6 +204,11 @@ public class KeyguardStatusView extends GridLayout implements
         return mClockView.hasCustomClock();
     }
 
+    private int getLockClockFont() {
+        return Settings.System.getInt(mContext.getContentResolver(),
+                Settings.System.LOCK_CLOCK_FONT_STYLE, 0);
+    }
+
     /**
      * Set whether or not the lock screen is showing notifications.
      */
