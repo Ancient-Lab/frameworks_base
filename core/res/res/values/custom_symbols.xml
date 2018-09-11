@@ -86,4 +86,8 @@
   <java-symbol type="style" name="GlobalActionsAnimationTop" />
   <java-symbol type="style" name="GlobalActionsAnimationEnter" />
 
+
+    <!-- Whether device supports an alt. ambient display -->
+    <java-symbol type="bool" name="config_alt_ambient_display"/>
+
 </resources>
