@@ -109,7 +109,28 @@
 	        android:layout_weight="1.0"	      
                 android:clipChildren="false" >
 
-	      <com.android.systemui.statusbar.policy.NetworkTraffic
+            <com.android.systemui.ancient.statusbarweather.QsHeaderWeather
+	        android:id="@+id/weather_temp"
+	        android:layout_width="wrap_content"
+	        android:layout_height="match_parent"
+	        android:maxLines="1"
+                android:textColor="@color/anci_tint_custom"
+        	android:layout_gravity="center_vertical"
+        	android:gravity="center_vertical|end"
+        	android:textAppearance="@style/TextAppearance.StatusBar.Clock"
+        	android:paddingStart="2dp"
+        	android:paddingEnd="2dp" />
+
+    	    <com.android.systemui.ancient.statusbarweather.QsHeaderWeatherImage
+        	android:id="@+id/weather_image"
+        	android:layout_width="22dp"
+        	android:layout_height="match_parent"
+        	android:layout_gravity="center_vertical"
+        	android:gravity="center_vertical|end"
+        	android:paddingStart="2dp"
+        	android:paddingEnd="2dp" />
+
+	    <com.android.systemui.statusbar.policy.NetworkTraffic
                 android:gravity="center"
                 android:id="@+id/networkTraffic"
                 android:paddingLeft="4.0dip"
