@@ -5119,6 +5119,12 @@ public final class Settings {
         public static final String SMART_CHARGING_LEVEL = "smart_charging_level";
 
         /**
+         * Toast icon
+         * @hide
+         */
+        public static final String TOAST_ICON = "toast_icon";
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
@@ -5394,6 +5400,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(POWERMENU_LS_ADVANCED_REBOOT);
             PRIVATE_SETTINGS.add(POWERMENU_LS_SCREENSHOT);
             PRIVATE_SETTINGS.add(POWERMENU_LS_AIRPLANE);
+            PRIVATE_SETTINGS.add(TOAST_ICON);
         }
 
         /**
