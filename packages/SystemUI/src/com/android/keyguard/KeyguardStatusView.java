@@ -95,7 +95,9 @@ public class KeyguardStatusView extends GridLayout implements
     private int mDateVerPadding;
     private int mDateHorPadding;
     private int mLockClockFontSize;
-    private int mLockDateFontSize;		
+    private int mLockDateFontSize;
+    private int mOwnerInfoSize;
+    private int mOwnerInfoFontStyle;
 
     private static final String LOCK_CLOCK_FONT_STYLE =
             "system:" + Settings.System.LOCK_CLOCK_FONT_STYLE;
@@ -105,6 +107,10 @@ public class KeyguardStatusView extends GridLayout implements
             "system:" + Settings.System.LOCK_CLOCK_FONT_SIZE;
     private static final String LOCK_DATE_FONT_SIZE =
             "system:" + Settings.System.LOCK_DATE_FONT_SIZE;
+    private static final String LOCKOWNER_FONT_SIZE =
+            "system:" + Settings.System.LOCKOWNER_FONT_SIZE;
+    private static final String LOCK_OWNERINFO_FONTS =
+            "system:" + Settings.System.LOCK_OWNERINFO_FONTS;
 
     private KeyguardUpdateMonitorCallback mInfoCallback = new KeyguardUpdateMonitorCallback() {
 
@@ -172,6 +178,8 @@ public class KeyguardStatusView extends GridLayout implements
         tunerService.addTunable(this, LOCKSCREEN_DATE_SELECTION);
 	tunerService.addTunable(this, LOCK_CLOCK_FONT_SIZE);
 	tunerService.addTunable(this, LOCK_DATE_FONT_SIZE);
+	tunerService.addTunable(this, LOCKOWNER_FONT_SIZE);
+        tunerService.addTunable(this, LOCK_OWNERINFO_FONTS);
         onDensityOrFontScaleChanged();
     }
 
@@ -286,8 +294,8 @@ public class KeyguardStatusView extends GridLayout implements
             refreshLockDateFont();
         }
         if (mOwnerInfo != null) {
-            mOwnerInfo.setTextSize(TypedValue.COMPLEX_UNIT_PX,
-                    getResources().getDimensionPixelSize(R.dimen.widget_label_font_size));
+            setOwnerInfoSize(mOwnerInfoSize);
+            setOwnerInfoFontStyle(mOwnerInfoFontStyle);
         }
 
 	if (mKeyguardSlice != null) {
@@ -619,6 +627,14 @@ public class KeyguardStatusView extends GridLayout implements
                 break;
 	    case LOCK_DATE_FONT_SIZE:
                     mLockDateFontSize = TunerService.parseInteger(newValue, 18);
+                onDensityOrFontScaleChanged();
+                break;
+	    case LOCKOWNER_FONT_SIZE:
+                    mOwnerInfoSize = TunerService.parseInteger(newValue, 18);
+                onDensityOrFontScaleChanged();
+                break;
+            case LOCK_OWNERINFO_FONTS:
+                    mOwnerInfoFontStyle = TunerService.parseInteger(newValue, 4);
                 onDensityOrFontScaleChanged();
                 break;
             default:
@@ -981,6 +997,201 @@ public class KeyguardStatusView extends GridLayout implements
                         getResources().getDimensionPixelSize(R.dimen.lock_clock_font_size_108));
                 break;
             default:
+                break;
+        }
+    }
+
+    private void setOwnerInfoSize(int size) {
+        switch (size) {
+            case 10:
+                mOwnerInfo.setTextSize(TypedValue.COMPLEX_UNIT_PX,
+                        getResources().getDimensionPixelSize(R.dimen.lock_date_font_size_10));
+                break;
+            case 11:
+                mOwnerInfo.setTextSize(TypedValue.COMPLEX_UNIT_PX,
+                        getResources().getDimensionPixelSize(R.dimen.lock_date_font_size_11));
+                break;
+            case 12:
+                mOwnerInfo.setTextSize(TypedValue.COMPLEX_UNIT_PX,
+                        getResources().getDimensionPixelSize(R.dimen.lock_date_font_size_12));
+                break;
+            case 13:
+                mOwnerInfo.setTextSize(TypedValue.COMPLEX_UNIT_PX,
+                        getResources().getDimensionPixelSize(R.dimen.lock_date_font_size_13));
+                break;
+            case 14:
+                mOwnerInfo.setTextSize(TypedValue.COMPLEX_UNIT_PX,
+                        getResources().getDimensionPixelSize(R.dimen.lock_date_font_size_14));
+                break;
+            case 15:
+                mOwnerInfo.setTextSize(TypedValue.COMPLEX_UNIT_PX,
+                        getResources().getDimensionPixelSize(R.dimen.lock_date_font_size_15));
+                break;
+            case 16:
+                mOwnerInfo.setTextSize(TypedValue.COMPLEX_UNIT_PX,
+                        getResources().getDimensionPixelSize(R.dimen.lock_date_font_size_16));
+                break;
+            case 17:
+                mOwnerInfo.setTextSize(TypedValue.COMPLEX_UNIT_PX,
+                        getResources().getDimensionPixelSize(R.dimen.lock_date_font_size_17));
+                break;
+            case 18:
+                mOwnerInfo.setTextSize(TypedValue.COMPLEX_UNIT_PX,
+                        getResources().getDimensionPixelSize(R.dimen.lock_date_font_size_18));
+                break;
+            case 19:
+                mOwnerInfo.setTextSize(TypedValue.COMPLEX_UNIT_PX,
+                        getResources().getDimensionPixelSize(R.dimen.lock_date_font_size_19));
+                break;
+            case 20:
+                mOwnerInfo.setTextSize(TypedValue.COMPLEX_UNIT_PX,
+                        getResources().getDimensionPixelSize(R.dimen.lock_date_font_size_20));
+                break;
+            case 21:
+                mOwnerInfo.setTextSize(TypedValue.COMPLEX_UNIT_PX,
+                        getResources().getDimensionPixelSize(R.dimen.lock_date_font_size_21));
+                break;
+            case 22:
+                mOwnerInfo.setTextSize(TypedValue.COMPLEX_UNIT_PX,
+                        getResources().getDimensionPixelSize(R.dimen.lock_date_font_size_22));
+                break;
+            case 23:
+                mOwnerInfo.setTextSize(TypedValue.COMPLEX_UNIT_PX,
+                        getResources().getDimensionPixelSize(R.dimen.lock_date_font_size_23));
+                break;
+            case 24:
+                mOwnerInfo.setTextSize(TypedValue.COMPLEX_UNIT_PX,
+                        getResources().getDimensionPixelSize(R.dimen.lock_date_font_size_24));
+                break;
+            case 25:
+                mOwnerInfo.setTextSize(TypedValue.COMPLEX_UNIT_PX,
+                        getResources().getDimensionPixelSize(R.dimen.lock_date_font_size_25));
+                break;
+        }
+    }
+
+    private void setOwnerInfoFontStyle(int fontstyle) {
+        switch (fontstyle) {
+            case FONT_HEADLINE:
+            default:
+                setTypeface(Typeface.create(mContext.getResources().getString(R.string.clock_sysfont_headline_medium), Typeface.NORMAL));
+                break;
+            case FONT_BODY:
+                setTypeface(Typeface.create(mContext.getResources().getString(R.string.clock_sysfont_body_medium), Typeface.NORMAL));
+                break;
+            case FONT_NORMAL:
+                setTypeface(Typeface.create("sans-serif", Typeface.NORMAL));
+                break;
+            case FONT_BOLD:
+                setTypeface(Typeface.create("sans-serif", Typeface.BOLD));
+                break;    
+            case FONT_ITALIC:
+                setTypeface(Typeface.create("sans-serif", Typeface.ITALIC));
+                break;
+            case FONT_BOLD_ITALIC:
+                setTypeface(Typeface.create("sans-serif", Typeface.BOLD_ITALIC));
+                break;                
+            case FONT_LIGHT:
+                setTypeface(Typeface.create("sans-serif-light", Typeface.NORMAL));
+                break;         
+            case FONT_THIN:
+                setTypeface(Typeface.create("sans-serif-thin", Typeface.NORMAL));
+                break;                
+            case FONT_CONDENSED:
+                setTypeface(Typeface.create("sans-serif-condensed", Typeface.NORMAL));
+                break;
+            case FONT_CONDENSED_ITALIC:
+                setTypeface(Typeface.create("sans-serif-condensed", Typeface.ITALIC));
+                break;
+            case FONT_CONDENSED_BOLD:
+                setTypeface(Typeface.create("sans-serif-condensed", Typeface.BOLD));
+                break;
+            case FONT_CONDENSED_BOLD_ITALIC:
+                setTypeface(Typeface.create("sans-serif-condensed", Typeface.BOLD_ITALIC));
+                break;
+            case FONT_MEDIUM:
+                setTypeface(Typeface.create("sans-serif-medium", Typeface.NORMAL));
+                break;
+            case FONT_MEDIUM_ITALIC:
+                setTypeface(Typeface.create("sans-serif-medium", Typeface.ITALIC));
+                break;
+            case FONT_ALBELREG:
+                setTypeface(Typeface.create("abelreg", Typeface.NORMAL));
+                break;
+            case FONT_ADVENTPRO:
+                setTypeface(Typeface.create("adventpro", Typeface.NORMAL));
+                break;
+            case FONT_ALIENLEAGUE:
+                setTypeface(Typeface.create("alien-league", Typeface.NORMAL));
+                break;
+            case FONT_BIGNOODLEITALIC:
+                setTypeface(Typeface.create("bignoodle-italic", Typeface.NORMAL));
+                break;
+            case FONT_BIKO:
+                setTypeface(Typeface.create("biko", Typeface.NORMAL));
+                break;
+            case FONT_BLERN:
+                setTypeface(Typeface.create("blern", Typeface.NORMAL));
+                break;
+            case FONT_CHERRYSWASH:
+                setTypeface(Typeface.create("cherryswash", Typeface.NORMAL));
+                break;
+            case FONT_CODYSTAR:
+                setTypeface(Typeface.create("codystar", Typeface.NORMAL));
+                break;
+            case FONT_GINORASANS:
+                setTypeface(Typeface.create("ginora-sans", Typeface.NORMAL));
+                break;
+            case FONT_GOBOLDLIGHT:
+                setTypeface(Typeface.create("gobold-light-sys", Typeface.NORMAL));
+                break;
+            case FONT_GOOGLESANS:
+                setTypeface(Typeface.create("googlesans-sys", Typeface.NORMAL));
+                break;
+            case FONT_INKFERNO:
+                setTypeface(Typeface.create("inkferno", Typeface.NORMAL));
+                break;
+            case FONT_JURAREG:
+                setTypeface(Typeface.create("jura-reg", Typeface.NORMAL));
+                break;
+            case FONT_KELLYSLAB:
+                setTypeface(Typeface.create("kellyslab", Typeface.NORMAL));
+                break;
+            case FONT_METROPOLIS:
+                setTypeface(Typeface.create("metropolis1920", Typeface.NORMAL));
+                break;
+            case FONT_NEONNEON:
+                setTypeface(Typeface.create("neonneon", Typeface.NORMAL));
+                break;
+             case FONT_POMPIERE:
+                setTypeface(Typeface.create("pompiere", Typeface.NORMAL));
+                break;
+             case FONT_REEMKUFI:
+                setTypeface(Typeface.create("reemkufi", Typeface.NORMAL));
+                break;
+             case FONT_RIVIERA:
+                setTypeface(Typeface.create("riviera", Typeface.NORMAL));
+                break;
+             case FINT_ROADRAGE:
+                setTypeface(Typeface.create("roadrage-sys", Typeface.NORMAL));
+                break;
+             case FONT_SEDGWICKAVE:
+                setTypeface(Typeface.create("sedgwick-ave", Typeface.NORMAL));
+                break;
+             case FONT_SNOWSTORM:
+                setTypeface(Typeface.create("snowstorm-sys", Typeface.NORMAL));
+                break;
+             case FONT_THEMEABLECLOCK:
+                setTypeface(Typeface.create("themeable-clock", Typeface.NORMAL));
+                break;
+             case FONT_UNIONFONT:
+                setTypeface(Typeface.create("unionfont", Typeface.NORMAL));
+                break;
+             case FONT_VIBUR:
+                setTypeface(Typeface.create("vibur", Typeface.NORMAL));
+                break;
+             case FONT_VOLTAIRE:
+                setTypeface(Typeface.create("voltaire", Typeface.NORMAL));
                 break;
         }
     }

@@ -5598,6 +5598,20 @@ public final class Settings {
          * @hide
          */
         public static final String LOCK_DATE_FONT_SIZE = "lock_date_font_size";
+	    
+	/**
+         * Change fonts for the system lockscreen Owner info
+         *
+         * @hide
+         */
+        public static final String LOCK_OWNERINFO_FONTS = "lock_ownerinfo_fonts";
+
+        /**
+         * Change font size for the system lockscreen owner
+         *
+         * @hide
+         */
+        public static final String LOCKOWNER_FONT_SIZE= "lockowner_font_size";    
 
         /**
          * Settings to backup. This is here so that it's in the same place as the settings
