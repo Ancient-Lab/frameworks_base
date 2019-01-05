@@ -3462,24 +3462,14 @@ public class StatusBar extends SystemUI implements DemoMode,
 
     public boolean isCurrentRoundedSameAsFw() {
         float density = Resources.getSystem().getDisplayMetrics().density;
-        Resources res = null;
-        try {
-            res = mContext.getPackageManager().getResourcesForApplication("com.android.systemui");
-        } catch (NameNotFoundException e) {
-            e.printStackTrace();
-            // If we can't get resources, return true so that updateCorners doesn't attempt to
-            // set corner values
-            return true;
-        }
-
         // Resource IDs for framework properties
         int resourceIdRadius = (int) mContext.getResources().getDimension(com.android.internal.R.dimen.rounded_corner_radius);
         int resourceIdPadding = (int) mContext.getResources().getDimension(R.dimen.rounded_corner_content_padding);
         int resourceIdSBPadding = (int) mContext.getResources().getDimension(R.dimen.status_bar_extra_padding);
 
         // Values on framework resources
-        int cornerRadiusRes = (int) (res.getDimension(resourceIdRadius) / density);
-        int contentPaddingRes = (int) (res.getDimension(resourceIdPadding) / density);
+        int cornerRadiusRes = (int) (resourceIdRadius / density);
+        int contentPaddingRes = (int) (resourceIdPadding / density);
         int sbPaddingRes = (int) (resourceIdSBPadding / density);
 
         // Values in Settings DBs
@@ -3513,14 +3503,6 @@ public class StatusBar extends SystemUI implements DemoMode,
     private void updateCorners() {
         if (mSysuiRoundedFwvals && !isCurrentRoundedSameAsFw()) {
             float density = Resources.getSystem().getDisplayMetrics().density;
-            Resources res = null;
-            try {
-                res = mContext.getPackageManager().getResourcesForApplication("com.android.systemui");
-            } catch (NameNotFoundException e) {
-                e.printStackTrace();
-            }
-
-            if (res != null) {
             int resourceIdRadius = (int) mContext.getResources().getDimension(com.android.internal.R.dimen.rounded_corner_radius);
             Settings.Secure.putIntForUser(mContext.getContentResolver(),
                 Settings.Secure.SYSUI_ROUNDED_SIZE, (int) (resourceIdRadius / density), UserHandle.USER_CURRENT);
@@ -4879,14 +4861,10 @@ public class StatusBar extends SystemUI implements DemoMode,
 
     @Override
     public void onTuningChanged(String key, String newValue) {
-        switch (key) {
-            case SYSUI_ROUNDED_FWVALS:
-                mSysuiRoundedFwvals =
-                        TunerService.parseIntegerSwitch(newValue, true);
-                updateCorners();
-                break;
-            default:
-                break;
+        if (key == SYSUI_ROUNDED_FWVALS) {
+            mSysuiRoundedFwvals =
+                    TunerService.parseIntegerSwitch(newValue, true);
+            updateCorners();
         }
     }
     // End Extra BaseStatusBarMethods.
