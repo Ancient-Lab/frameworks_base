@@ -1005,27 +1005,12 @@ public class Build {
      * Ancient fingerprint
      * @hide
      */
-    public static final String PROP_ANCIENT_FINGERPRINT = "ro.ancient.fingerprint";
-
-    /**
-     * Ancient fingerprint
-     * @hide
-     */
-    public static final String ANCIENT_FINGERPRINT = SystemProperties.get(PROP_ANCIENT_FINGERPRINT,
-            deriveFingerprint());
+    public static final String ANCIENT_FINGERPRINT = getString("ro.build.date");
 
     /**
      * Custom fingerprint
-     * @hide
-     */
-    public static final String PROP_CUSTOM_FINGERPRINT = "ro.ancient.fingerprint";
-
-    /**
-     * Custom fingerprint
-     * @hide
-     */
-    public static final String CUSTOM_FINGERPRINT = SystemProperties.get(PROP_CUSTOM_FINGERPRINT,
-            deriveFingerprint());
+    /** @hide */
+    public static final String CUSTOM_FINGERPRINT = getString("ro.build.date");
 
     /**
      * Some devices split the fingerprint components between multiple
