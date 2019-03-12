@@ -3436,7 +3436,7 @@ public final class ActivityThread extends ClientTransactionHandler {
             return;
         }
         Configuration[] configurations = r.activity.getResources().getSizeConfigurations();
-        if (configurations == null) {
+        if (configurations == null || r.activity.mFinished) {
             return;
         }
         SparseIntArray horizontal = new SparseIntArray();
