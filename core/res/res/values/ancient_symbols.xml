@@ -84,4 +84,7 @@
     <java-symbol type="string" name="notify_battery_fully_charged_title" />
     <java-symbol type="string" name="notify_battery_fully_charged_text" />
 
+    <!-- Smart charging battery percentage -->
+    <java-symbol type="integer" name="config_smartChargingBatteryLevel" />
+
 </resources>

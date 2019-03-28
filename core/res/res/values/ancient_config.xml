@@ -92,4 +92,7 @@
         <item>emergency</item>
     </string-array>
 
+    <!-- Smart charging battery percentage -->
+    <integer name="config_smartChargingBatteryLevel">90</integer>
+
 </resources>
