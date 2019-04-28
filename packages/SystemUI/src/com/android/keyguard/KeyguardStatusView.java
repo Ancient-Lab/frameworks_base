@@ -114,9 +114,16 @@ public class KeyguardStatusView extends GridLayout implements
 
     private int mClockSelection;
     private int mLockClockFontStyle;
+    private int mDateSelection;
+
+    // Date styles paddings
+    private int mDateVerPadding;
+    private int mDateHorPadding;
 
     private static final String LOCK_CLOCK_FONT_STYLE =
             "system:" + Settings.System.LOCK_CLOCK_FONT_STYLE;
+    private static final String LOCKSCREEN_DATE_SELECTION =
+            "system:" + Settings.System.LOCKSCREEN_DATE_SELECTION;
 
     private KeyguardUpdateMonitorCallback mInfoCallback = new KeyguardUpdateMonitorCallback() {
 
@@ -178,6 +185,7 @@ public class KeyguardStatusView extends GridLayout implements
         mHandler = new Handler(Looper.myLooper());
         final TunerService tunerService = Dependency.get(TunerService.class);
         tunerService.addTunable(this, LOCK_CLOCK_FONT_STYLE);
+        tunerService.addTunable(this, LOCKSCREEN_DATE_SELECTION);
         onDensityOrFontScaleChanged();
     }
 
@@ -288,6 +296,38 @@ public class KeyguardStatusView extends GridLayout implements
             mOwnerInfo.setTextSize(TypedValue.COMPLEX_UNIT_PX,
                     getResources().getDimensionPixelSize(R.dimen.widget_label_font_size));
         }
+
+        switch (mDateSelection) {
+            case 0: // default
+            default:
+                try {
+                    mKeyguardSlice.setViewBackgroundResource(0);
+                    mDateVerPadding = 0;
+                    mDateHorPadding = 0;
+                    mKeyguardSlice.setViewPadding(mDateHorPadding,mDateVerPadding,mDateHorPadding,mDateVerPadding);
+                } catch (Exception e) {
+                }
+                break;
+            case 1: // semi-transparent box
+                try {
+                    mKeyguardSlice.setViewBackground(getResources().getDrawable(R.drawable.date_box_str_border));
+                    mDateHorPadding = Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_PX, getResources().getDimensionPixelSize(R.dimen.widget_date_box_padding_hor),getResources().getDisplayMetrics()));
+                    mDateVerPadding = Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_PX, getResources().getDimensionPixelSize(R.dimen.widget_date_box_padding_ver),getResources().getDisplayMetrics()));
+                    mKeyguardSlice.setViewPadding(mDateHorPadding,mDateVerPadding,mDateHorPadding,mDateVerPadding);
+                } catch (Exception e) {
+                }
+                break;
+            case 2: // semi-transparent box (round)
+                try {
+                    mKeyguardSlice.setViewBackground(getResources().getDrawable(R.drawable.date_str_border));
+                    mDateHorPadding = Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_PX, getResources().getDimensionPixelSize(R.dimen.widget_date_box_padding_hor),getResources().getDisplayMetrics()));
+                    mDateVerPadding = Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_PX, getResources().getDimensionPixelSize(R.dimen.widget_date_box_padding_ver),getResources().getDisplayMetrics()));
+                    mKeyguardSlice.setViewPadding(mDateHorPadding,mDateVerPadding,mDateHorPadding,mDateVerPadding);
+                } catch (Exception e) {
+                }
+                break;
+        }
+
         loadBottomMargin();
     }
 
@@ -397,6 +437,10 @@ public class KeyguardStatusView extends GridLayout implements
                 try {
                     mLockClockFontStyle = Integer.valueOf(newValue);
                 } catch (NumberFormatException ex) {}
+                onDensityOrFontScaleChanged();
+                break;
+            case LOCKSCREEN_DATE_SELECTION:
+                    mDateSelection = TunerService.parseInteger(newValue, 0);
                 onDensityOrFontScaleChanged();
                 break;
             default:
