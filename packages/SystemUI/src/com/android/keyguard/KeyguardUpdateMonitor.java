@@ -271,6 +271,7 @@ public class KeyguardUpdateMonitor implements TrustManager.TrustListener {
 
     private final boolean mFingerprintWakeAndUnlock;
     private final boolean mFaceAuthOnlyOnSecurityView;
+    private boolean mPocketJudgeAllowFP;
 
     /**
      * Short delay before restarting biometric authentication after a successful try
@@ -1787,9 +1788,17 @@ public class KeyguardUpdateMonitor implements TrustManager.TrustListener {
     private boolean shouldListenForFingerprint() {
         // Only listen if this KeyguardUpdateMonitor belongs to the primary user. There is an
         // instance of KeyguardUpdateMonitor for each user but KeyguardUpdateMonitor is user-aware.
+        mPocketJudgeAllowFP = Settings.System.getIntForUser(mContext.getContentResolver(),
+                Settings.System.POCKET_JUDGE_ALLOW_FP, 0, UserHandle.USER_CURRENT) == 1;
         if (!mFingerprintWakeAndUnlock) {
             return (mKeyguardIsVisible || mBouncer || shouldListenForFingerprintAssistant() ||
                     (mKeyguardOccluded && mIsDreaming)) && mDeviceInteractive && !mGoingToSleep
+                    && !mSwitchingUser && !isFingerprintDisabled(getCurrentUser())
+                    && (!mKeyguardGoingAway || !mDeviceInteractive) && mIsPrimaryUser && !mIsDeviceInPocket;
+        } else if (!mPocketJudgeAllowFP) {
+            return (mKeyguardIsVisible || !mDeviceInteractive ||
+                    (mBouncer && !mKeyguardGoingAway) || mGoingToSleep ||
+                    shouldListenForFingerprintAssistant() || (mKeyguardOccluded && mIsDreaming))
                     && !mSwitchingUser && !isFingerprintDisabled(getCurrentUser())
                     && (!mKeyguardGoingAway || !mDeviceInteractive) && mIsPrimaryUser && !mIsDeviceInPocket;
         }else{
