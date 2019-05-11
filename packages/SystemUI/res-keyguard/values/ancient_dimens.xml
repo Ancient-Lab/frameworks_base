@@ -20,11 +20,13 @@
 
 <resources>
     <!-- padding for date view -->
-    <dimen name="widget_clock_normal_clock_padding">4dp</dimen>
+    <dimen name="widget_clock_normal_clock_padding">2dp</dimen>
 
     <!-- Date styles padding-->
-    <dimen name="widget_date_box_padding_hor">8dp</dimen>
-    <dimen name="widget_date_box_padding_ver">4dp</dimen>
+    <dimen name="widget_date_box_padding_hor">12dp</dimen>
+    <dimen name="widget_date_box_padding_ver">8dp</dimen>
+    <dimen name="q_nowplay_pill_padding_hor">17.0sp</dimen>
+    <dimen name="q_nowplay_pill_padding_ver">8.0sp</dimen>
 
     <!-- The minimum bottom margin of the keyguard security container -->
     <dimen name="kg_security_container_min_bottom_margin">0dp</dimen>
@@ -107,9 +109,4 @@
     <dimen name="lock_date_font_size_24">24dp</dimen>
     <dimen name="lock_date_font_size_25">25dp</dimen>
 
-    <!-- Date styles padding-->
-    <dimen name="widget_date_box_padding_hor">8dp</dimen>
-    <dimen name="widget_date_box_padding_ver">4dp</dimen>
-    <dimen name="q_nowplay_pill_padding_hor">17.0sp</dimen>
-    <dimen name="q_nowplay_pill_padding_ver">8.0sp</dimen>
 </resources>
