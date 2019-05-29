@@ -106,4 +106,10 @@
     <dimen name="lock_date_font_size_23">23dp</dimen>
     <dimen name="lock_date_font_size_24">24dp</dimen>
     <dimen name="lock_date_font_size_25">25dp</dimen>
+
+    <!-- Date styles padding-->
+    <dimen name="widget_date_box_padding_hor">8dp</dimen>
+    <dimen name="widget_date_box_padding_ver">4dp</dimen>
+    <dimen name="q_nowplay_pill_padding_hor">17.0sp</dimen>
+    <dimen name="q_nowplay_pill_padding_ver">8.0sp</dimen>
 </resources>
