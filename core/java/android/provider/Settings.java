@@ -4731,6 +4731,7 @@ public final class Settings {
         private static final Validator QS_LAYOUT_ROWS_VALIDATOR = ANY_INTEGER_VALIDATOR;
 
         /**
+         * Wheter to show network traffic indicator in statusbar
          * @hide
          */
         public static final String QS_QUICKBAR_COLUMNS = "qs_quickbar_columns";
@@ -4977,6 +4978,125 @@ public final class Settings {
         private static final Validator NETWORK_TRAFFIC_LAYOUT_VALIDATOR = ANY_INTEGER_VALIDATOR;
 
         /**
+         * Whether to display reboot option in the power menu
+         *
+         * @hide
+         */
+        public static final String POWERMENU_REBOOT = "powermenu_reboot";
+
+        /* @hide */
+        private static final Validator POWERMENU_REBOOT_VALIDATOR = BOOLEAN_VALIDATOR;
+
+        /**
+         * Whether to display advanced reboot option in power menu
+         *
+         * @hide
+         */
+        public static final String POWERMENU_ADVANCED_REBOOT = "powermenu_advanced_reboot";
+
+        /* @hide */
+        private static final Validator POWERMENU_ADVANCED_REBOOT_VALIDATOR = BOOLEAN_VALIDATOR;
+
+        /**
+         * Whether to display lockdown option in power menu
+         *
+         * @hide
+         */
+        public static final String POWERMENU_LOCKDOWN = "powermenu_lockdown";
+
+        /* @hide */
+        private static final Validator POWERMENU_LOCKDOWN_VALIDATOR = BOOLEAN_VALIDATOR;
+
+        /**
+         * Whether to display screenshot option in power menu
+         *
+         * @hide
+         */
+        public static final String POWERMENU_SCREENSHOT = "powermenu_screenshot";
+
+        /* @hide */
+        private static final Validator POWERMENU_SCREENSHOT_VALIDATOR = BOOLEAN_VALIDATOR;
+
+        /**
+         * Whether to display airplane mode option in power menu
+         *
+         * @hide
+         */
+        public static final String POWERMENU_AIRPLANE = "powermenu_airplane";
+
+        /* @hide */
+        private static final Validator POWERMENU_AIRPLANE_VALIDATOR = BOOLEAN_VALIDATOR;
+
+        /**
+         * Whether to display torch toggle in power menu
+         *
+         * @hide
+         */
+        public static final String POWERMENU_TORCH = "powermenu_torch";
+
+        /* @hide */
+        private static final Validator POWERMENU_TORCH_VALIDATOR = BOOLEAN_VALIDATOR;
+
+        /**
+         * Whether to display emergency affordance in power menu
+         *
+         * @hide
+         */
+        public static final String POWERMENU_EMERGENCY = "powermenu_emergency";
+
+        /* @hide */
+        private static final Validator POWERMENU_EMERGENCY_VALIDATOR = BOOLEAN_VALIDATOR;
+
+        /**
+         * Whether to display power menu on lockscreen
+         *
+         * @hide
+         */
+        public static final String POWERMENU_LOCKSCREEN = "powermenu_lockscreen";
+
+        /* @hide */
+        private static final Validator POWERMENU_LOCKSCREEN_VALIDATOR = BOOLEAN_VALIDATOR;
+
+        /**
+         * Whether to display reboot in lockscreen power menu
+         *
+         * @hide
+         */
+        public static final String POWERMENU_LS_REBOOT = "powermenu_ls_reboot";
+
+        /* @hide */
+        private static final Validator POWERMENU_LS_REBOOT_VALIDATOR = BOOLEAN_VALIDATOR;
+
+        /**
+         * Whether to display advanced reboot in lockscreen power menu
+         *
+         * @hide
+         */
+        public static final String POWERMENU_LS_ADVANCED_REBOOT = "powermenu_ls_advanced_reboot";
+
+        /* @hide */
+        private static final Validator POWERMENU_LS_ADVANCED_REBOOT_VALIDATOR = BOOLEAN_VALIDATOR;
+
+         /**
+         * Whether to display screenshot option in lockscreen power menu
+         * @hide
+         */
+        public static final String POWERMENU_LS_SCREENSHOT = "powermenu_ls_screenshot";
+
+        /* @hide */
+        private static final Validator POWERMENU_LS_SCREENSHOT_VALIDATOR = BOOLEAN_VALIDATOR;
+
+        /**
+         * Whether to display airplane mode in lockscreen power menu
+         *
+         * @hide
+         */
+        public static final String POWERMENU_LS_AIRPLANE = "powermenu_ls_airplane";
+
+        /* @hide */
+        private static final Validator POWERMENU_LS_AIRPLANE_VALIDATOR = BOOLEAN_VALIDATOR;
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
@@ -5073,6 +5193,18 @@ public final class Settings {
             NETWORK_TRAFFIC_REFRESH_INTERVAL,
             NETWORK_TRAFFIC_HIDEARROW,
             NETWORK_TRAFFIC_EXPANDED_STATUS_BAR_STATE,
+            POWERMENU_REBOOT,
+            POWERMENU_ADVANCED_REBOOT,
+            POWERMENU_LOCKDOWN,
+            POWERMENU_SCREENSHOT,
+            POWERMENU_AIRPLANE,
+            POWERMENU_TORCH,
+            POWERMENU_EMERGENCY,
+            POWERMENU_LOCKSCREEN,
+            POWERMENU_LS_REBOOT,
+            POWERMENU_LS_ADVANCED_REBOOT,
+            POWERMENU_LS_SCREENSHOT,
+            POWERMENU_LS_AIRPLANE,
         };
 
         /**
@@ -5228,6 +5360,18 @@ public final class Settings {
             PRIVATE_SETTINGS.add(NETWORK_TRAFFIC_REFRESH_INTERVAL);
             PRIVATE_SETTINGS.add(NETWORK_TRAFFIC_HIDEARROW);
             PRIVATE_SETTINGS.add(NETWORK_TRAFFIC_EXPANDED_STATUS_BAR_STATE);
+            PRIVATE_SETTINGS.add(POWERMENU_REBOOT);
+            PRIVATE_SETTINGS.add(POWERMENU_ADVANCED_REBOOT);
+            PRIVATE_SETTINGS.add(POWERMENU_LOCKDOWN);
+            PRIVATE_SETTINGS.add(POWERMENU_SCREENSHOT);
+            PRIVATE_SETTINGS.add(POWERMENU_AIRPLANE);
+            PRIVATE_SETTINGS.add(POWERMENU_TORCH);
+            PRIVATE_SETTINGS.add(POWERMENU_EMERGENCY);
+            PRIVATE_SETTINGS.add(POWERMENU_LOCKSCREEN);
+            PRIVATE_SETTINGS.add(POWERMENU_LS_REBOOT);
+            PRIVATE_SETTINGS.add(POWERMENU_LS_ADVANCED_REBOOT);
+            PRIVATE_SETTINGS.add(POWERMENU_LS_SCREENSHOT);
+            PRIVATE_SETTINGS.add(POWERMENU_LS_AIRPLANE);
         }
 
         /**
@@ -5358,6 +5502,18 @@ public final class Settings {
             VALIDATORS.put(NETWORK_TRAFFIC_REFRESH_INTERVAL, NETWORK_TRAFFIC_REFRESH_INTERVAL_VALIDATOR);
             VALIDATORS.put(NETWORK_TRAFFIC_HIDEARROW, NETWORK_TRAFFIC_HIDEARROW_VALIDATOR);
             VALIDATORS.put(NETWORK_TRAFFIC_EXPANDED_STATUS_BAR_STATE, NETWORK_TRAFFIC_EXPANDED_STATUS_BAR_STATE_VALIDATOR);
+            VALIDATORS.put(POWERMENU_REBOOT, POWERMENU_REBOOT_VALIDATOR);
+            VALIDATORS.put(POWERMENU_ADVANCED_REBOOT, POWERMENU_ADVANCED_REBOOT_VALIDATOR);
+            VALIDATORS.put(POWERMENU_LOCKDOWN, POWERMENU_LOCKDOWN_VALIDATOR);
+            VALIDATORS.put(POWERMENU_SCREENSHOT, POWERMENU_SCREENSHOT_VALIDATOR);
+            VALIDATORS.put(POWERMENU_AIRPLANE, POWERMENU_AIRPLANE_VALIDATOR);
+            VALIDATORS.put(POWERMENU_TORCH, POWERMENU_TORCH_VALIDATOR);
+            VALIDATORS.put(POWERMENU_EMERGENCY, POWERMENU_EMERGENCY_VALIDATOR);
+            VALIDATORS.put(POWERMENU_LOCKSCREEN, POWERMENU_LOCKSCREEN_VALIDATOR);
+            VALIDATORS.put(POWERMENU_LS_REBOOT, POWERMENU_LS_REBOOT_VALIDATOR);
+            VALIDATORS.put(POWERMENU_LS_ADVANCED_REBOOT, POWERMENU_LS_ADVANCED_REBOOT_VALIDATOR);
+            VALIDATORS.put(POWERMENU_LS_SCREENSHOT, POWERMENU_LS_SCREENSHOT_VALIDATOR);
+            VALIDATORS.put(POWERMENU_LS_AIRPLANE, POWERMENU_LS_AIRPLANE_VALIDATOR);
         }
 
         /**

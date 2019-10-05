@@ -311,11 +311,6 @@ class LegacyGlobalActions implements DialogInterface.OnDismissListener, DialogIn
             addedKeys.add(actionKey);
         }
 
-        if (mEmergencyAffordanceManager.needsEmergencyAffordance() && mContext.getResources().getBoolean(
-                com.android.internal.R.bool.config_showEmergencyButtonInPowerMenu)) {
-            mItems.add(getEmergencyAction());
-        }
-
         mAdapter = new ActionsAdapter(mContext, mItems,
                 () -> mDeviceProvisioned, () -> mKeyguardShowing);
 

@@ -80,4 +80,16 @@
     <!-- Whether to show emergency button in power menu -->
     <bool name="config_showEmergencyButtonInPowerMenu">false</bool>
 
+    <!-- Power menu -->
+    <string-array translatable="false" name="config_ancient_globalActionsList">
+        <item>power</item>
+        <item>restart</item>
+        <item>advanced</item>
+        <item>lockdown</item>
+        <item>screenshot</item>
+        <item>airplane</item>
+        <item>torch</item>
+        <item>emergency</item>
+    </string-array>
+
 </resources>

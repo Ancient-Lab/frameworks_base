@@ -76,4 +76,7 @@
    <!-- Whether device supports an alt. ambient display -->
     <java-symbol type="bool" name="config_alt_ambient_display"/>
 
+    <!-- Power menu -->
+    <java-symbol type="array" name="config_ancient_globalActionsList" />
+
 </resources>
