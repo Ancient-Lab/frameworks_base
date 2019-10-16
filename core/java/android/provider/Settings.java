@@ -5854,6 +5854,16 @@ public final class Settings {
         public static final String SYSTEMUI_PLUGIN_VOLUME = "systemui_plugin_volume";
 
         /**
+         * Whether footer #Ancient text shows
+         * @hide
+         */
+        public static final String OMNI_FOOTER_TEXT_SHOW = "omni_footer_text_show";
+
+         /** @hide */
+        private static final Validator OMNI_FOOTER_TEXT_SHOW_VALIDATOR =
+                BOOLEAN_VALIDATOR;
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
