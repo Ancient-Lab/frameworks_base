@@ -333,6 +333,16 @@ public class KeyguardSliceView extends LinearLayout implements View.OnClickListe
         updateTextColors();
     }
 
+    public void setViewsTypeface(Typeface tf) {
+        int childCount = mRow.getChildCount();
+        for (int i = 0; i < childCount; i++) {
+            View v = mRow.getChildAt(i);
+            if (v instanceof Button) {
+                ((Button) v).setTypeface(tf);
+            }
+        }
+    }
+
     private void updateTextColors() {
         final int blendedColor = getTextColor();
         mTitle.setTextColor(blendedColor);
@@ -678,7 +688,6 @@ public class KeyguardSliceView extends LinearLayout implements View.OnClickListe
 
         @Override
         public void onOverlayChanged() {
-            setTextAppearance(sStyleId);
         }
 
         @Override

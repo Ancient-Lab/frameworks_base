@@ -134,6 +134,7 @@ public class KeyguardStatusView extends GridLayout implements
         @Override
         public void onTimeChanged() {
             refreshTime();
+            refreshLockDateFont();
         }
 
         @Override
@@ -148,6 +149,7 @@ public class KeyguardStatusView extends GridLayout implements
                 refreshTime();
                 updateOwnerInfo();
                 updateLogoutView();
+                refreshLockDateFont();
             }
         }
 
@@ -166,6 +168,7 @@ public class KeyguardStatusView extends GridLayout implements
             refreshFormat();
             updateOwnerInfo();
             updateLogoutView();
+            refreshLockDateFont();
         }
 
         @Override
@@ -251,6 +254,7 @@ public class KeyguardStatusView extends GridLayout implements
         mKeyguardSlice = findViewById(R.id.keyguard_status_area);
         mTextColor = mClockView.getCurrentTextColor();
 
+        refreshLockDateFont();
         mKeyguardSlice.setContentChangeListener(this::onSliceContentChanged);
         onSliceContentChanged();
 
@@ -296,6 +300,7 @@ public class KeyguardStatusView extends GridLayout implements
             mClockView.setTextSize(TypedValue.COMPLEX_UNIT_PX,
                     getResources().getDimensionPixelSize(R.dimen.widget_big_font_size));
             setFontStyle(mClockView, mLockClockFontStyle);
+            refreshLockDateFont();
         }
         if (mOwnerInfo != null) {
             mOwnerInfo.setTextSize(TypedValue.COMPLEX_UNIT_PX,
@@ -384,6 +389,11 @@ public class KeyguardStatusView extends GridLayout implements
         mClockView.onTimeZoneChanged(timeZone);
     }
 
+    private int getLockDateFont() {
+        return Settings.System.getInt(mContext.getContentResolver(),
+                Settings.System.LOCK_DATE_FONTS, 1);
+    }
+
     private void refreshFormat() {
         Patterns.update(mContext);
         mClockView.setFormat12Hour(Patterns.clockView12);
@@ -399,6 +409,60 @@ public class KeyguardStatusView extends GridLayout implements
 
     public float getClockTextSize() {
         return mClockView.getTextSize();
+    }
+
+    private void refreshLockDateFont() {
+        setLockDateFont(mKeyguardSlice, getLockClockFont());
+    }
+
+    private void setLockDateFont(KeyguardSliceView view, int fontStyle) {
+        if (view != null) {
+            switch (fontstyle) {
+                case 0:
+                default:
+                    view.setViewsTypeface(Typeface.create(mContext.getResources().getString(R.string.clock_sysfont_headline), Typeface.NORMAL));
+                    break;
+                case 1:
+                    view.setViewsTypeface(Typeface.create(mContext.getResources().getString(R.string.clock_sysfont_body), Typeface.NORMAL));
+                    break;
+                case 2:
+                    view.setViewsTypeface(Typeface.create("sans-serif", Typeface.BOLD));
+                    break;
+                case 3:
+                    view.setViewsTypeface(Typeface.create("sans-serif", Typeface.NORMAL));
+                    break;
+                case 4:
+                    view.setViewsTypeface(Typeface.create("sans-serif", Typeface.ITALIC));
+                    break;
+                case 5:
+                    view.setViewsTypeface(Typeface.create("sans-serif", Typeface.BOLD_ITALIC));
+                    break;
+                case 6:
+                    view.setViewsTypeface(Typeface.create("sans-serif-light", Typeface.NORMAL));
+                    break;
+                case 7:
+                    view.setViewsTypeface(Typeface.create("sans-serif-thin", Typeface.NORMAL));
+                    break;
+                case 8:
+                    view.setViewsTypeface(Typeface.create("sans-serif-condensed", Typeface.NORMAL));
+                    break;
+                case 9:
+                    view.setViewsTypeface(Typeface.create("sans-serif-condensed", Typeface.ITALIC));
+                    break;
+                case 10:
+                    view.setViewsTypeface(Typeface.create("sans-serif-condensed", Typeface.BOLD));
+                    break;
+                case 11:
+                    view.setViewsTypeface(Typeface.create("sans-serif-condensed", Typeface.BOLD_ITALIC));
+                    break;
+                case 12:
+                    view.setViewsTypeface(Typeface.create("sans-serif-medium", Typeface.NORMAL));
+                    break;
+                case 13:
+                    view.setViewsTypeface(Typeface.create("sans-serif-medium", Typeface.ITALIC));
+                    break;
+            }
+        }
     }
 
     /**
