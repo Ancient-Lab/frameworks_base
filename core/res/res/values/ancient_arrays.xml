@@ -19,6 +19,7 @@
         <item>restart</item>
         <item>reboot_recovery</item>
         <item>reboot_bootloader</item>
+        <item>restart_sysui</item>
     </string-array>
 
     <!-- Defines all possible global actions -->
