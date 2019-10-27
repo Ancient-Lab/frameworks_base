@@ -47,6 +47,9 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.database.ContentObserver;
+import android.content.ContentResolver;
+import android.os.UserHandle;
 
 import androidx.annotation.VisibleForTesting;
 
@@ -66,6 +69,10 @@ import com.android.systemui.statusbar.policy.Clock;
 import com.android.systemui.statusbar.policy.DateView;
 import com.android.systemui.statusbar.policy.NextAlarmController;
 import com.android.systemui.statusbar.policy.ZenModeController;
+import com.android.systemui.tuner.TunerService;
+import com.android.systemui.tuner.TunerService.Tunable;
+import java.io.BufferedReader;
+import java.io.FileReader;
 
 import java.util.Locale;
 import java.util.Objects;
@@ -83,6 +90,11 @@ public class QuickStatusBarHeader extends RelativeLayout implements
         ZenModeController.Callback {
     private static final String TAG = "QuickStatusBarHeader";
     private static final boolean DEBUG = false;
+    public static final String QS_SHOW_INFO_HEADER = "qs_show_info_header";
+    private static final String CPU_TEMP_PATH = "/sys/class/thermal/thermal_zone0/temp";
+    private static final String BATTERY_TEMP_PATH = "sys/class/power_supply/battery/temp";
+    private static final String GPU_CLOCK_PATH = "/sys/kernel/gpu/gpu_clock";
+    private static final String GPU_BUSY_PATH = "/sys/kernel/gpu/gpu_busy";
 
     /** Delay for auto fading out the long press tooltip after it's fully visible (in ms). */
     private static final long AUTO_FADE_OUT_DELAY_MS = DateUtils.SECOND_IN_MILLIS * 6;
@@ -129,6 +141,31 @@ public class QuickStatusBarHeader extends RelativeLayout implements
     private DateView mDateView;
     private BatteryMeterView mBatteryRemainingIcon;
 
+    private TextView mSystemInfoText;
+    private int mSystemInfoMode;
+    private ImageView mSystemInfoIcon;
+    private View mSystemInfoLayout;
+
+    protected ContentResolver mContentResolver;
+
+    private class SettingsObserver extends ContentObserver {
+        SettingsObserver(Handler handler) {
+            super(handler);
+        }
+
+        void observe() {
+            ContentResolver resolver = getContext().getContentResolver();
+            resolver.registerContentObserver(Settings.System
+                    .getUriFor(Settings.System.QS_SYSTEM_INFO), false,
+                    this, UserHandle.USER_ALL);
+            }
+
+        @Override
+        public void onChange(boolean selfChange) {
+            updateSettings();
+        }
+    }
+    private SettingsObserver mSettingsObserver = new SettingsObserver(mHandler); 
     private final BroadcastReceiver mRingerReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -150,6 +187,9 @@ public class QuickStatusBarHeader extends RelativeLayout implements
         mActivityStarter = activityStarter;
         mDualToneHandler = new DualToneHandler(
                 new ContextThemeWrapper(context, R.style.QSHeaderTheme));
+        mSystemInfoMode = getQsSystemInfoMode();
+        mContentResolver = context.getContentResolver();
+        mSettingsObserver.observe();
     }
 
     @Override
@@ -174,7 +214,9 @@ public class QuickStatusBarHeader extends RelativeLayout implements
         mRingerModeTextView = findViewById(R.id.ringer_mode_text);
         mRingerContainer = findViewById(R.id.ringer_container);
         mCarrierGroup = findViewById(R.id.carrier_group);
-
+        mSystemInfoLayout = findViewById(R.id.system_info_layout);
+        mSystemInfoIcon = findViewById(R.id.system_info_icon);
+        mSystemInfoText = findViewById(R.id.system_info_text);
 
         updateResources();
 
@@ -206,6 +248,7 @@ public class QuickStatusBarHeader extends RelativeLayout implements
         mBatteryRemainingIcon.setPercentShowMode(BatteryMeterView.MODE_ESTIMATE);
         mRingerModeTextView.setSelected(true);
         mNextAlarmTextView.setSelected(true);
+        updateSettings();
     }
 
     private void updateStatusText() {
@@ -217,6 +260,81 @@ public class QuickStatusBarHeader extends RelativeLayout implements
             mStatusSeparator.setVisibility(alarmVisible && ringerVisible ? View.VISIBLE
                     : View.GONE);
         }
+    }
+
+    private int getQsSystemInfoMode() {
+        return Settings.System.getInt(mContext.getContentResolver(),
+                Settings.System.QS_SYSTEM_INFO, 0);
+    }
+
+    private void updateSystemInfoText() {
+        if (mSystemInfoMode == 0) {
+            mSystemInfoText.setVisibility(View.GONE);
+            mSystemInfoIcon.setVisibility(View.GONE);
+            return;
+        } else {
+            mSystemInfoText.setVisibility(View.VISIBLE);
+            mSystemInfoIcon.setVisibility(View.VISIBLE);
+        }
+
+        switch (mSystemInfoMode) {
+            case 1:
+                mSystemInfoIcon.setImageDrawable(getContext().getDrawable(R.drawable.ic_thermometer));
+                mSystemInfoText.setText(getCPUTemp());
+                break;
+            case 2:
+                mSystemInfoIcon.setImageDrawable(getContext().getDrawable(R.drawable.ic_thermometer));
+                mSystemInfoText.setText(getBatteryTemp());
+                break;
+            case 3:
+                mSystemInfoIcon.setImageDrawable(getContext().getDrawable(R.drawable.ic_gpu));
+                mSystemInfoText.setText(getGPUClock());
+                break;
+            case 4:
+                mSystemInfoIcon.setImageDrawable(getContext().getDrawable(R.drawable.ic_gpu));
+                mSystemInfoText.setText(getGPUBusy());
+                break;
+            default:
+                mSystemInfoText.setVisibility(View.GONE);
+                mSystemInfoIcon.setVisibility(View.GONE);
+            break;
+            }
+    }
+
+    private String getBatteryTemp() {
+        String value = readOneLine(BATTERY_TEMP_PATH);
+        return String.format("%s", Integer.parseInt(value) / 10) + "\u2103";
+    }
+
+    private String getCPUTemp() {
+        String value = readOneLine(CPU_TEMP_PATH);
+        return String.format("%s", Integer.parseInt(value) / 1000) + "\u2103";
+    }
+
+    private String getGPUBusy() {
+        String value = readOneLine(GPU_BUSY_PATH);
+        return value;
+    }
+
+    private String getGPUClock() {
+        String value = readOneLine(GPU_CLOCK_PATH);
+        return String.format("%s", Integer.parseInt(value)) + "Mhz";
+    }
+
+    private static String readOneLine(String fname) {
+        BufferedReader br;
+        String line = null;
+        try {
+            br = new BufferedReader(new FileReader(fname), 512);
+            try {
+                line = br.readLine();
+            } finally {
+                br.close();
+            }
+        } catch (Exception e) {
+            return null;
+        }
+        return line;
     }
 
     private boolean updateRingerStatus() {
@@ -327,6 +445,12 @@ public class QuickStatusBarHeader extends RelativeLayout implements
         updateHeaderTextContainerAlphaAnimator();
     }
 
+      private void updateSettings() {
+        mSystemInfoMode = getQsSystemInfoMode();
+        updateSystemInfoText();
+        updateResources();
+     }
+
     private void updateStatusIconAlphaAnimator() {
         mStatusIconsAlphaAnimator = new TouchAnimator.Builder()
                 .addFloat(mQuickQsStatusIcons, "alpha", 1, 0, 0)
@@ -344,6 +468,7 @@ public class QuickStatusBarHeader extends RelativeLayout implements
         mExpanded = expanded;
         mHeaderQsPanel.setExpanded(expanded);
 	mDateView.setVisibility(mClockView.isClockDateEnabled() ? View.INVISIBLE : View.VISIBLE);
+        updateSystemInfoText();
         updateEverything();
     }
 
@@ -378,6 +503,7 @@ public class QuickStatusBarHeader extends RelativeLayout implements
                 mHeaderTextContainerView.setVisibility(INVISIBLE);
             }
         }
+        updateSystemInfoText();
     }
 
     public void disable(int state1, int state2, boolean animate) {
@@ -499,6 +625,9 @@ public class QuickStatusBarHeader extends RelativeLayout implements
         float intensity = getColorIntensity(colorForeground);
         int fillColor = mDualToneHandler.getSingleColor(intensity);
         mBatteryRemainingIcon.onDarkChanged(tintArea, intensity, fillColor);
+        if(mSystemInfoText != null &&  mSystemInfoIcon != null) {
+            updateSystemInfoText();
+        }
     }
 
     public void setCallback(Callback qsPanelCallback) {
