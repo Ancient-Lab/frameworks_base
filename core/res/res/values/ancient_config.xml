@@ -134,4 +134,7 @@
     <!-- Whether to turn on the notification light when the state of the front camera changes -->
     <bool name="config_popUpNotificationLight">false</bool>
 
+    <!-- Whether device supports variable refresh rate -->
+    <bool name="config_hasVariableRefreshRate">false</bool>
+
 </resources>

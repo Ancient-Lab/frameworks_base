@@ -188,4 +188,7 @@
     <!-- Whether to turn on the notification light when the state of the front camera changes -->
     <java-symbol type="bool" name="config_popUpNotificationLight" />
 
+    <!-- Whether device supports variable refresh rate -->
+    <java-symbol type="bool" name="config_hasVariableRefreshRate" />
+
 </resources>
