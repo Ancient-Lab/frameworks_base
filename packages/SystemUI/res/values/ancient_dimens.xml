@@ -54,4 +54,7 @@
     <dimen name="ancient_qs_margintoptop">50dp</dimen>
     <dimen name="ancient_headerimg_size">152dp</dimen>
     <dimen name="ancient_minimal_height">25dp</dimen>
+
+    <!-- Qs visibility -->
+    <dimen name="qs_tile_height_wo_label">64dp</dimen>
 </resources>
