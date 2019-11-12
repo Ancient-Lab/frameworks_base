@@ -108,6 +108,7 @@ public class BatteryMeterView extends LinearLayout implements
     public int mBatteryStyle = BATTERY_STYLE_PORTRAIT;
     public int mShowBatteryPercent;
     private boolean mBatteryPercentCharging;
+    private int mTextChargingSymbol;
     private final Handler mHandler = new Handler();
 
     private DualToneHandler mDualToneHandler;
@@ -299,6 +300,7 @@ public class BatteryMeterView extends LinearLayout implements
         updateSBBarBatteryStyle();
         updateSBBarShowBatteryPercent();
         updateSBBarBatteryTextCharging();
+        updateTextChargingSymbol();
      }
 
      private void updateSBBarBatteryStyle() {
@@ -427,11 +429,24 @@ public class BatteryMeterView extends LinearLayout implements
     }
 
     private void setPercentTextAtCurrentLevel() {
-        mBatteryPercentView.setText(
-                NumberFormat.getPercentInstance().format(mLevel / 100f));
-        setContentDescription(
-                getContext().getString(mCharging ? R.string.accessibility_battery_level_charging
-                        : R.string.accessibility_battery_level, mLevel));
+        if (mBatteryPercentView == null)
+ 	    return;
+
+        String pct = NumberFormat.getPercentInstance().format(mLevel / 100f);
+
+        if (mCharging && (mBatteryPercentView != null && mBatteryStyle == BATTERY_STYLE_HIDDEN)
+                && mTextChargingSymbol > 0) {
+            switch (mTextChargingSymbol) {
+                case 1:
+                default:
+                    pct = "⚡️ " + pct;
+                   break;
+                case 2:
+                    pct = "~ " + pct;
+                    break;
+            }
+        }
+         mBatteryPercentView.setText(pct);
     }
 
     private void removeBatteryPercentView() {
@@ -538,6 +553,12 @@ public class BatteryMeterView extends LinearLayout implements
         }
     }
 
+    private void updateTextChargingSymbol() {
+        mTextChargingSymbol = Settings.System.getIntForUser(
+	    mContext.getContentResolver(), Settings.System.
+   	    TEXT_CHARGING_SYMBOL, 0, mUser);
+    }
+
     @Override
     public void onDarkChanged(Rect area, float darkIntensity, int tint) {
         float intensity = DarkIconDispatcher.isInArea(area, this) ? darkIntensity : 0;
@@ -585,6 +606,9 @@ public class BatteryMeterView extends LinearLayout implements
             resolver.registerContentObserver(Settings.System
                     .getUriFor(Settings.System.STATUS_BAR_BATTERY_TEXT_CHARGING), false,
                     this, UserHandle.USER_ALL);
+            resolver.registerContentObserver(Settings.System
+                    .getUriFor(Settings.System.TEXT_CHARGING_SYMBOL), false,
+                    this, UserHandle.USER_ALL);
         }
 
         @Override
@@ -592,6 +616,7 @@ public class BatteryMeterView extends LinearLayout implements
             super.onChange(selfChange, uri);
             updateSettings();
             updateShowPercent();
+            updateTextChargingSymbol();
             if (TextUtils.equals(uri.getLastPathSegment(),
                     Settings.Global.BATTERY_ESTIMATES_LAST_UPDATE_TIME)) {
                 // update the text for sure if the estimate in the cache was updated
