@@ -4612,6 +4612,14 @@ public final class Settings {
         /** @hide */
         private static final Validator QS_QUICKBAR_COLUMNS_VALIDATOR = ANY_INTEGER_VALIDATOR;
 
+        /**
+         * Whether to show media art on lockscreen
+         * Boolean setting. 0 = off, 1 = on.
+         * @hide
+         */
+        public static final String LOCKSCREEN_MEDIA_METADATA = "lockscreen_media_metadata";
+
+
         /** @hide */
         public static final Validator LOCKSCREEN_MEDIA_METADATA_VALIDATOR = BOOLEAN_VALIDATOR;
 
