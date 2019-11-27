@@ -5864,6 +5864,12 @@ public final class Settings {
                 BOOLEAN_VALIDATOR;
 
         /**
+         * QS footer text
+         * @hide
+         */
+        public static final String CRAFT_FOOTER_TEXT_STRING = "craft_footer_text_string";
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
