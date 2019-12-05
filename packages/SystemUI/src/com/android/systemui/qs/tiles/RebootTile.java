@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2013 Slimroms
+ * Copyright (C) 2019 ion-OS
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,6 +20,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.PowerManager;
+import android.os.Process;
 import android.os.RemoteException;
 import android.os.ServiceManager;
 import android.service.quicksettings.Tile;
@@ -34,7 +35,7 @@ import javax.inject.Inject;
 
 public class RebootTile extends QSTileImpl<BooleanState> {
 
-    private int mRebootToRecovery = 0;
+    private int mReboot = 0;
     private IStatusBarService mBarService;
 
     @Inject
@@ -54,12 +55,16 @@ public class RebootTile extends QSTileImpl<BooleanState> {
 
     @Override
     protected void handleClick() {
-        if (mRebootToRecovery == 0) {
-            mRebootToRecovery = 1;
-        } else if (mRebootToRecovery == 1) {
-            mRebootToRecovery = 2;
+        if (mReboot == 0) {
+            mReboot = 1;
+        } else if (mReboot == 1) {
+            mReboot = 2;
+        } else if (mReboot == 2) {
+            mReboot = 3;
+        } else if (mReboot == 3) {
+            mReboot = 4;
         } else {
-            mRebootToRecovery = 0;
+            mReboot = 0;
         }
         refreshState();
     }
@@ -73,12 +78,16 @@ public class RebootTile extends QSTileImpl<BooleanState> {
         handler.postDelayed(new Runnable() {
             public void run() {
                 try {
-                    if(mRebootToRecovery == 1)
-                        mBarService.advancedReboot(PowerManager.REBOOT_RECOVERY);
-                    else if (mRebootToRecovery == 2)
-                        mBarService.shutdown();
-                    else
+                    if(mReboot == 1)
                         mBarService.reboot(false);
+                    else if (mReboot == 2)
+                        mBarService.advancedReboot(PowerManager.REBOOT_RECOVERY);
+                    else if (mReboot == 3)
+                        mBarService.advancedReboot(PowerManager.REBOOT_BOOTLOADER);
+                    else if (mReboot == 4)
+                        restartSystemUI(mContext);
+                    else
+                        mBarService.shutdown();
                 } catch (RemoteException e) {
                 }
             }
@@ -101,21 +110,35 @@ public class RebootTile extends QSTileImpl<BooleanState> {
 
     @Override
     protected void handleUpdateState(BooleanState state, Object arg) {
-        if (mRebootToRecovery == 1) {
-            state.label = mContext.getString(R.string.quick_settings_reboot_recovery_label);
-            state.icon = ResourceIcon.get(R.drawable.ic_qs_reboot_recovery);
-            state.contentDescription =  mContext.getString(
-                    R.string.quick_settings_reboot_recovery_label);
-        } else if (mRebootToRecovery == 2) {
-            state.label = mContext.getString(R.string.quick_settings_poweroff_label);
-            state.icon = ResourceIcon.get(R.drawable.ic_qs_poweroff);
-            state.contentDescription =  mContext.getString(
-                    R.string.quick_settings_poweroff_label);
-        } else {
+        if (mReboot == 1) {
             state.label = mContext.getString(R.string.quick_settings_reboot_label);
-            state.icon = ResourceIcon.get(R.drawable.ic_qs_reboot);
+            state.icon = ResourceIcon.get(com.android.internal.R.drawable.ic_restart);
             state.contentDescription =  mContext.getString(
                     R.string.quick_settings_reboot_label);
+        } else if (mReboot == 2) {
+            state.label = mContext.getString(R.string.quick_settings_reboot_recovery_label);
+            state.icon = ResourceIcon.get(R.drawable.ic_restart_recovery);
+            state.contentDescription =  mContext.getString(
+                    R.string.quick_settings_reboot_recovery_label);
+        } else if (mReboot == 3) {
+            state.label = mContext.getString(R.string.quick_settings_reboot_bootloader_label);
+            state.icon = ResourceIcon.get(R.drawable.ic_restart_bootloader);
+            state.contentDescription =  mContext.getString(
+                    R.string.quick_settings_reboot_bootloader_label);
+        } else if (mReboot == 4) {
+            state.label = mContext.getString(R.string.quick_settings_reboot_ui_label);
+            state.icon = ResourceIcon.get(R.drawable.ic_restart_ui);
+            state.contentDescription =  mContext.getString(
+                    R.string.quick_settings_reboot_ui_label);
+        } else {
+            state.label = mContext.getString(R.string.quick_settings_poweroff_label);
+            state.icon = ResourceIcon.get(com.android.internal.R.drawable.ic_lock_power_off);
+            state.contentDescription =  mContext.getString(
+                    R.string.quick_settings_poweroff_label);
         }
+    }
+
+    public static void restartSystemUI(Context mContext) {
+        Process.killProcess(Process.myPid());
     }
 }
