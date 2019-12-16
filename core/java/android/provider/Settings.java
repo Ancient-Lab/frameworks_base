@@ -5952,6 +5952,11 @@ public final class Settings {
         private static final Validator QS_PANEL_BG_USE_NEW_TINT_VALIDATOR = BOOLEAN_VALIDATOR;
 
         /**
+         * @hide
+         */
+        public static final String QS_LABEL_USE_NEW_TINT = "qs_label_use_new_tint";
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
