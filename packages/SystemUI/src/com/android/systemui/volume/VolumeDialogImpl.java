@@ -523,6 +523,14 @@ public class VolumeDialogImpl implements VolumeDialog,
         row.icon.setImageResource(iconRes);
         row.icon.setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO);
         row.icon.setClickable(false);
+        ColorStateList mIconTint = ColorStateList.valueOf(mContext.getResources().getColor(R.color.row_icon_dark));
+        ColorStateList mIconTintNormal = ColorStateList.valueOf(mContext.getResources().getColor(R.color.row_icon_white));
+        int rowprogress = row.slider.getProgress();
+        if (rowprogress < 500) {
+            row.icon.setImageTintList(mIconTint);
+        } else {
+            row.icon.setImageTintList(mIconTintNormal);
+        }
     }
 
     public void initSettingsH() {
