@@ -2088,7 +2088,9 @@ public final class PowerManagerService extends SystemService
 
         // On Always On Display, SystemUI shows the charging indicator
         if (mAlwaysOnEnabled && mWakefulness == WAKEFULNESS_DOZING) {
-            return false;
+            if (!mDozeOnChargeEnabled) {
+                return false;
+            }
         }
 
         // Otherwise wake up!
