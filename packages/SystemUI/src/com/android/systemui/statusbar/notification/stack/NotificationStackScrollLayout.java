@@ -135,6 +135,7 @@ import com.android.systemui.statusbar.phone.NotificationPanelView;
 import com.android.systemui.statusbar.phone.ScrimController;
 import com.android.systemui.statusbar.phone.ShadeController;
 import com.android.systemui.statusbar.phone.StatusBar;
+import com.android.systemui.statusbar.phone.StatusBarWindowView;
 import com.android.systemui.statusbar.policy.ConfigurationController;
 import com.android.systemui.statusbar.policy.ConfigurationController.ConfigurationListener;
 import com.android.systemui.statusbar.policy.HeadsUpUtil;
@@ -356,6 +357,8 @@ public class NotificationStackScrollLayout extends ViewGroup implements ScrollAd
     private boolean mAnimateNextBackgroundBottom;
     private boolean mAnimateNextSectionBoundsChange;
     private int mBgColor;
+    private int mIconColor;
+    private int mBackgroundColor;
     private float mDimAmount;
     private ValueAnimator mDimAnimator;
     private ArrayList<ExpandableView> mTmpSortedChildren = new ArrayList<>();
@@ -503,6 +506,7 @@ public class NotificationStackScrollLayout extends ViewGroup implements ScrollAd
     private float mLastSentAppear;
     private float mLastSentExpandedHeight;
     private boolean mWillExpand;
+    private boolean needsColorRefresh = true;
 
     @Inject
     public NotificationStackScrollLayout(
@@ -648,6 +652,7 @@ public class NotificationStackScrollLayout extends ViewGroup implements ScrollAd
     @ShadeViewRefactor(RefactorComponent.SHADE_VIEW)
     public void onDensityOrFontScaleChanged() {
         reinflateViews();
+        StatusBarWindowView.updateDismissAllButtonOnlyDimens();
     }
 
     private void reinflateViews() {
@@ -686,7 +691,37 @@ public class NotificationStackScrollLayout extends ViewGroup implements ScrollAd
                 && mStatusBarState != StatusBarState.KEYGUARD
                 && !mRemoteInputManager.getController().isRemoteInputActive();
 
-        updateFooterView(showFooterView, showDismissView);
+        updateFooterView(showFooterView, showDismissView && !isDismissAllButtonEnabled());
+
+        if (needsColorRefresh) {
+            mBackgroundColor = mContext.getColor(R.color.recents_dismiss_all_background_color);
+            mIconColor = mContext.getColor(R.color.recents_dismiss_all_icon_color);
+            StatusBarWindowView.updateDismissAllButton(mBackgroundColor, mIconColor);
+            needsColorRefresh = false;
+        }
+
+        if (showDismissView && showFooterView && mNotificationPanel.isFullyExpanded()
+            && isDismissAllButtonEnabled() && mStatusBarState != 1 && !mNotificationPanel.isQsExpanded()
+            && !mNotificationPanel.isCollapsing() && !onKeyguard()) {
+            StatusBarWindowView.setDismissAllVisible(isDismissAllButtonAnimationsEnabled());
+        } else {
+            StatusBarWindowView.setDismissAllHidden(isDismissAllButtonAnimationsEnabled());
+        }
+    }
+
+    public static void hideDismissAllOnCollapse() {
+        StatusBarWindowView.setDismissAllHidden(false);
+    }
+
+    private boolean isDismissAllButtonEnabled() {
+        return Settings.System.getInt(mContext.getContentResolver(),
+                Settings.System.DISMISS_ALL_BUTTON, 1) != 0;
+    }
+
+    private static boolean isDismissAllButtonAnimationsEnabled() {
+        /** Previously i was planning to make toggle for animations,
+            but since they are working fine lets skip that, but code is still here */
+        return true;
     }
 
     /**
@@ -759,8 +794,12 @@ public class NotificationStackScrollLayout extends ViewGroup implements ScrollAd
     @ShadeViewRefactor(RefactorComponent.SHADE_VIEW)
     public void onUiModeChanged() {
         mBgColor = mContext.getColor(R.color.notification_shade_background_color);
+        mBackgroundColor = mContext.getColor(R.color.recents_dismiss_all_background_color);
+        mIconColor = mContext.getColor(R.color.recents_dismiss_all_icon_color);
         updateBackgroundDimming();
         mShelf.onUiModeChanged();
+        mSectionsManager.onUiModeChanged();
+        StatusBarWindowView.updateDismissAllButton(mBackgroundColor, mIconColor);
     }
 
     @ShadeViewRefactor(RefactorComponent.DECORATOR)
@@ -4405,6 +4444,7 @@ public class NotificationStackScrollLayout extends ViewGroup implements ScrollAd
     private void setIsExpanded(boolean isExpanded) {
         boolean changed = isExpanded != mIsExpanded;
         mIsExpanded = isExpanded;
+        updateFooter();
         mStackScrollAlgorithm.setIsExpanded(isExpanded);
         mAmbientState.setShadeExpanded(isExpanded);
         mStateAnimator.setShadeExpanded(isExpanded);
@@ -5182,6 +5222,7 @@ public class NotificationStackScrollLayout extends ViewGroup implements ScrollAd
     private void updateOnScrollChange() {
         updateForwardAndBackwardScrollability();
         requestChildrenUpdate();
+        updateFooter();
     }
 
     private void updateScrollAnchor() {
@@ -5596,6 +5637,11 @@ public class NotificationStackScrollLayout extends ViewGroup implements ScrollAd
         });
         footerView.setManageButtonClickListener(this::manageNotifications);
         setFooterView(footerView);
+
+        StatusBarWindowView.setDismissAllOnClickListener(v -> {
+            mMetricsLogger.action(MetricsEvent.ACTION_DISMISS_ALL_NOTES);
+            clearNotifications(ROWS_ALL, true /* closeShade */);
+        });
     }
 
     @ShadeViewRefactor(RefactorComponent.SHADE_VIEW)

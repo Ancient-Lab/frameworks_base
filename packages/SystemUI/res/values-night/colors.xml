@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+ <?xml version="1.0" encoding="utf-8"?>
 <!--
   ~ Copyright (C) 2018 The Android Open Source Project
   ~
@@ -82,4 +82,18 @@
     <color name="biometric_dialog_accent">@*android:color/accent_device_default_dark</color>
     <color name="biometric_dialog_error">#fff28b82</color> <!-- red 300 -->
 
+    <color name="volume_background_tint">#141414</color>
+
+    <color name="ringer_icon_normal">@android:color/white</color>
+    <color name="ringer_bcg_normal">@color/volume_background_tint</color>
+
+    <color name="ringer_icon_mute">@android:color/white</color>
+
+    <color name="keyguard_affordance_background_preview">#171717</color>
+    <color name="keyguard_affordance_background_preview_background">#242426</color>
+
+    <color name="qs_tile_background_color_disabled">#1f1f1f</color>
+
+    <color name="recents_dismiss_all_background_color">@color/volume_background_tint</color>
+    <color name="recents_dismiss_all_icon_color">@android:color/white</color>
 </resources>
