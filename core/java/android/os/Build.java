@@ -1002,10 +1002,23 @@ public class Build {
     public static final String FINGERPRINT = deriveFingerprint();
 
     /**
+     * Ancient fingerprint
+     * @hide
+     */
+    public static final String PROP_ANCIENT_FINGERPRINT = "ro.ancient.fingerprint";
+
+    /**
+     * Ancient fingerprint
+     * @hide
+     */
+    public static final String ANCIENT_FINGERPRINT = SystemProperties.get(PROP_ANCIENT_FINGERPRINT,
+            deriveFingerprint());
+
+    /**
      * Custom fingerprint
      * @hide
      */
-    public static final String PROP_CUSTOM_FINGERPRINT = "org.pixelexperience.fingerprint";
+    public static final String PROP_CUSTOM_FINGERPRINT = "ro.ancient.fingerprint";
 
     /**
      * Custom fingerprint
