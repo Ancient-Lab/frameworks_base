@@ -32,6 +32,7 @@
 		android:paddingStart="@dimen/status_bar_left_clock_starting_padding" 
 		android:paddingEnd="@dimen/status_bar_left_clock_end_padding" 
 		systemui:showDark="false" />
+
     <android.widget.Space 
 	android:layout_gravity="center" 
 	android:id="@+id/space" 
