@@ -5386,6 +5386,12 @@ public final class Settings {
 
         private static final Validator USE_OLD_MOBILETYPE_VALIDATOR = BOOLEAN_VALIDATOR;
 
+        /** @hide */
+        public static final String GESTURE_PILL_TOGGLE = "gesture_pill_toggle";
+
+        /** @hide */
+        private static final Validator GESTURE_PILL_TOGGLE_VALIDATOR = BOOLEAN_VALIDATOR;
+
         /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
@@ -5509,7 +5515,8 @@ public final class Settings {
             QS_BLUR_INTENSITY,
             HEADS_UP_STOPLIST_VALUES,
             HEADS_UP_BLACKLIST_VALUES,
-            USE_OLD_MOBILETYPE
+            USE_OLD_MOBILETYPE,
+            GESTURE_PILL_TOGGLE
         };
 
         /**
@@ -5693,6 +5700,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(HEADS_UP_STOPLIST_VALUES);
             PRIVATE_SETTINGS.add(HEADS_UP_BLACKLIST_VALUES);
             PRIVATE_SETTINGS.add(USE_OLD_MOBILETYPE);
+            PRIVATE_SETTINGS.add(GESTURE_PILL_TOGGLE);
         }
 
         /**
@@ -5850,6 +5858,7 @@ public final class Settings {
             VALIDATORS.put(HEADS_UP_STOPLIST_VALUES, HEADS_UP_STOPLIST_VALUES_VALIDATOR);
             VALIDATORS.put(HEADS_UP_BLACKLIST_VALUES, HEADS_UP_BLACKLIST_VALUES_VALIDATOR);
             VALIDATORS.put(USE_OLD_MOBILETYPE, USE_OLD_MOBILETYPE_VALIDATOR);
+            VALIDATORS.put(GESTURE_PILL_TOGGLE, GESTURE_PILL_TOGGLE_VALIDATOR);
         }
 
         /**
