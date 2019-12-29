@@ -102,7 +102,6 @@ public class QSPanel extends LinearLayout implements Tunable, Callback, Brightne
     private Record mDetailRecord;
 
     private BrightnessMirrorController mBrightnessMirrorController;
-    private View mDivider;
 
     private int mBrightnessSlider = 1;
 
@@ -158,25 +157,16 @@ public class QSPanel extends LinearLayout implements Tunable, Callback, Brightne
             addView(mBrightnessView);
         }
 
-        addDivider();
         addView(mFooter.getView());
         updateResources();
     }
 
     private void restartQSPanel() {
         if (mFooter.getView() != null) removeView(mFooter.getView());
-        if (mDivider != null) removeView(mDivider);
         if ((View) mTileLayout != null) removeView((View) mTileLayout);
         if (mBrightnessView != null) removeView(mBrightnessView);
 
         addQSPanel();
-    }
-
-    protected void addDivider() {
-        mDivider = LayoutInflater.from(mContext).inflate(R.layout.qs_divider, this, false);
-        mDivider.setBackgroundColor(Utils.applyAlpha(mDivider.getAlpha(),
-                getColorForState(mContext, Tile.STATE_ACTIVE)));
-        addView(mDivider);
     }
 
     @Override
@@ -198,7 +188,7 @@ public class QSPanel extends LinearLayout implements Tunable, Callback, Brightne
     }
 
     public View getDivider() {
-        return mDivider;
+        return LayoutInflater.from(mContext).inflate(R.layout.qs_divider, this, false);
     }
 
     public QSTileRevealController getQsTileRevealController() {
