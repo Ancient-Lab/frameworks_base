@@ -158,6 +158,9 @@ public class NotificationPanelView extends PanelView implements
     static final String COUNTER_PANEL_OPEN_QS = "panel_open_qs";
     private static final String COUNTER_PANEL_OPEN_PEEK = "panel_open_peek";
 
+    private static final String LOCKSCREEN_STATUS_BAR =
+            "system:" + Settings.System.LOCKSCREEN_STATUS_BAR;
+
     private static final Rect mDummyDirtyRect = new Rect(0, 0, 1, 1);
     private static final Rect mEmptyRect = new Rect();
 
@@ -330,6 +333,7 @@ public class NotificationPanelView extends PanelView implements
     private FalsingManager mFalsingManager;
     private String mLastCameraLaunchSource = KeyguardBottomAreaView.CAMERA_LAUNCH_SOURCE_AFFORDANCE;
     private NotificationLightsView mPulseLightsView;
+    private boolean mShowLockscreenStatusBar;
 
     private Runnable mHeadsUpExistenceChangedRunnable = new Runnable() {
         @Override
@@ -578,6 +582,7 @@ public class NotificationPanelView extends PanelView implements
         Dependency.get(StatusBarStateController.class).addCallback(this);
         Dependency.get(ZenModeController.class).addCallback(this);
         Dependency.get(ConfigurationController.class).addCallback(this);
+        Dependency.get(TunerService.class).addTunable(this, LOCKSCREEN_STATUS_BAR);
         mUpdateMonitor.registerCallback(mKeyguardUpdateCallback);
         // Theme might have changed between inflating this view and attaching it to the window, so
         // force a call to onThemeChanged
@@ -592,6 +597,17 @@ public class NotificationPanelView extends PanelView implements
         Dependency.get(ZenModeController.class).removeCallback(this);
         Dependency.get(ConfigurationController.class).removeCallback(this);
         mUpdateMonitor.removeCallback(mKeyguardUpdateCallback);
+    }
+
+    public void onTuningChanged(String key, String newValue) {
+        switch (key) {
+            case LOCKSCREEN_STATUS_BAR:
+                mShowLockscreenStatusBar =
+                        TunerService.parseIntegerSwitch(newValue, true);
+                break;
+            default:
+                break;
+        }
     }
 
     @Override
@@ -1644,7 +1660,7 @@ public class NotificationPanelView extends PanelView implements
             }
         } else {
             mKeyguardStatusBar.setAlpha(1f);
-            mKeyguardStatusBar.setVisibility(keyguardShowing ? View.VISIBLE : View.INVISIBLE);
+            mKeyguardStatusBar.setVisibility(keyguardShowing && mShowLockscreenStatusBar ? View.VISIBLE : View.INVISIBLE);
             if (keyguardShowing && oldState != mBarState) {
                 if (mQs != null) {
                     mQs.hideImmediately();
@@ -1739,6 +1755,7 @@ public class NotificationPanelView extends PanelView implements
             };
 
     private void animateKeyguardStatusBarIn(long duration) {
+        if (!mShowLockscreenStatusBar) return;
         mKeyguardStatusBar.setVisibility(View.VISIBLE);
         mKeyguardStatusBar.setAlpha(0f);
         ValueAnimator anim = ValueAnimator.ofFloat(0f, 1f);
@@ -2341,7 +2358,7 @@ public class NotificationPanelView extends PanelView implements
         mKeyguardStatusBar.setAlpha(newAlpha);
         boolean hideForBypass = mFirstBypassAttempt && mUpdateMonitor.shouldListenForFace()
                 || mDelayShowingKeyguardStatusBar;
-        mKeyguardStatusBar.setVisibility(newAlpha != 0f && !mDozing && !hideForBypass
+        mKeyguardStatusBar.setVisibility(newAlpha != 0f && !mDozing && !hideForBypass && mShowLockscreenStatusBar
                 ? VISIBLE : INVISIBLE);
     }
 
