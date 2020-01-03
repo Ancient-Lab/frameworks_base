@@ -10117,6 +10117,12 @@ public final class Settings {
         public static final String SYSUI_ROUNDED_FWVALS = "sysui_rounded_fwvals";
 
         /**
+         * Select which lockscreen clock style to display
+         * @hide
+         */
+        public static final String LOCKSCREEN_CLOCK_SELECTION = "lockscreen_clock_selection";
+
+        /**
          * This are the settings to be backed up.
          *
          * NOTE: Settings are backed up and restored in the order they appear
