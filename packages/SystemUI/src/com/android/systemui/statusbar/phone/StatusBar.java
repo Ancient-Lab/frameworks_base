@@ -129,6 +129,9 @@ import android.view.accessibility.AccessibilityManager;
 import android.view.animation.AccelerateInterpolator;
 import android.widget.DateTimeView;
 import android.widget.ImageView;
+import android.provider.Settings;
+import android.provider.Settings.System;
+import android.provider.Settings.Secure;
 
 import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.colorextraction.ColorExtractor;
@@ -1885,6 +1888,10 @@ public class StatusBar extends SystemUI implements DemoMode,
 
     public NotificationPresenter getPresenter() {
         return mPresenter;
+    }
+
+    private void updateKeyguardStatusSettings() {
+        mNotificationPanel.updateKeyguardStatusSettings();
     }
 
     /**
@@ -4033,6 +4040,9 @@ public class StatusBar extends SystemUI implements DemoMode,
                     Settings.System.HEADS_UP_STOPLIST_VALUES), false, this);
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.HEADS_UP_BLACKLIST_VALUES), false, this);
+            resolver.registerContentObserver(Settings.Secure.getUriFor(
+                    Settings.Secure.LOCKSCREEN_CLOCK_SELECTION),
+                    false, this, UserHandle.USER_ALL);
         }
 
         @Override
@@ -4043,6 +4053,8 @@ public class StatusBar extends SystemUI implements DemoMode,
                     uri.equals(Settings.System.getUriFor(Settings.System.QS_COLUMNS_LANDSCAPE)) ||
                     uri.equals(Settings.System.getUriFor(Settings.System.QS_TILE_TITLE_VISIBILITY))) {
                 updateQsPanelResources();
+            } else if (uri.equals(Settings.Secure.getUriFor(Settings.Secure.LOCKSCREEN_CLOCK_SELECTION))) {
+                updateKeyguardStatusSettings();
             }
             update();
         }
@@ -4053,6 +4065,7 @@ public class StatusBar extends SystemUI implements DemoMode,
             updateQsPanelResources();
             setHeadsUpStoplist();
             setHeadsUpBlacklist();
+            updateKeyguardStatusSettings();
         }
     }
 
