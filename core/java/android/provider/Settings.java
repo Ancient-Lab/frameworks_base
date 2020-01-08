@@ -5587,6 +5587,12 @@ public final class Settings {
         public static final String LOCK_DATE_FONTS = "lock_date_fonts";
 
         /**
+         * Change text size for system lockscreen clock widget
+         * @hide
+         */
+        public static final String LOCK_CLOCK_FONT_SIZE = "lock_clock_font_size";
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
