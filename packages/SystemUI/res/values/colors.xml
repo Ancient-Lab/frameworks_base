@@ -204,4 +204,8 @@
 
     <color name="GM2_yellow_500">#FFFBBC04</color>
     <color name="GM2_green_500">#FF34A853</color>
+
+    <!-- QS Drag handle -->
+    <color name="qs_drag_handle_color">#66e5e5e5</color>
+
 </resources>
