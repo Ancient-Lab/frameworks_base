@@ -25,4 +25,7 @@
     <color name="gradient_end_light">@color/accent_device_default_light</color>
     <color name="gradient_end_dark">@color/accent_device_default_dark</color>
 
+    <!-- QS Accent -->
+    <color name="qs_accent">@color/gradient_start</color>
+
 </resources>

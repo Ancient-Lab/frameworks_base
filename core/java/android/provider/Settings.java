@@ -5906,6 +5906,51 @@ public final class Settings {
          */
         public static final String QS_TILE_STYLE = "qs_tile_style";
 
+	/**
+         * Whether to change the color of the qs panel
+         * @hide
+         */
+        public static final String QS_PANEL_BG_COLOR = "qs_panel_bg_color";
+
+        /** @hide */
+        private static final Validator QS_PANEL_BG_COLOR_VALIDATOR = ANY_INTEGER_VALIDATOR;
+
+        /**
+         * Color of the qs panel evaluated from wallpaper
+         * @hide
+         */
+        public static final String QS_PANEL_BG_COLOR_WALL = "qs_panel_bg_color_wall";
+
+        /** @hide */
+        private static final Validator QS_PANEL_BG_COLOR_WALL_VALIDATOR = ANY_INTEGER_VALIDATOR;
+
+        /**
+         * Whether to change the color of the qs panel based on wallpaper
+         * @hide
+         */
+        public static final String QS_PANEL_BG_USE_WALL = "qs_panel_bg_use_wall";
+
+        /** @hide */
+        private static final Validator QS_PANEL_BG_USE_WALL_VALIDATOR = BOOLEAN_VALIDATOR;
+
+        /**
+         * Whether to use framework styles and resources on qs panel
+         * @hide
+         */
+        public static final String QS_PANEL_BG_USE_FW = "qs_panel_bg_use_fw";
+
+        /** @hide */
+        private static final Validator QS_PANEL_BG_USE_FW_VALIDATOR = BOOLEAN_VALIDATOR;
+
+        /**
+         * Whether to use framework styles and resources on qs panel
+         * @hide
+         */
+        public static final String QS_PANEL_BG_USE_ACCENT = "qs_panel_bg_use_accent";
+
+        /** @hide */
+        private static final Validator QS_PANEL_BG_USE_ACCENT_VALIDATOR = BOOLEAN_VALIDATOR;
+
         /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
@@ -6041,7 +6086,12 @@ public final class Settings {
             HEADS_UP_TIMEOUT,
             LESS_BORING_HEADS_UP,
             QS_DATAUSAGE,
-            LOCKSCREEN_CHARGING_ANIMATION_STYLE
+            LOCKSCREEN_CHARGING_ANIMATION_STYLE,
+	    QS_PANEL_BG_COLOR,
+            QS_PANEL_BG_COLOR_WALL,
+            QS_PANEL_BG_USE_WALL,
+            QS_PANEL_BG_USE_FW,
+            QS_PANEL_BG_USE_ACCENT
         };
 
         /**
@@ -6241,6 +6291,11 @@ public final class Settings {
             PRIVATE_SETTINGS.add(HEADS_UP_TIMEOUT);
             PRIVATE_SETTINGS.add(LESS_BORING_HEADS_UP);
             PRIVATE_SETTINGS.add(QS_DATAUSAGE);
+	    PRIVATE_SETTINGS.add(QS_PANEL_BG_COLOR);
+            PRIVATE_SETTINGS.add(QS_PANEL_BG_COLOR_WALL);
+            PRIVATE_SETTINGS.add(QS_PANEL_BG_USE_WALL);
+            PRIVATE_SETTINGS.add(QS_PANEL_BG_USE_FW);
+            PRIVATE_SETTINGS.add(QS_PANEL_BG_USE_ACCENT);
         }
 
         /**
@@ -6415,6 +6470,11 @@ public final class Settings {
             VALIDATORS.put(LESS_BORING_HEADS_UP, LESS_BORING_HEADS_UP_VALIDATOR);
             VALIDATORS.put(QS_DATAUSAGE, QS_DATAUSAGE_VALIDATOR);
             VALIDATORS.put(LOCKSCREEN_CHARGING_ANIMATION_STYLE, LOCKSCREEN_CHARGING_ANIMATION_STYLE_VALIDATOR);
+	    VALIDATORS.put(QS_PANEL_BG_COLOR, QS_PANEL_BG_COLOR_VALIDATOR);
+            VALIDATORS.put(QS_PANEL_BG_COLOR_WALL, QS_PANEL_BG_COLOR_WALL_VALIDATOR);
+            VALIDATORS.put(QS_PANEL_BG_USE_WALL, QS_PANEL_BG_USE_WALL_VALIDATOR);
+            VALIDATORS.put(QS_PANEL_BG_USE_FW, QS_PANEL_BG_USE_FW_VALIDATOR);
+            VALIDATORS.put(QS_PANEL_BG_USE_ACCENT, QS_PANEL_BG_USE_ACCENT_VALIDATOR);
         }
 
         /**
