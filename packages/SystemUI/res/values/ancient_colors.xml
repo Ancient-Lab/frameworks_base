@@ -9,5 +9,7 @@
     <color name="edge_light_red">#ea4234</color>
     <color name="edge_light_yellow">#fbbc06</color>
 
-</resources>
+    <!-- Quicksettings main QS background-->
+    <color name="quick_settings_status_bar_background_color">#ff000000</color>
 
+</resources>
