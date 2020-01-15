@@ -124,4 +124,10 @@
     <!-- Alternate notch margin -->
     <dimen name="dual_margin_side">2dp</dimen>  
 
+    <!-- Status bar notification ticker -->
+    <dimen name="ticker_start_padding">6dp</dimen>
+    <dimen name="ticker_icon_end_margin">4dp</dimen>
+    <dimen name="ticker_text_top_padding">2dp</dimen>
+    <dimen name="ticker_text_end_padding">10dp</dimen>
+
 </resources>
