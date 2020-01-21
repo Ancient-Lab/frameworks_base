@@ -63,6 +63,18 @@
 
 	</LinearLayout>
 
+	<com.android.systemui.statusbar.info.DataUsageView
+           android:id="@+id/data_sim_usage"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:gravity="center"
+	   android:textSize="14dp"				   
+           android:paddingStart="@dimen/status_bar_left_clock_starting_padding"
+           android:paddingEnd="@dimen/status_bar_left_clock_end_padding"
+           android:singleLine="true"
+           android:textAppearance="@style/TextAppearance.QS.Status"
+           android:text="" />
+
 	<LinearLayout
 		android:gravity="center"
 		android:layout_gravity="center"
