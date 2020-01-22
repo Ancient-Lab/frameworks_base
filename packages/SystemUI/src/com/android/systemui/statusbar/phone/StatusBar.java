@@ -1122,6 +1122,10 @@ public class StatusBar extends SystemUI implements DemoMode,
                 Settings.System.QS_BLUR_INTENSITY, 30); // defaulting to 7.5f radius
     }
 
+    public static void setHasClearableNotifications(boolean state) {
+        mClearableNotifications = state;
+    }
+
     public static void setDismissAllVisible(boolean visible) {
 
         if(mClearableNotifications && mState != StatusBarState.KEYGUARD && visible && isDismissAllButtonEnabled()) {
