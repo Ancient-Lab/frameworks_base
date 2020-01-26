@@ -5338,6 +5338,15 @@ public final class Settings {
         private static final Validator PULSE_AMBIENT_LIGHT_COLOR_VALIDATOR = ANY_STRING_VALIDATOR;
 
         /**
+         * QS blur alpha
+         * @hide
+         */
+        public static final String QS_BLUR_INTENSITY = "qs_blur_intensity";
+
+        /** @hide */
+        private static final Validator QS_BLUR_INTENSITY_VALIDATOR = ANY_INTEGER_VALIDATOR;
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
@@ -5461,7 +5470,8 @@ public final class Settings {
             QS_BLUR_ALPHA,
             HIDE_SMART_REPLIES,
             PULSE_AMBIENT_LIGHT,
-            PULSE_AMBIENT_LIGHT_COLOR
+            PULSE_AMBIENT_LIGHT_COLOR,
+            QS_BLUR_INTENSITY
         };
 
         /**
@@ -5805,6 +5815,7 @@ public final class Settings {
             VALIDATORS.put(HIDE_SMART_REPLIES, HIDE_SMART_REPLIES_VALIDATOR);
             VALIDATORS.put(PULSE_AMBIENT_LIGHT, PULSE_AMBIENT_LIGHT_VALIDATOR);
             VALIDATORS.put(PULSE_AMBIENT_LIGHT_COLOR, PULSE_AMBIENT_LIGHT_COLOR_VALIDATOR);
+            VALIDATORS.put(QS_BLUR_INTENSITY, QS_BLUR_INTENSITY_VALIDATOR);
         }
 
         /**
