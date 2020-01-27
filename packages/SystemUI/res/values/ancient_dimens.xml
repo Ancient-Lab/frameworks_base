@@ -118,4 +118,7 @@
     <!-- Weather condition icon  -->
     <dimen name="weather_icon_size">24dp</dimen>
 
+    <!-- Size of the FOD animation -->
+    <dimen name="fod_animation_size">280dp</dimen>  
+
 </resources>
