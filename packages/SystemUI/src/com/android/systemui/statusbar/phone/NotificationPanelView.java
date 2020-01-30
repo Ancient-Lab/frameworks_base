@@ -3536,6 +3536,10 @@ public class NotificationPanelView extends PanelView implements
                         mPulseLightsView.animateNotification(true);
                         mPulseLightsView.setVisibility(View.VISIBLE);
                         mPulseLightsView.setPulsing(pulsing);
+                    } else {
+                        // bars can still be visible as leftover
+                        // but we dont want them here
+                        mPulseLightsView.setVisibility(View.GONE);
                     }
                     if (ambientLights) {
                         mPulseLightHandled = false;
