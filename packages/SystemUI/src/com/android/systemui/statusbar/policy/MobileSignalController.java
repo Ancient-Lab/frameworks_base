@@ -429,6 +429,10 @@ public class MobileSignalController extends SignalController<
                 case 3:
                     resId = R.drawable.ic_hd_volte;
                     break;
+                // Miui Icon
+                case 4:
+                    resId = R.drawable.ic_miui_volte;
+                    break;
  	        //Vo
                 case 0:
                 default:
