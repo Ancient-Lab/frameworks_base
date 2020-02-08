@@ -87,9 +87,7 @@ public class ServiceWatcher implements ServiceConnection {
         ArrayList<HashSet<Signature>> signatureSets = new ArrayList<>(packageNames.length);
         for (String packageName : packageNames) {
             try {
-                Signature[] signatures = pm.getPackageInfo(packageName,
-                        PackageManager.MATCH_SYSTEM_ONLY
-                                | PackageManager.GET_SIGNATURES).signatures;
+                Signature[] signatures = pm.getPackageInfo(packageName, PackageManager.GET_SIGNATURES).signatures;
 
                 HashSet<Signature> set = new HashSet<>();
                 Collections.addAll(set, signatures);
