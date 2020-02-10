@@ -29,4 +29,8 @@
     <string name="notify_battery_fully_charged_text">Disconnect your device from the charger to improve battery longevity.</string>
     <string name="battery_charged_channel_name">Battery charged</string>
 
+    <!-- Strings for Bluetooth service -->
+    <!-- toast message informing user that Bluetooth stays on after airplane mode is turned on. [CHAR LIMIT=NONE] -->
+    <string name="bluetooth_airplane_mode_toast">Bluetooth will stay on during airplane mode</string>
+
 </resources>
