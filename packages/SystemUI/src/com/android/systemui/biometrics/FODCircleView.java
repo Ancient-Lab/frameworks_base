@@ -102,6 +102,31 @@ public class FODCircleView extends ImageView implements ConfigurationListener {
 
     private FODAnimation mFODAnimation;
 
+    private int mSelectedIcon;
+    private final int[] ICON_STYLES = {
+        R.drawable.fod_icon_default,
+        R.drawable.fod_icon_default_1,
+        R.drawable.fod_icon_default_2,
+        R.drawable.fod_icon_default_3,
+        R.drawable.fod_icon_default_4,
+        R.drawable.fod_icon_default_5,
+        R.drawable.fod_icon_arc_reactor,
+        R.drawable.fod_icon_cpt_america_flat,
+        R.drawable.fod_icon_cpt_america_flat_gray,
+        R.drawable.fod_icon_dragon_black_flat,
+        R.drawable.fod_icon_evo1,
+        R.drawable.fod_icon_glow_circle,
+        R.drawable.fod_icon_neon_arc,
+        R.drawable.fod_icon_neon_arc_gray,
+        R.drawable.fod_icon_neon_circle_pink,
+        R.drawable.fod_icon_neon_triangle,
+        R.drawable.fod_icon_paint_splash_circle,
+        R.drawable.fod_icon_rainbow_horn,
+        R.drawable.fod_icon_shooky,
+        R.drawable.fod_icon_spiral_blue,
+        R.drawable.fod_icon_sun_metro
+    };
+
     private IFingerprintInscreenCallback mFingerprintInscreenCallback =
             new IFingerprintInscreenCallback.Stub() {
         @Override
@@ -134,6 +159,7 @@ public class FODCircleView extends ImageView implements ConfigurationListener {
         @Override
         public void onKeyguardVisibilityChanged(boolean showing) {
             mIsKeyguard = showing;
+            updateStyle();
             updatePosition();
             if (mFODAnimation != null) {
                 mFODAnimation.setAnimationKeyguard(mIsKeyguard);
@@ -273,6 +299,7 @@ public class FODCircleView extends ImageView implements ConfigurationListener {
 
         mWindowManager.addView(this, mParams);
 
+        updateStyle();
         updatePosition();
         hide();
 
@@ -325,6 +352,7 @@ public class FODCircleView extends ImageView implements ConfigurationListener {
 
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
+        updateStyle();
         updatePosition();
     }
 
@@ -397,72 +425,13 @@ public class FODCircleView extends ImageView implements ConfigurationListener {
     public void hideCircle() {
         mIsCircleShowing = false;
 
-        setFODIcon();
-        if (mFODAnimation != null) {
-            mFODAnimation.setFODAnim();
-        }
+        setImageResource(ICON_STYLES[mSelectedIcon]);
         invalidate();
 
         dispatchRelease();
         setDim(false);
 
         setKeepScreenOn(false);
-    }
-
-    private int getFODIcon() {
-        return Settings.System.getInt(mContext.getContentResolver(),
-                Settings.System.FOD_ICON, 0);
-    }
-
-    private void setFODIcon() {
-        int fodicon = getFODIcon();
-
-        mIsRecognizingAnimEnabled = Settings.System.getInt(mContext.getContentResolver(),
-                Settings.System.FOD_RECOGNIZING_ANIMATION, 0) != 0;
-
-        if (fodicon == 0) {
-            this.setImageResource(R.drawable.fod_icon_default);
-        } else if (fodicon == 1) {
-            this.setImageResource(R.drawable.fod_icon_default_1);
-        } else if (fodicon == 2) {
-            this.setImageResource(R.drawable.fod_icon_default_2);
-        } else if (fodicon == 3) {
-            this.setImageResource(R.drawable.fod_icon_default_3);
-        } else if (fodicon == 4) {
-            this.setImageResource(R.drawable.fod_icon_default_4);
-        } else if (fodicon == 5) {
-            this.setImageResource(R.drawable.fod_icon_default_5);
-        } else if (fodicon == 6) {
-            this.setImageResource(R.drawable.fod_icon_arc_reactor);
-        } else if (fodicon == 7) {
-            this.setImageResource(R.drawable.fod_icon_cpt_america_flat);
-        } else if (fodicon == 8) {
-            this.setImageResource(R.drawable.fod_icon_cpt_america_flat_gray);
-        } else if (fodicon == 9) {
-            this.setImageResource(R.drawable.fod_icon_dragon_black_flat);
-        } else if (fodicon == 10) {
-            this.setImageResource(R.drawable.fod_icon_future);
-        } else if (fodicon == 11) {
-            this.setImageResource(R.drawable.fod_icon_glow_circle);
-        } else if (fodicon == 12) {
-            this.setImageResource(R.drawable.fod_icon_neon_arc);
-        } else if (fodicon == 13) {
-            this.setImageResource(R.drawable.fod_icon_neon_arc_gray);
-        } else if (fodicon == 14) {
-            this.setImageResource(R.drawable.fod_icon_neon_circle_pink);
-        } else if (fodicon == 15) {
-            this.setImageResource(R.drawable.fod_icon_neon_triangle);
-        } else if (fodicon == 16) {
-            this.setImageResource(R.drawable.fod_icon_paint_splash_circle);
-        } else if (fodicon == 17) {
-            this.setImageResource(R.drawable.fod_icon_rainbow_horn);
-        } else if (fodicon == 18) {
-            this.setImageResource(R.drawable.fod_icon_shooky);
-        } else if (fodicon == 19) {
-            this.setImageResource(R.drawable.fod_icon_spiral_blue);
-        } else if (fodicon == 20) {
-            this.setImageResource(R.drawable.fod_icon_sun_metro);
-        }
     }
 
     public void show() {
@@ -496,6 +465,16 @@ public class FODCircleView extends ImageView implements ConfigurationListener {
     private void updateAlpha() {
         if (mIsCircleShowing) {
             setAlpha(1.0f);
+        }
+    }
+
+    private void updateStyle() {
+        mIsRecognizingAnimEnabled = Settings.System.getInt(mContext.getContentResolver(),
+                Settings.System.FOD_RECOGNIZING_ANIMATION, 0) != 0;
+        mSelectedIcon = Settings.System.getInt(mContext.getContentResolver(),
+                Settings.System.FOD_ICON, 0);
+        if (mFODAnimation != null) {
+            mFODAnimation.update();
         }
     }
 
@@ -648,6 +627,17 @@ class FODAnimation extends ImageView {
     private AnimationDrawable recognizingAnim;
     private final WindowManager.LayoutParams mAnimParams = new WindowManager.LayoutParams();
 
+    private int mSelectedAnim;
+    private final int[] ANIMATION_STYLES = {
+        R.drawable.fod_normal_recognizing_anim,
+        R.drawable.fod_aod_recognizing_anim,
+        R.drawable.fod_light_recognizing_anim,
+        R.drawable.fod_pop_recognizing_anim,
+        R.drawable.fod_pulse_recognizing_anim,
+        R.drawable.fod_pulse_recognizing_white_anim,
+        R.drawable.fod_rhythm_recognizing_anim
+    };
+
     public FODAnimation(Context context, int mPositionX, int mPositionY) {
         super(context);
 
@@ -668,34 +658,14 @@ class FODAnimation extends ImageView {
         mAnimParams.y = mAnimationPositionY;
 
         this.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
-        setFODAnim();
-        recognizingAnim = (AnimationDrawable) this.getBackground();
-
+        update();
     }
 
-    public int getFODAnim() {
-        return Settings.System.getInt(mContext.getContentResolver(),
+    public void update() {
+        mSelectedAnim = Settings.System.getInt(mContext.getContentResolver(),
                 Settings.System.FOD_ANIM, 0);
-    }
 
-    public void setFODAnim() {
-        int fodanim = getFODAnim();
-
-        if (fodanim == 0) {
-            this.setBackgroundResource(R.drawable.fod_normal_recognizing_anim);
-        } else if (fodanim == 1) {
-            this.setBackgroundResource(R.drawable.fod_aod_recognizing_anim);
-        } else if (fodanim == 2) {
-            this.setBackgroundResource(R.drawable.fod_light_recognizing_anim);
-        } else if (fodanim == 3) {
-            this.setBackgroundResource(R.drawable.fod_pop_recognizing_anim);
-        } else if (fodanim == 4) {
-            this.setBackgroundResource(R.drawable.fod_pulse_recognizing_anim);
-        } else if (fodanim == 5) {
-            this.setBackgroundResource(R.drawable.fod_pulse_recognizing_white_anim);
-        } else if (fodanim == 6) {
-            this.setBackgroundResource(R.drawable.fod_rhythm_recognizing_anim);
-        }
+        this.setBackgroundResource(ANIMATION_STYLES[mSelectedAnim]);
         recognizingAnim = (AnimationDrawable) this.getBackground();
     }
 
