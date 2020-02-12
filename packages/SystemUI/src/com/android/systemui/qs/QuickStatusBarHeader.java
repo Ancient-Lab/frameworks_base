@@ -93,8 +93,6 @@ public class QuickStatusBarHeader extends RelativeLayout implements
     private static final boolean DEBUG = false;
     public static final String QS_SHOW_INFO_HEADER = "qs_show_info_header";
     private static final String CPU_TEMP_PATH = "/sys/class/thermal/thermal_zone0/temp";
-    private static final String BATTERY_TEMP_PATH = "sys/class/power_supply/battery/temp";
-    private static final String GPU_CLOCK_PATH = "/sys/kernel/gpu/gpu_clock";
     private static final String GPU_BUSY_PATH = "/sys/kernel/gpu/gpu_busy";
 
     /** Delay for auto fading out the long press tooltip after it's fully visible (in ms). */
@@ -291,14 +289,6 @@ public class QuickStatusBarHeader extends RelativeLayout implements
                 mSystemInfoText.setText(getCPUTemp());
                 break;
             case 2:
-                mSystemInfoIcon.setImageDrawable(getContext().getDrawable(R.drawable.ic_thermometer));
-                mSystemInfoText.setText(getBatteryTemp());
-                break;
-            case 3:
-                mSystemInfoIcon.setImageDrawable(getContext().getDrawable(R.drawable.ic_gpu));
-                mSystemInfoText.setText(getGPUClock());
-                break;
-            case 4:
                 mSystemInfoIcon.setImageDrawable(getContext().getDrawable(R.drawable.ic_gpu));
                 mSystemInfoText.setText(getGPUBusy());
                 break;
@@ -309,11 +299,6 @@ public class QuickStatusBarHeader extends RelativeLayout implements
             }
     }
 
-    private String getBatteryTemp() {
-        String value = readOneLine(BATTERY_TEMP_PATH);
-        return String.format("%s", Integer.parseInt(value) / 10) + "\u2103";
-    }
-
     private String getCPUTemp() {
         String value = readOneLine(CPU_TEMP_PATH);
         return String.format("%s", Integer.parseInt(value) / 1000) + "\u2103";
@@ -322,11 +307,6 @@ public class QuickStatusBarHeader extends RelativeLayout implements
     private String getGPUBusy() {
         String value = readOneLine(GPU_BUSY_PATH);
         return value;
-    }
-
-    private String getGPUClock() {
-        String value = readOneLine(GPU_CLOCK_PATH);
-        return String.format("%s", Integer.parseInt(value)) + "Mhz";
     }
 
     private static String readOneLine(String fname) {
