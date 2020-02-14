@@ -95,6 +95,7 @@ public class KeyguardStatusView extends GridLayout implements
     private int mDateVerPadding;
     private int mDateHorPadding;
     private int mLockClockFontSize;
+    private int mLockDateFontSize;		
 
     private static final String LOCK_CLOCK_FONT_STYLE =
             "system:" + Settings.System.LOCK_CLOCK_FONT_STYLE;
@@ -102,6 +103,8 @@ public class KeyguardStatusView extends GridLayout implements
             "system:" + Settings.System.LOCKSCREEN_DATE_SELECTION;
     private static final String LOCK_CLOCK_FONT_SIZE =
             "system:" + Settings.System.LOCK_CLOCK_FONT_SIZE;
+    private static final String LOCK_DATE_FONT_SIZE =
+            "system:" + Settings.System.LOCK_DATE_FONT_SIZE;
 
     private KeyguardUpdateMonitorCallback mInfoCallback = new KeyguardUpdateMonitorCallback() {
 
@@ -168,6 +171,7 @@ public class KeyguardStatusView extends GridLayout implements
         final TunerService tunerService = Dependency.get(TunerService.class);
         tunerService.addTunable(this, LOCKSCREEN_DATE_SELECTION);
 	tunerService.addTunable(this, LOCK_CLOCK_FONT_SIZE);
+	tunerService.addTunable(this, LOCK_DATE_FONT_SIZE);
         onDensityOrFontScaleChanged();
     }
 
@@ -286,6 +290,10 @@ public class KeyguardStatusView extends GridLayout implements
                     getResources().getDimensionPixelSize(R.dimen.widget_label_font_size));
         }
 
+	if (mKeyguardSlice != null) {
+            mKeyguardSlice.setDateSize(mLockDateFontSize);
+        }   
+	    
         switch (mDateSelection) {
             case 0: // default
             default:
@@ -544,6 +552,10 @@ public class KeyguardStatusView extends GridLayout implements
                 break;
 	    case LOCK_CLOCK_FONT_SIZE:
                     mLockClockFontSize = TunerService.parseInteger(newValue, 58);
+                onDensityOrFontScaleChanged();
+                break;
+	    case LOCK_DATE_FONT_SIZE:
+                    mLockDateFontSize = TunerService.parseInteger(newValue, 18);
                 onDensityOrFontScaleChanged();
                 break;
             default:
