@@ -172,4 +172,12 @@
 
     <!-- Vendor signatures -->
     <java-symbol type="array" name="config_vendorPlatformSignatures" />
+
+    <!-- Gradients Shit -->
+    <java-symbol type="color" name="gradient_start_light" />
+    <java-symbol type="color" name="gradient_start_dark" />
+    <java-symbol type="color" name="gradient_end_light" />
+    <java-symbol type="color" name="gradient_end_dark" />
+    <java-symbol type="color" name="gradient_start" />
+    <java-symbol type="color" name="gradient_end" />
 </resources>

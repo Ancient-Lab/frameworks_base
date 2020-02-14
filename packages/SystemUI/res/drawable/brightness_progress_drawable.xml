@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Copyright (C) 2018 The Android Open Source Project
+     Copyright (C) 2019 RevengeOS
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -17,7 +18,7 @@
     <item android:id="@android:id/background"
           android:gravity="center_vertical|fill_horizontal">
         <shape android:shape="rectangle"
-               android:tint="?android:attr/colorControlActivated">
+               android:tint="@*android:color/config_progress_background_tint">
             <size android:height="@dimen/seek_bar_height" />
             <solid android:color="@color/white_disabled" />
             <corners android:radius="@dimen/seek_bar_corner_radius" />
@@ -26,10 +27,12 @@
     <item android:id="@android:id/progress"
           android:gravity="center_vertical|fill_horizontal">
         <scale android:scaleWidth="100%">
-            <shape android:shape="rectangle"
-                   android:tint="?android:attr/colorControlActivated">
+            <shape android:shape="rectangle">
                 <size android:height="@dimen/seek_bar_height" />
-                <solid android:color="@android:color/white" />
+                <gradient 
+                    android:startColor="@*android:color/gradient_start"
+                    android:endColor="@*android:color/gradient_end"
+                    android:angle="45" />
                 <corners android:radius="@dimen/seek_bar_corner_radius" />
             </shape>
         </scale>
