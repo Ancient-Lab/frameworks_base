@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--Open VIP can improve the speed of decompilation, resource code translate to name automatically and activate the smart editing and automatic completion function-->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
-    android:width="24dp"
-    android:height="24dp"
-    android:viewportWidth="640"
-    android:viewportHeight="640">
-
-    <path
-        android:fillColor="#FFFFFF"
-		android:fillType="evenOdd"
-        android:pathData="M380,283.7c0,24.2-19.6,43.8-43.8,43.8c-24.2,0-43.8,19.6-43.8,43.8c0,24.2-19.6,43.8-43.8,43.8 s-43.8-19.6-43.8-43.8c0-24.2-19.6-43.8-43.8-43.8c-24.2,0-43.8-19.6-43.8-43.8c0-24.2,19.6-43.8,43.8-43.8 c24.2,0,43.8-19.6,43.8-43.8c0-24.2,19.6-43.8,43.8-43.8s43.8,19.6,43.8,43.8c0,24.2-19.6,43.8-43.8,43.8s-43.8,19.6-43.8,43.8 c0,24.2,19.6,43.8,43.8,43.8s43.8-19.6,43.8-43.8c0-24.2,19.6-43.8,43.8-43.8C360.4,239.9,380,259.5,380,283.7z" />
-    <path
-        android:fillColor="#FFFFFF"
-        android:pathData="M394.9,383.7c0,24.2-19.6,43.8-43.8,43.8c-24.2,0-43.8-19.6-43.8-43.8c0-24.2,19.6-43.8,43.8-43.8 C375.3,339.9,394.9,359.6,394.9,383.7z" />
-    <path
-        android:strokeColor="#FFFFFF"
-        android:strokeWidth="18.7255"
-        android:strokeMiterLimit="10"
-        android:pathData="M 256 84.9 C 369.218373715 84.9 461 176.681626285 461 289.9 C 461 403.118373715 369.218373715 494.9 256 494.9 C 142.781626285 494.9 51 403.118373715 51 289.9 C 51 176.681626285 142.781626285 84.9 256 84.9 Z" />
+   android:height="24dp"
+   android:width="24dp"
+   android:viewportWidth="500.0"
+   android:viewportHeight="500.0">
+   <path
+      android:fillColor="#FFFFFFFF"
+      android:pathData="M380,283.7c0,24.2-19.6,43.8-43.8,43.8c-24.2,0-43.8,19.6-43.8,43.8c0,24.2-19.6,43.8-43.8,43.8 s-43.8-19.6-43.8-43.8c0-24.2-19.6-43.8-43.8-43.8c-24.2,0-43.8-19.6-43.8-43.8c0-24.2,19.6-43.8,43.8-43.8 c24.2,0,43.8-19.6,43.8-43.8c0-24.2,19.6-43.8,43.8-43.8s43.8,19.6,43.8,43.8c0,24.2-19.6,43.8-43.8,43.8s-43.8,19.6-43.8,43.8 c0,24.2,19.6,43.8,43.8,43.8s43.8-19.6,43.8-43.8c0-24.2,19.6-43.8,43.8-43.8C360.4,239.9,380,259.5,380,283.7z"
+      android:fillType="evenOdd" />
+   <path
+      android:fillColor="#FFFFFFFF"
+      android:pathData="M394.9,383.7c0,24.2-19.6,43.8-43.8,43.8c-24.2,0-43.8-19.6-43.8-43.8c0-24.2,19.6-43.8,43.8-43.8 C375.3,339.9,394.9,359.6,394.9,383.7z" />
+   <path
+      android:pathData="M 256 84.9 C 369.218373715 84.9 461 176.681626285 461 289.9 C 461 403.118373715 369.218373715 494.9 256 494.9 C 142.781626285 494.9 51 403.118373715 51 289.9 C 51 176.681626285 142.781626285 84.9 256 84.9 Z"
+      android:strokeColor="#FFFFFFFF"
+      android:strokeWidth="18.7255"
+      android:strokeMiterLimit="10.0" />
 </vector>
