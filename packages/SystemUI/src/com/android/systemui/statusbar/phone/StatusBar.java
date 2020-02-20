@@ -4283,6 +4283,9 @@ public class StatusBar extends SystemUI implements DemoMode,
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.QS_PANEL_BG_COLOR_WALL),
                     false, this, UserHandle.USER_ALL);
+	    resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.QS_PANEL_BG_USE_NEW_TINT),
+                    false, this, UserHandle.USER_ALL);
         }
 
         @Override
@@ -4317,6 +4320,7 @@ public class StatusBar extends SystemUI implements DemoMode,
                 updateQSPanel();
                 mQSPanel.getHost().reloadAllTiles();
             } else if (uri.equals(Settings.System.getUriFor(Settings.System.QS_PANEL_BG_USE_FW)) ||
+		    uri.equals(Settings.System.getUriFor(Settings.System.QS_PANEL_BG_USE_NEW_TINT)) ||
                     uri.equals(Settings.System.getUriFor(Settings.System.QS_PANEL_BG_COLOR)) ||
                     uri.equals(Settings.System.getUriFor(Settings.System.QS_PANEL_BG_COLOR_WALL))) {
                 mQSPanel.getHost().reloadAllTiles();
