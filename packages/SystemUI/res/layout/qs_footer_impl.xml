@@ -42,18 +42,20 @@
             android:layout_height="match_parent"
             android:layout_weight="@integer/qs_footer_actions_weight"
             android:gravity="center_vertical|start" >
-            <com.android.systemui.statusbar.AlphaOptimizedImageView
-                android:id="@android:id/edit"
+            	<com.android.systemui.statusbar.phone.MultiUserSwitch
+                android:id="@+id/multi_user_switch"
                 android:layout_width="@dimen/qs_footer_action_button_size"
                 android:layout_height="@dimen/qs_footer_action_button_size"
-                android:background="?android:attr/selectableItemBackgroundBorderless"
-                android:clickable="true"
-                android:clipToPadding="false"
-                android:contentDescription="@string/accessibility_quick_settings_edit"
-                android:focusable="true"
-                android:padding="@dimen/qs_footer_icon_padding"
-                android:src="@*android:drawable/ic_mode_edit"
-                android:tint="?android:attr/colorForeground"/>
+                android:background="@drawable/ripple_drawable"
+                android:focusable="true">
+
+                <ImageView
+                    android:id="@+id/multi_user_avatar"
+                    android:layout_width="@dimen/multi_user_avatar_expanded_size"
+                    android:layout_height="@dimen/multi_user_avatar_expanded_size"
+                    android:layout_gravity="center"
+                    android:scaleType="centerInside"/>
+            </com.android.systemui.statusbar.phone.MultiUserSwitch>
 
             <TextView
                 android:id="@+id/build"
@@ -79,22 +81,21 @@
             android:layout_height="match_parent"
             android:layout_weight="@integer/qs_footer_actions_weight"
             android:gravity="center_vertical|end" >
-            <com.android.systemui.statusbar.phone.MultiUserSwitch
-                android:id="@+id/multi_user_switch"
+            	
+            <com.android.systemui.statusbar.AlphaOptimizedImageView
+                android:id="@android:id/edit"
                 android:layout_width="@dimen/qs_footer_action_button_size"
                 android:layout_height="@dimen/qs_footer_action_button_size"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:clipToPadding="false"
                 android:layout_alignParentEnd="true"
-                android:background="@drawable/ripple_drawable"
-                android:focusable="true">
-
-                <ImageView
-                    android:id="@+id/multi_user_avatar"
-                    android:layout_width="@dimen/multi_user_avatar_expanded_size"
-                    android:layout_height="@dimen/multi_user_avatar_expanded_size"
-                    android:layout_gravity="center"
-                    android:scaleType="centerInside"/>
-            </com.android.systemui.statusbar.phone.MultiUserSwitch>
-
+                android:contentDescription="@string/accessibility_quick_settings_edit"
+                android:focusable="true"
+                android:padding="@dimen/qs_footer_icon_padding"
+                android:src="@*android:drawable/ic_mode_edit"
+                android:tint="?android:attr/colorForeground"/>
+            
             <com.android.systemui.statusbar.AlphaOptimizedFrameLayout
                 android:id="@+id/settings_button_container"
                 android:layout_width="@dimen/qs_footer_action_button_size"
