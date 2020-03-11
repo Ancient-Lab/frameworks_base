@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2020 Ancient OS -->
+
+<LinearLayout 
+	android:gravity="bottom|center" 
+	android:id="@+id/ancient_clockd"
+	android:layout_gravity="bottom|center" 
+	android:orientation="horizontal" 
+	android:layout_width="fill_parent" 
+	android:layout_height="wrap_content" 
+	android:layout_alignParentBottom="true" 
+	android:layout_alignParentStart="true"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+        <LinearLayout 
+	    android:gravity="bottom|center" 
+		android:layout_gravity="bottom|center" 
+		android:orientation="vertical" 
+		android:layout_width="fill_parent" 
+		android:layout_height="wrap_content" 
+		android:layout_marginBottom="0.0dip" 
+		android:layout_alignParentBottom="true">
+                <RelativeLayout 
+			android:gravity="bottom|center" 
+			android:layout_gravity="bottom|center" 
+			android:layout_width="fill_parent" 
+			android:layout_height="wrap_content" 
+			android:layout_marginBottom="-15.0dip" 
+			android:layout_alignParentBottom="true" 
+			android:layout_alignParentStart="true">
+                        <LinearLayout 
+				android:gravity="bottom|center" 
+				android:layout_gravity="bottom|center" 
+				android:orientation="horizontal" 
+				android:layout_width="fill_parent" 
+				android:layout_height="wrap_content" 
+				android:layout_marginBottom="-15.0dip" 
+				android:layout_alignParentBottom="true">
+                     <TextClock 
+					android:textAppearance="@style/TextAppearance.QS.Status" 
+					android:textSize="60.0dip" 
+					android:textStyle="bold" 
+					android:id="@+id/anci_clock"
+					android:textColor="?android:colorAccent" 
+					android:gravity="bottom|center"
+		  		        android:layout_gravity="bottom|center" 
+					android:layout_width="wrap_content" 
+					android:layout_height="wrap_content" 
+					android:layout_alignParentBottom="true" 
+					android:format12Hour="hh" 
+					android:format24Hour="HH" />
+                    <TextClock 
+					android:textAppearance="@style/TextAppearance.QS.Status" 
+					android:textSize="10.0dip" 
+					android:textStyle="normal" 
+					android:id="@+id/anci_clock1"
+					android:gravity="bottom|center" 
+					android:layout_gravity="bottom|center" 
+					android:layout_width="wrap_content" 
+					android:layout_height="wrap_content" 
+					android:layout_marginLeft="2.0dip" 
+					android:layout_marginRight="2.0dip" 
+					android:layout_alignParentBottom="true" 
+					android:format12Hour=":" 
+					android:format24Hour=":" />
+                    <TextClock 
+					android:textAppearance="@style/TextAppearance.QS.Status" 
+					android:textSize="30.0dip" 
+					android:textStyle="normal" 
+					android:id="@+id/anci_clock2"
+					android:gravity="bottom|center" 
+					android:layout_gravity="bottom|center" 
+					android:layout_width="wrap_content" 
+					android:layout_height="wrap_content" 
+					android:layout_alignParentBottom="true" 
+					android:format12Hour="mm a" 
+					android:format24Hour="mm" />
+                    </LinearLayout>
+             </RelativeLayout>
+             <LinearLayout 
+			android:gravity="bottom|center" 
+			android:layout_gravity="bottom|center" 
+			android:orientation="horizontal" 
+			android:layout_width="fill_parent" 
+			android:layout_height="24.0dip" 
+			android:layout_marginBottom="-5.0dip" 
+			android:layout_alignParentBottom="true">
+                       <TextClock 
+				android:textAppearance="@style/TextAppearance.QS.Status" 
+				android:textSize="14.0dip" 
+				android:textStyle="normal" 
+				android:id="@+id/anci_date"
+				android:textColor="?android:colorAccent" 
+				android:gravity="bottom|center" 
+				android:layout_gravity="bottom|center" 
+				android:layout_width="wrap_content" 
+				android:layout_height="wrap_content" 
+				android:layout_marginRight="2.0dip" 
+				android:format12Hour="EEEE" 
+				android:format24Hour="EEEE" />
+                        <LinearLayout 
+				android:gravity="bottom|center" 
+				android:layout_gravity="bottom|center" 
+				android:background="?android:colorAccent" 
+				android:layout_width="2.0dip" 
+				android:id="@+id/anci_date1"
+				android:layout_height="14.0dip" 
+				android:layout_marginLeft="2.0dip" 
+				android:layout_marginRight="2.0dip" />
+                        <TextClock 
+				android:textAppearance="@style/TextAppearance.QS.Status" 
+				android:textSize="14.0dip" 
+				android:textStyle="normal" 
+				android:gravity="bottom|center" 
+				android:id="@+id/anci_date2"
+				android:layout_gravity="bottom|center" 
+				android:layout_width="wrap_content" 
+				android:layout_height="wrap_content" 
+				android:format12Hour=" d MMM yyy" 
+				android:format24Hour=" d MMM yyy" />
+                        </LinearLayout>
+                        <LinearLayout 
+			android:layout_gravity="bottom|center" 
+			android:orientation="horizontal" 
+			android:layout_width="wrap_content" 
+			android:layout_height="24.0dip" 
+			android:layout_alignParentBottom="true" 
+			android:layout_centerInParent="true">
+                        <include 
+			layout="@layout/ancientui_carrier" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

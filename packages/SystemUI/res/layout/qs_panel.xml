@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Copyright (C) 2014 The Android Open Source Project
+     Copyright (c) 2020 Ancient OS
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -36,18 +37,20 @@
         android:layout_height="126dp"
         android:clipToPadding="false"
         android:clipChildren="false"
-        android:background="@drawable/qs_bg_gradient" />
+        android:background="#00000000" />
 
     <!-- Black part behind the status bar -->
     <LinearLayout
         android:id="@+id/quick_settings_status_bar_background"
         android:layout_width="match_parent"
-        android:layout_height="@*android:dimen/quick_qs_offset_height"
-        android:background="#ff000000" >
+        android:elevation="4dp"
+        android:layout_height="@dimen/ancient_headerimg_size"
+        android:background="#00000000" >
 
         <ImageView android:id="@+id/qs_header_image_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="@dimen/ancient_headerimg_size"
+            android:elevation="4dp"
             android:layout_marginTop="@dimen/qs_header_image_top_margin"
             android:layout_marginBottom="@dimen/qs_header_image_bottom_margin"
             android:scaleType="centerCrop"
@@ -57,7 +60,7 @@
 
     <com.android.systemui.qs.QSPanel
         android:id="@+id/quick_settings_panel"
-        android:layout_marginTop="@*android:dimen/quick_qs_offset_height"
+        android:layout_marginTop="@dimen/ancient_qs_margintop"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/qs_footer_height"
