@@ -5757,6 +5757,9 @@ public final class Settings {
          */
         public static final String LOCKSCREEN_CHARGING_ANIMATION_STYLE = "lockscreen_charging_animation_style";
 
+        private static final Validator LOCKSCREEN_CHARGING_ANIMATION_STYLE_VALIDATOR =
+                new SettingsValidators.InclusiveIntegerRangeValidator(0, 5);
+
         /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
@@ -5891,7 +5894,8 @@ public final class Settings {
             HEADS_UP_NOTIFICATION_SNOOZE,
             HEADS_UP_TIMEOUT,
             LESS_BORING_HEADS_UP,
-            QS_DATAUSAGE
+            QS_DATAUSAGE,
+            LOCKSCREEN_CHARGING_ANIMATION_STYLE
         };
 
         /**
@@ -6264,6 +6268,7 @@ public final class Settings {
             VALIDATORS.put(HEADS_UP_TIMEOUT,HEADS_UP_TIMEOUT_VALIDATOR);
             VALIDATORS.put(LESS_BORING_HEADS_UP, LESS_BORING_HEADS_UP_VALIDATOR);
             VALIDATORS.put(QS_DATAUSAGE, QS_DATAUSAGE_VALIDATOR);
+            VALIDATORS.put(LOCKSCREEN_CHARGING_ANIMATION_STYLE, LOCKSCREEN_CHARGING_ANIMATION_STYLE_VALIDATOR);
         }
 
         /**
