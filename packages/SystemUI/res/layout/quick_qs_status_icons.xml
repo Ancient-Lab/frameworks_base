@@ -62,7 +62,7 @@
 		android:orientation="horizontal" 
 		android:layout_width="fill_parent" 
 		android:layout_height="wrap_content" 
-		android:layout_marginTop="80.0dip" 
+		android:layout_marginTop="10.0dip" 
 		android:layout_alignParentBottom="true">
                 <TextClock 
 			android:textAppearance="@style/TextAppearance.QS.Status" 
