@@ -797,6 +797,11 @@ public class NotificationMediaManager implements Dumpable {
         float level = (float) Settings.System.getIntForUser(mContext.getContentResolver(),
                 Settings.System.LOCKSCREEN_MEDIA_BLUR, 100,
                 UserHandle.USER_CURRENT) / 4;
+        // making sure the radius blur value is valid
+        if (level < 1)
+            level = 1;
+        else if (level > 25)
+            level = 25;
         return level;
     }
 }
