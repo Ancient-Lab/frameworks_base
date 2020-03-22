@@ -47,6 +47,7 @@ LOCAL_REQUIRED_MODULES := \
 	IconPackRoundedSystemUIOverlay \
         IconShapeAncient1Overlay \
         IconShapeAncient2Overlay \
+	IconShapeAncient3Overlay \
 	IconShapeRoundedRectOverlay \
 	IconShapeSquircleOverlay \
 	IconShapeTeardropOverlay \
