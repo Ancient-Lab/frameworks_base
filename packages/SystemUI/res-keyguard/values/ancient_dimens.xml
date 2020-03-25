@@ -25,4 +25,8 @@
     <!-- Date styles padding-->
     <dimen name="widget_date_box_padding_hor">8dp</dimen>
     <dimen name="widget_date_box_padding_ver">4dp</dimen>
+
+    <!-- The margin between Emergency Carrier area and pattern/pin
+         view to incorporate the FOD icon -->
+    <dimen name="keyguard_security_fod_view_margin">140dp</dimen>
 </resources>
