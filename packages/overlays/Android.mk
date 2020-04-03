@@ -55,6 +55,7 @@ LOCAL_REQUIRED_MODULES := \
 	IconShapeSquircleOverlay \
 	IconShapeTeardropOverlay \
         PrimaryColorAncientBlackOverlay \
+        PrimaryColorAncientCocolateOverlay \
         PrimaryColorDarkBlueOverlay \
         PrimaryColorAlmostBlackOverlay \
         PrimaryColorAncientOverlay \
