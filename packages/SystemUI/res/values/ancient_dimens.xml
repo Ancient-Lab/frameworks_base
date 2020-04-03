@@ -52,7 +52,7 @@
     <!-- adding the ancient custom dimens -->
     <dimen name="ancient_qs_margintop">1dp</dimen>
     <dimen name="ancient_qs_margintoptop">50dp</dimen>
-    <dimen name="ancient_headerimg_size">152dp</dimen>
+    <dimen name="ancient_headerimg_size">151.25dp</dimen>
     <dimen name="ancient_minimal_height">25dp</dimen>
 
     <!-- Qs visibility -->
