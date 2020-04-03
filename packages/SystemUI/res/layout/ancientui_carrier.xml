@@ -1,128 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Copyright (C) 2020 Ancient OS -->
-
-<LinearLayout 
-	android:gravity="center" 
-	android:layout_gravity="center" 
-	android:id="@+id/ancient_carr"
-	android:orientation="horizontal" 
-	android:layout_width="fill_parent" 
-	android:layout_height="24.0dip" 
-	android:layout_alignParentBottom="true" 
-	android:layout_alignParentStart="true"
+<LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="horizontal" android:id="@+id/ancient_carr" android:layout_width="fill_parent" android:layout_height="24.0dip" android:layout_marginStart="@dimen/qs_header_tile_margin_horizontal" android:layout_marginEnd="@dimen/qs_header_tile_margin_horizontal" android:layout_alignParentStart="true"
         xmlns:android="http://schemas.android.com/apk/res/android">
-        <LinearLayout 
-        android:gravity="center_vertical" 
-        android:layout_gravity="start|center" 
-        android:orientation="horizontal" 
-        android:layout_width="wrap_content" 
-        android:layout_height="wrap_content">
-        <LinearLayout 
-        android:gravity="center_vertical"
-        android:layout_gravity="start|center" 
-        android:orientation="horizontal" 
-        android:id="@+id/system_info_layout" 
-        android:clipChildren="false" 
-        android:layout_width="wrap_content" 
-        android:layout_height="fill_parent">
-            <ImageView 
-            android:id="@+id/system_info_icon" 
-            android:visibility="gone" 
-            android:layout_width="wrap_content" 
-            android:layout_height="@dimen/status_bar_icon_size" 
-            android:tint="?android:colorAccent" 
-            android:paddingEnd="1.0dip" />
-            <TextView 
-            android:textAppearance="@style/TextAppearance.StatusBar.Clock" 
-            android:textColor="?android:colorAccent" 
-            android:gravity="end|center" 
-            android:id="@+id/system_info_text" 
-            android:visibility="gone" 
-            android:layout_width="wrap_content" 
-            android:layout_height="fill_parent" 
-            android:singleLine="true" 
-            android:paddingEnd="@dimen/status_bar_clock_end_padding" />
+        <LinearLayout android:gravity="center_vertical" android:layout_gravity="start|center" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <com.android.systemui.statusbar.policy.NetworkTraffic android:textColor="#ff000000" android:gravity="center_vertical" android:layout_gravity="start|center" android:id="@+id/networkTraffic" android:background="@drawable/ancient_dot_bg" android:paddingLeft="6.0dip" android:paddingRight="6.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:singleLine="false" android:lineSpacingMultiplier="1.2" android:paddingEnd="@dimen/status_bar_left_clock_end_padding" android:layout_marginEnd="4.0dip" />
+        <LinearLayout android:gravity="center_vertical" android:layout_gravity="start|center" android:orientation="horizontal" android:id="@+id/system_info_layout" android:clipChildren="false" android:layout_width="wrap_content" android:layout_height="fill_parent">
+            <ImageView android:id="@+id/system_info_icon" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="@dimen/status_bar_icon_size" android:tint="?android:colorAccent" android:paddingEnd="1.0dip" />
+            <TextView android:textAppearance="@style/TextAppearance.StatusBar.Clock" android:textColor="?android:colorAccent" android:gravity="end|center" android:id="@+id/system_info_text" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" android:singleLine="true" android:paddingEnd="@dimen/status_bar_clock_end_padding" />
         </LinearLayout>
-        <com.android.systemui.statusbar.policy.NetworkTraffic 
-        android:gravity="center_vertical" 
-        android:layout_gravity="start|center"
-        android:id="@+id/networkTraffic"
-        android:background="@drawable/ancient_dot_bg" 
-        android:paddingLeft="3.0dip" 
-        android:paddingRight="3.0dip" 
-        android:layout_width="wrap_content" 
-        android:layout_height="fill_parent" 
-        android:singleLine="false" 
-        android:lineSpacingMultiplier="1.2" 
-        android:paddingEnd="@dimen/status_bar_left_clock_end_padding" 
-        android:layout_marginStart="2.0dip" 
-        android:layout_marginEnd="2.0dip" />
         </LinearLayout>
-	<com.android.systemui.qs.QSHeaderInfoLayout 
-        android:id="@+id/status_container" 
-        android:layout_width="fill_parent" 
-        android:layout_height="fill_parent" 
-        android:layout_weight="1.0">
-        <LinearLayout 
-        android:gravity="center_vertical" 
-        android:id="@+id/alarm_container" 
-        android:focusable="true" 
-        android:clickable="true" 
-        android:layout_width="wrap_content" 
-        android:layout_height="fill_parent">
-        <ImageView 
-        android:id="@+id/next_alarm_icon" 
-        android:visibility="gone" 
-        android:layout_width="@dimen/qs_header_alarm_icon_size" 
-        android:layout_height="@dimen/qs_header_alarm_icon_size" 
-        android:src="@drawable/ic_alarm" 
-	android:contentDescription="@string/accessibility_quick_settings_alarm_set" />
-	<com.android.systemui.util.AutoMarqueeTextView 
-        android:textAppearance="@style/TextAppearance.QS.Status" 
-	android:ellipsize="marquee" 
-	android:id="@+id/next_alarm_text" 
-	android:visibility="gone" 
-	android:layout_width="wrap_content" 
-	android:layout_height="wrap_content" 
-	android:singleLine="true" 
-	android:marqueeRepeatLimit="marquee_forever" 
-	android:layout_marginStart="@dimen/qs_header_alarm_text_margin_start" />
-	</LinearLayout>
-	<View 
-	android:id="@+id/status_separator" 
-	android:visibility="gone" 
-	android:layout_width="@dimen/qs_header_separator_width" 
-	android:layout_height="fill_parent" />
-	<LinearLayout 
-	android:gravity="center_vertical" 
-	android:id="@+id/ringer_container" 
-	android:focusable="true" 
-	android:clickable="true" 
-	android:layout_width="wrap_content" 
-	android:layout_height="fill_parent">
-	<ImageView 
-	android:id="@+id/ringer_mode_icon" 
-	android:visibility="gone" 
-	android:layout_width="@dimen/qs_header_alarm_icon_size" 
-	android:layout_height="@dimen/qs_header_alarm_icon_size" />
-	<com.android.systemui.util.AutoMarqueeTextView 
-	android:textAppearance="@style/TextAppearance.QS.Status" 
-	android:ellipsize="marquee" 
-	android:id="@+id/ringer_mode_text" 
-	android:visibility="gone" 
-	android:layout_width="wrap_content" 
-	android:layout_height="wrap_content" 
-	android:singleLine="true" 
-	android:marqueeRepeatLimit="marquee_forever" 
-	android:layout_marginStart="@dimen/qs_header_alarm_text_margin_start" />
-	</LinearLayout>
-	</com.android.systemui.qs.QSHeaderInfoLayout>
-	<include 
-	android:layout_gravity="end|center" 
-	android:id="@+id/carrier_group" 
-	android:focusable="false" 
-	android:layout_width="wrap_content" 
-	android:layout_height="fill_parent" 
-	android:layout_marginStart="@dimen/qs_status_separator" 
-	layout="@layout/qs_carrier_group" />
+        <com.android.systemui.qs.QSHeaderInfoLayout android:id="@+id/status_container" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0">
+        <LinearLayout android:gravity="center_vertical" android:id="@+id/alarm_container" android:focusable="true" android:clickable="true" android:layout_width="wrap_content" android:layout_height="fill_parent">
+            <ImageView android:id="@+id/next_alarm_icon" android:visibility="gone" android:layout_width="@dimen/qs_header_alarm_icon_size" android:layout_height="@dimen/qs_header_alarm_icon_size" android:src="@drawable/ic_alarm" android:contentDescription="@string/accessibility_quick_settings_alarm_set" />
+            <com.android.systemui.util.AutoMarqueeTextView android:textAppearance="@style/TextAppearance.QS.Status" android:ellipsize="marquee" android:id="@+id/next_alarm_text" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:marqueeRepeatLimit="marquee_forever" android:layout_marginStart="@dimen/qs_header_alarm_text_margin_start" />
+        </LinearLayout>
+        <View android:id="@+id/status_separator" android:visibility="gone" android:layout_width="@dimen/qs_header_separator_width" android:layout_height="fill_parent" />
+        <LinearLayout android:gravity="center_vertical" android:id="@+id/ringer_container" android:focusable="true" android:clickable="true" android:layout_width="wrap_content" android:layout_height="fill_parent">
+            <ImageView android:id="@+id/ringer_mode_icon" android:visibility="gone" android:layout_width="@dimen/qs_header_alarm_icon_size" android:layout_height="@dimen/qs_header_alarm_icon_size" />
+            <com.android.systemui.util.AutoMarqueeTextView android:textAppearance="@style/TextAppearance.QS.Status" android:ellipsize="marquee" android:id="@+id/ringer_mode_text" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:marqueeRepeatLimit="marquee_forever" android:layout_marginStart="@dimen/qs_header_alarm_text_margin_start" />
+        </LinearLayout>
+        </com.android.systemui.qs.QSHeaderInfoLayout>
+        <include android:layout_gravity="end|center" android:id="@+id/carrier_group" android:focusable="false" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginStart="@dimen/qs_status_separator" layout="@layout/qs_carrier_group" />
 </LinearLayout>

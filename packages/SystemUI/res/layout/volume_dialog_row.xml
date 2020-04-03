@@ -51,6 +51,8 @@
                 android:layout_width="@dimen/volume_dialog_slider_height"
                 android:layout_height="match_parent"
                 android:layoutDirection="rtl"
+                android:thumb="@android:color/transparent"
+                android:progressDrawable="@drawable/brightness_progress_drawable"
                 android:layout_gravity="center"
                 android:rotation="90" />
         </FrameLayout>

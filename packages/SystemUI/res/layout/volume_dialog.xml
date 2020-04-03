@@ -87,24 +87,10 @@
                 android:paddingLeft="@dimen/volume_dialog_stream_padding">
                     <!-- volume rows added and removed here! :-) -->
             </LinearLayout>
-            <FrameLayout
-                android:id="@+id/settings_container"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/rounded_bg_bottom_background">
-                <com.android.keyguard.AlphaOptimizedImageButton
-                    android:id="@+id/settings"
-                    android:src="@drawable/ic_tune_black_16dp"
-                    android:layout_width="@dimen/volume_dialog_tap_target_size"
-                    android:layout_height="@dimen/volume_dialog_tap_target_size"
-                    android:layout_gravity="center"
-                    android:contentDescription="@string/accessibility_volume_settings"
-                    android:background="@drawable/ripple_drawable_20dp"
-                    android:tint="?android:attr/textColorSecondary"
-                    android:soundEffectsEnabled="false" />
-            </FrameLayout>
         </LinearLayout>
-
+        <FrameLayout android:id="@id/settings_container" android:background="@drawable/rounded_bg_full" android:layout_width="@dimen/volume_dialog_ringer_size" android:layout_height="@dimen/volume_dialog_ringer_size" android:layout_marginTop="@dimen/volume_dialog_spacer">
+            <com.android.keyguard.AlphaOptimizedImageButton android:layout_gravity="center" android:id="@id/settings" android:background="@drawable/rounded_ripple" android:padding="@dimen/volume_dialog_ringer_icon_padding" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/ic_arrow_back" android:scaleType="fitCenter" android:tint="@color/accent_tint_color_selector" android:soundEffectsEnabled="false" android:contentDescription="@string/accessibility_volume_settings" android:elevation="7.0dip" style="@style/VolumeButtons" />
+        </FrameLayout>
         <FrameLayout
             android:id="@+id/odi_captions"
             android:layout_width="@dimen/volume_dialog_caption_size"
