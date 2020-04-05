@@ -4671,6 +4671,26 @@ public final class Settings {
                 BOOLEAN_VALIDATOR;
 
         /**
+         * Whether to turn on the notification light when the state of the front camera changes
+         * 0 = 0ff, 1 = on
+         */
+        public static final String POPUP_CAMERA_LED_ENABLED = "popup_camera_led_enabled";
+
+        /** @hide */
+        public static final Validator POPUP_CAMERA_LED_ENABLED_VALIDATOR =
+                BOOLEAN_VALIDATOR;
+
+        /**
+         * Whether battery led is temporarily blocked
+         * 0 = 0ff, 1 = on
+         */
+        public static final String POPUP_CAMERA_BATTERY_LED_BLOCKED = "popup_camera_battery_led_blocked";
+
+        /** @hide */
+        public static final Validator POPUP_CAMERA_BATTERY_LED_BLOCKED_VALIDATOR =
+                BOOLEAN_VALIDATOR;
+
+        /**
          * IMPORTANT: If you add a new public settings you also have to add it to
          * PUBLIC_SETTINGS below. If the new setting is hidden you have to add
          * it to PRIVATE_SETTINGS below. Also add a validator that can validate
@@ -5726,6 +5746,8 @@ public final class Settings {
             PRIVATE_SETTINGS.add(GESTURE_PILL_TOGGLE);
             PRIVATE_SETTINGS.add(SCREENSHOT_DEFAULT_MODE);
             PRIVATE_SETTINGS.add(BATTERY_LIGHT_ENABLED);
+            PRIVATE_SETTINGS.add(POPUP_CAMERA_LED_ENABLED);
+            PRIVATE_SETTINGS.add(POPUP_CAMERA_BATTERY_LED_BLOCKED);
         }
 
         /**
@@ -5885,6 +5907,8 @@ public final class Settings {
             VALIDATORS.put(USE_OLD_MOBILETYPE, USE_OLD_MOBILETYPE_VALIDATOR);
             VALIDATORS.put(GESTURE_PILL_TOGGLE, GESTURE_PILL_TOGGLE_VALIDATOR);
             VALIDATORS.put(BATTERY_LIGHT_ENABLED, BATTERY_LIGHT_ENABLED_VALIDATOR);
+            VALIDATORS.put(POPUP_CAMERA_LED_ENABLED, POPUP_CAMERA_LED_ENABLED_VALIDATOR);
+            VALIDATORS.put(POPUP_CAMERA_BATTERY_LED_BLOCKED, POPUP_CAMERA_BATTERY_LED_BLOCKED_VALIDATOR);
         }
 
         /**
