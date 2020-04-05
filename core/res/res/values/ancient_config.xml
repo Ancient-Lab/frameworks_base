@@ -80,6 +80,10 @@
     <!-- Whether to show emergency button in power menu -->
     <bool name="config_showEmergencyButtonInPowerMenu">false</bool>
 
+    <!-- Whether to use base rounded corner radius for window animations instead
+          of min between top and bottom radius-->
+    <bool name="config_useDefaultRoundedCornerRadius">false</bool>
+
     <!-- Power menu -->
     <string-array translatable="false" name="config_ancient_globalActionsList">
         <item>power</item>

@@ -93,6 +93,10 @@
     <!-- Toast animation -->
     <java-symbol type="style" name="Animation.Toast.Material" />
 
+    <!-- Whether to use base rounded corner radius for window animations instead
+          of min between top and bottom radius-->
+    <java-symbol type="bool" name="config_useDefaultRoundedCornerRadius" />
+
     <!-- Hardware keys present on the device, stored as a bit field.
        This integer should equal the sum of the corresponding value for each
        of the following keys present:
