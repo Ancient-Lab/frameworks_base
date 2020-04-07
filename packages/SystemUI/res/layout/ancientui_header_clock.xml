@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Ancient OS (C) 2020 -->
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:gravity="start"
+	android:orientation="horizontal"
+	android:id="@+id/clock_holder"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content">
+
+	<TextClock
+		android:textAppearance="@style/TextAppearance.QS.Status"
+		android:textSize="64.0dip"
+		android:textStyle="bold"
+		android:textColor="?android:colorAccent"
+		android:id="@+id/anc_clock_hour"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginRight="4.0dip"
+		android:format12Hour="hh"
+		android:format24Hour="HH"/>
+
+	<ImageView
+		android:id="@+id/anc_separator"
+		android:layout_width="2.0dip"
+		android:layout_height="match_parent"
+		android:src="?android:colorAccent"
+		android:layout_margin="3dp"/>
+
+	<LinearLayout
+		android:layout_gravity="center"
+		android:orientation="vertical"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginLeft="4.0dip">
+
+		<TextClock
+			android:textAppearance="@style/TextAppearance.QS.Status"
+			android:textSize="24.0dip"
+			android:textStyle="normal"
+			android:id="@+id/anc_clock_minutes"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:format12Hour="mm"
+			android:format24Hour="mm"/>
+
+		<TextClock
+			android:textAppearance="@style/TextAppearance.QS.Status"
+			android:textSize="18.0dip"
+                        android:id="@+id/anc_clock_am"
+			android:textStyle="normal"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:format12Hour="a"
+			android:format24Hour=""/>
+
+	</LinearLayout>
+</LinearLayout>
