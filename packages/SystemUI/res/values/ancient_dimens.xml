@@ -62,4 +62,7 @@
     <dimen name="status_bar_mobile_signal_with_type_width">22dp</dimen>
     <dimen name="status_bar_mobile_signal_width">16dp</dimen>
     <dimen name="status_bar_mobile_type_height">10dp</dimen>
+
+    <!-- Qs custom margin -->
+    <dimen name="ancient_qsquick_margin">80.0dip</dimen>
 </resources>

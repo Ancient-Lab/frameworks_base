@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2020 Ancient OS -->
+
+<LinearLayout 
+   android:gravity="bottom|center"
+   android:layout_gravity="bottom|center" 
+   android:orientation="horizontal" 
+   android:layout_width="fill_parent" 
+   android:layout_height="wrap_content" 
+   android:layout_alignParentBottom="true"
+   xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextClock 
+       android:textAppearance="@style/TextAppearance.QS.Status" 
+       android:textSize="60.0dip" 
+       android:textStyle="bold" 
+       android:textColor="?android:colorAccent" 
+       android:gravity="bottom|center" 
+       android:layout_gravity="bottom|center" 
+       android:id="@+id/anci_clock" 
+       android:layout_width="wrap_content" 
+       android:layout_height="wrap_content" 
+       android:layout_alignParentBottom="true" 
+       android:format12Hour="hh" 
+       android:format24Hour="HH" />
+    <TextClock 
+       android:textAppearance="@style/TextAppearance.QS.Status" 
+       android:textSize="10.0dip" 
+       android:textStyle="normal" 
+       android:gravity="bottom|center" 
+       android:layout_gravity="bottom|center" 
+       android:id="@+id/anci_clock1" 
+       android:layout_width="wrap_content" 
+       android:layout_height="wrap_content" 
+       android:layout_marginLeft="2.0dip" 
+       android:layout_marginRight="2.0dip" 
+       android:layout_alignParentBottom="true" 
+       android:format12Hour=":" 
+       android:format24Hour=":" />
+    <TextClock 
+       android:textAppearance="@style/TextAppearance.QS.Status" 
+       android:textSize="30.0dip" 
+       android:textStyle="normal" 
+       android:gravity="bottom|center"
+       android:layout_gravity="bottom|center" 
+       android:id="@+id/anci_clock2" 
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content" 
+       android:layout_alignParentBottom="true" 
+       android:format12Hour="mm a" 
+       android:format24Hour="mm" />
+</LinearLayout>

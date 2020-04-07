@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2020 Ancient OS -->
+
+<LinearLayout 
+    android:gravity="bottom|center" 
+    android:layout_gravity="bottom|center" 
+    android:orientation="horizontal" 
+    android:layout_width="fill_parent" 
+    android:layout_height="fill_parent" 
+    android:layout_centerInParent="true"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextClock 
+       android:textAppearance="@style/TextAppearance.QS.Status" 
+       android:textSize="14.0dip" 
+       android:textStyle="normal" 
+       android:textColor="?android:colorAccent" 
+       android:gravity="center" 
+       android:layout_gravity="center" 
+       android:id="@+id/anci_date"
+       android:layout_width="wrap_content" 
+       android:layout_height="wrap_content" 
+       android:layout_marginRight="2.0dip"
+       android:format12Hour="EEEE" 
+       android:format24Hour="EEEE" />
+    <LinearLayout 
+       android:gravity="center" 
+       android:layout_gravity="center" 
+       android:id="@+id/anci_date1" 
+       android:background="?android:colorAccent"     
+       android:layout_width="2.0dip" 
+       android:layout_height="14.0dip" 
+       android:layout_marginLeft="2.0dip" 
+       android:layout_marginRight="2.0dip" />
+    <TextClock 
+       android:textAppearance="@style/TextAppearance.QS.Status" 
+       android:textSize="14.0dip" 
+       android:textStyle="normal" 
+       android:gravity="center" 
+       android:layout_gravity="center" 
+       android:id="@+id/anci_date2" 
+       android:layout_width="wrap_content" 
+       android:layout_height="wrap_content" 
+       android:format12Hour=" d MMM yyy" 
+       android:format24Hour=" d MMM yyy" />
+</LinearLayout>
