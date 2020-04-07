@@ -74,6 +74,8 @@ public class NotificationInterruptionStateProvider {
     @VisibleForTesting
     protected boolean mUseHeadsUp = false;
     private boolean mDisableNotificationAlerts;
+    
+    private boolean mSkipHeadsUp;
 
     @Inject
     public NotificationInterruptionStateProvider(Context context, NotificationFilter filter,
@@ -367,7 +369,7 @@ public class NotificationInterruptionStateProvider {
 
         if (mPresenter.isDeviceInVrMode()) {
             if (DEBUG_HEADS_UP) {
-                Log.d(TAG, "No alerting: no huns or vr mode");
+                Log.d(TAG, "No alerting: no huns or vr mode or gaming mode enabled");
             }
             return false;
         }
@@ -399,6 +401,10 @@ public class NotificationInterruptionStateProvider {
         mHeadsUpObserver.onChange(true);
     }
 
+    public void setGamingPeekMode(boolean skipHeadsUp) {
+        mSkipHeadsUp = skipHeadsUp;
+    }
+    
     /** Whether all alerts are disabled. */
     @VisibleForTesting
     public boolean areNotificationAlertsDisabled() {
