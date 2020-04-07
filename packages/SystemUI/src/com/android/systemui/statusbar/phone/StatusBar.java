@@ -460,6 +460,8 @@ public class StatusBar extends SystemUI implements DemoMode,
     private final DisplayMetrics mDisplayMetrics = Dependency.get(DisplayMetrics.class);
 
     private PackageMonitor mPackageMonitor;
+    
+    private boolean mHeadsUpDisabled, mGamingModeActivated;
 
     private boolean mSysuiRoundedFwvals;
 
@@ -4033,6 +4035,12 @@ public class StatusBar extends SystemUI implements DemoMode,
                     Settings.System.HEADS_UP_STOPLIST_VALUES), false, this);
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.HEADS_UP_BLACKLIST_VALUES), false, this);
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.GAMING_MODE_ACTIVE),
+                    false, this, UserHandle.USER_ALL);
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.GAMING_MODE_HEADSUP_TOGGLE),
+                    false, this, UserHandle.USER_ALL);
         }
 
         @Override
@@ -4053,6 +4061,7 @@ public class StatusBar extends SystemUI implements DemoMode,
             updateQsPanelResources();
             setHeadsUpStoplist();
             setHeadsUpBlacklist();
+            setGamingMode();
         }
     }
 
@@ -4077,6 +4086,17 @@ public class StatusBar extends SystemUI implements DemoMode,
         if (mPresenter != null)
             mPresenter.setHeadsUpBlacklist();
     }
+                
+    private void setGamingMode() {
+        mGamingModeActivated = Settings.System.getIntForUser(mContext.getContentResolver(),
+                Settings.System.GAMING_MODE_ACTIVE, 0,
+                UserHandle.USER_CURRENT) == 1;
+        mHeadsUpDisabled = Settings.System.getIntForUser(mContext.getContentResolver(),
+                Settings.System.GAMING_MODE_HEADSUP_TOGGLE, 1,
+                UserHandle.USER_CURRENT) == 1;
+        mNotificationInterruptionStateProvider.setGamingPeekMode(mGamingModeActivated && mHeadsUpDisabled);
+    }
+
 
     public int getWakefulnessState() {
         return mWakefulnessLifecycle.getWakefulness();
