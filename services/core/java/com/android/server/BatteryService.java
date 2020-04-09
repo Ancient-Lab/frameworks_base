@@ -179,7 +179,6 @@ public final class BatteryService extends SystemService {
     private boolean mBatteryLevelLow;
     
     private boolean mDashCharger;
-    private boolean mHasDashCharger;
     private boolean mLastDashCharger;
 
 
@@ -222,9 +221,6 @@ public final class BatteryService extends SystemService {
         mActivityManagerInternal = LocalServices.getService(ActivityManagerInternal.class);
         mNotificationManager = mContext.getSystemService(NotificationManager.class);
 
-        
-        mHasDashCharger = mContext.getResources().getBoolean(
-                com.android.internal.R.bool.config_hasDashCharger);
         mCriticalBatteryLevel = mContext.getResources().getInteger(
                 com.android.internal.R.integer.config_criticalBatteryWarningLevel);
         mLowBatteryWarningLevel = mContext.getResources().getInteger(
@@ -518,7 +514,7 @@ public final class BatteryService extends SystemService {
         shutdownIfNoPowerLocked();
         shutdownIfOverTempLocked();
         
-        mDashCharger = mHasDashCharger && Utils.isDashCharger();
+        mDashCharger = Utils.isDashCharger();
 
         if (force || (mHealthInfo.batteryStatus != mLastBatteryStatus ||
                 mHealthInfo.batteryHealth != mLastBatteryHealth ||
