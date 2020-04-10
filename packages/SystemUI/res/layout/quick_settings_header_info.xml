@@ -27,5 +27,5 @@
     android:paddingEnd="@dimen/status_bar_padding_end"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <include 
-    layout="@layout/ancientui_clockdate" />
+    layout="@layout/ancientui_expanded_decoration" />
 </FrameLayout>
