@@ -58,7 +58,6 @@
 			android:id="@+id/batteryRemainingIcon"
 			android:layout_width="wrap_content"
 			android:layout_height="fill_parent"
-			android:layoutDirection="rtl"
 			android:paddingEnd="2.0dip"
 			app:textAppearance="@style/TextAppearance.QS.Status"/>
 
