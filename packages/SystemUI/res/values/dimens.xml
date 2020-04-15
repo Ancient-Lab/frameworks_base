@@ -355,7 +355,7 @@
     <dimen name="qs_footer_icon_padding">14dp</dimen>
 
     <!-- The padding between the notifications and the quick settings container -->
-    <dimen name="qs_notification_padding">20dp</dimen>
+    <dimen name="qs_notification_padding">@dimen/notification_side_paddings</dimen>
 
     <!-- Height of the status bar header bar when expanded -->
     <dimen name="status_bar_header_height_expanded">124dp</dimen>
@@ -1156,8 +1156,4 @@
 
     <!-- Size of the RAT type for CellularTile -->
     <dimen name="celltile_rat_type_size">10sp</dimen>
-
-    <!-- Extra margin -->
-    <dimen name="qs_tiles_extra_margin_top">2dp</dimen>
-
 </resources>
