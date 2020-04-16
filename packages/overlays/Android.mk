@@ -45,24 +45,9 @@ LOCAL_REQUIRED_MODULES := \
 	IconPackRoundedPixelThemePickerOverlay \
 	IconPackRoundedSettingsOverlay \
 	IconPackRoundedSystemUIOverlay \
-        IconShapeAncient1Overlay \
-        IconShapeAncient2Overlay \
-	IconShapeAncient3Overlay \
-	IconShapeAncient4Overlay \
-        IconShapeAncient5Overlay \
-        IconShapeAncient6Overlay \
 	IconShapeRoundedRectOverlay \
 	IconShapeSquircleOverlay \
 	IconShapeTeardropOverlay \
-        PrimaryColorAncientBlackOverlay \
-        PrimaryColorAncientCocolateOverlay \
-        PrimaryColorDarkBlueOverlay \
-        PrimaryColorAlmostBlackOverlay \
-        PrimaryColorAncientOverlay \
-        PrimaryColorAncientClearOverlay \
-        PrimaryColorEyeSootherOverlay \
-	PrimaryColorOceanOverlay \
-	PrimaryColorNatureOverlay \
 	NavigationBarMode3ButtonOverlay \
 	NavigationBarMode2ButtonOverlay \
 	NavigationBarModeGesturalOverlay \
