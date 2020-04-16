@@ -180,8 +180,6 @@ public class StatusBarWindowView extends FrameLayout {
         Dependency.get(TunerService.class).addTunable(mTunable,
                 Settings.Secure.DOZE_DOUBLE_TAP_GESTURE,
                 Settings.Secure.DOZE_TAP_SCREEN_GESTURE);
-                Settings.Secure.DOZE_TAP_SCREEN_GESTURE,
-                Settings.Secure.DOUBLE_TAP_TO_WAKE);
         mStaticContext = context;
     }
 
