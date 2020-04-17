@@ -94,7 +94,7 @@
 
     <color name="qs_tile_background_color_disabled">#1f1f1f</color>
 
-    <color name="recents_dismiss_all_background_color">@color/GM2_grey_900</color>
-    <color name="recents_dismiss_all_background_color_ripple">#555555</color>
+    <color name="recents_dismiss_all_background_color">@color/notification_material_background_color</color>
+    <color name="recents_dismiss_all_background_color_ripple">@color/notification_material_background_color</color>
     <color name="recents_dismiss_all_icon_color">@android:color/white</color>
 </resources>
