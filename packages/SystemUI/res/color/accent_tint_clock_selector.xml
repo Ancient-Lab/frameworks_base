@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2020 Ancient OS -->
+<selector
+
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:color="@*android:color/gradient_start" />
+
+</selector>
+
