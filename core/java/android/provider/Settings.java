@@ -5613,6 +5613,14 @@ public final class Settings {
          */
         public static final String LOCKOWNER_FONT_SIZE= "lockowner_font_size";    
 
+	/**
+         * Controls whether to show R style notification headers
+         * @hide
+         */
+        public static final String NOTIFICATION_HEADERS = "notification_headers";
+
+        private static final Validator NOTIFICATION_HEADERS_VALIDATOR = BOOLEAN_VALIDATOR;    
+
         /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
@@ -5738,7 +5746,8 @@ public final class Settings {
             HEADS_UP_BLACKLIST_VALUES,
             USE_OLD_MOBILETYPE,
             GESTURE_PILL_TOGGLE,
-            NOTIFICATION_GUTS_KILL_APP_BUTTON
+            NOTIFICATION_GUTS_KILL_APP_BUTTON,
+            NOTIFICATION_HEADERS
         };
 
         /**
@@ -6094,6 +6103,7 @@ public final class Settings {
             VALIDATORS.put(REFRESH_RATE_SETTING, REFRESH_RATE_SETTING_VALIDATOR);
             VALIDATORS.put(NOTIFICATION_GUTS_KILL_APP_BUTTON, NOTIFICATION_GUTS_KILL_APP_BUTTON_VALIDATOR);
             VALIDATORS.put(FORCE_SHOW_NAVBAR, FORCE_SHOW_NAVBAR_VALIDATOR);
+            VALIDATORS.put(NOTIFICATION_HEADERS, NOTIFICATION_HEADERS_VALIDATOR);
         }
 
         /**
