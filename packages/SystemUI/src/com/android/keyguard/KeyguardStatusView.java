@@ -417,56 +417,42 @@ public class KeyguardStatusView extends GridLayout implements
     }
 
     private void refreshLockDateFont() {
-        setLockDateFont(mKeyguardSlice, getLockClockFont());
+        mKeyguardSlice.setTextDateFont(getDateFont(getLockDateFont()));
+        mClockView.setTextDateFont(getDateFont(getLockDateFont()));
     }
 
-    private void setLockDateFont(KeyguardSliceView view, int fontStyle) {
-        if (view != null) {
-            switch (fontstyle) {
-                case 0:
-                default:
-                    view.setViewsTypeface(Typeface.create(mContext.getResources().getString(R.string.clock_sysfont_headline), Typeface.NORMAL));
-                    break;
-                case 1:
-                    view.setViewsTypeface(Typeface.create(mContext.getResources().getString(R.string.clock_sysfont_body), Typeface.NORMAL));
-                    break;
-                case 2:
-                    view.setViewsTypeface(Typeface.create("sans-serif", Typeface.BOLD));
-                    break;
-                case 3:
-                    view.setViewsTypeface(Typeface.create("sans-serif", Typeface.NORMAL));
-                    break;
-                case 4:
-                    view.setViewsTypeface(Typeface.create("sans-serif", Typeface.ITALIC));
-                    break;
-                case 5:
-                    view.setViewsTypeface(Typeface.create("sans-serif", Typeface.BOLD_ITALIC));
-                    break;
-                case 6:
-                    view.setViewsTypeface(Typeface.create("sans-serif-light", Typeface.NORMAL));
-                    break;
-                case 7:
-                    view.setViewsTypeface(Typeface.create("sans-serif-thin", Typeface.NORMAL));
-                    break;
-                case 8:
-                    view.setViewsTypeface(Typeface.create("sans-serif-condensed", Typeface.NORMAL));
-                    break;
-                case 9:
-                    view.setViewsTypeface(Typeface.create("sans-serif-condensed", Typeface.ITALIC));
-                    break;
-                case 10:
-                    view.setViewsTypeface(Typeface.create("sans-serif-condensed", Typeface.BOLD));
-                    break;
-                case 11:
-                    view.setViewsTypeface(Typeface.create("sans-serif-condensed", Typeface.BOLD_ITALIC));
-                    break;
-                case 12:
-                    view.setViewsTypeface(Typeface.create("sans-serif-medium", Typeface.NORMAL));
-                    break;
-                case 13:
-                    view.setViewsTypeface(Typeface.create("sans-serif-medium", Typeface.ITALIC));
-                    break;
-            }
+    private Typeface getDateFont(int userSelection) {
+        Typeface tf;
+        switch (userSelection) {
+            case 0:
+            default:
+                return Typeface.create(mContext.getResources().getString(R.string.clock_sysfont_headline), Typeface.NORMAL);
+            case 1:
+                return Typeface.create(mContext.getResources().getString(R.string.clock_sysfont_body), Typeface.NORMAL);
+            case 2:
+                return Typeface.create("sans-serif", Typeface.BOLD);
+            case 3:
+                return Typeface.create("sans-serif", Typeface.NORMAL);
+            case 4:
+                return Typeface.create("sans-serif", Typeface.ITALIC);
+            case 5:
+                return Typeface.create("sans-serif", Typeface.BOLD_ITALIC);
+            case 6:
+                return Typeface.create("sans-serif-light", Typeface.NORMAL);
+            case 7:
+                return Typeface.create("sans-serif-thin", Typeface.NORMAL);
+            case 8:
+                return Typeface.create("sans-serif-condensed", Typeface.NORMAL);
+            case 9:
+                return Typeface.create("sans-serif-condensed", Typeface.ITALIC);
+            case 10:
+                return Typeface.create("sans-serif-condensed", Typeface.BOLD);
+            case 11:
+                return Typeface.create("sans-serif-condensed", Typeface.BOLD_ITALIC);
+            case 12:
+                return Typeface.create("sans-serif-medium", Typeface.NORMAL);
+            case 13:
+                return Typeface.create("sans-serif-medium", Typeface.ITALIC);
         }
     }
 
