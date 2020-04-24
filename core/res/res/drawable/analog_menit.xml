@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2020 Ancient OS -->
+<vector android:height="100.0dip" android:width="100.0dip" android:viewportWidth="100.0" android:viewportHeight="100.0"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <path android:fillColor="#ffffffff" android:pathData="M49.34,19.2C49.05,19.4,48.56,19.98,48.12,20.64C47.98,20.86,47.96,22,47.96,34.78C47.96,48.43,47.96,48.69,47.78,49.09C47.1,50.58,48.32,52.4,50,52.4C51.68,52.4,52.9,50.58,52.22,49.09C52.04,48.69,52.04,48.43,52.04,34.73C52.04,21.84,52.02,20.77,51.88,20.55C50.98,19.22,50.05,18.73,49.34,19.2" />
+</vector>
