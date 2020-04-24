@@ -12,41 +12,10 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<LinearLayout
-	xmlns:android="http://schemas.android.com/apk/res/android"
-	android:layout_gravity="start|center"
-	android:orientation="horizontal"
-	android:layout_width="match_parent"
-	android:layout_height="wrap_content">
 
-		<TextClock
-			android:textSize="28.0dip"
-			android:textStyle="bold"
-			android:textColor="?android:colorAccent"
-			android:id="@+id/anc_quick_clock_hour"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:format12Hour="hh"
-			android:format24Hour="HH"/>
-
-		<TextClock
-			android:textSize="18.0dip"
-			android:textStyle="normal"
-			android:id="@+id/anc_quick_clock_separator"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_marginLeft="2.0dip"
-			android:layout_marginRight="2.0dip"
-			android:format12Hour=":"
-			android:format24Hour=":"/>
-
-		<TextClock
-			android:textSize="18.0dip"
-			android:textStyle="normal"
-			android:id="@+id/anc_quick_clock_minutes"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:format12Hour="mm a"
-			android:format24Hour="mm"/>
-
-</LinearLayout>
+<FrameLayout 
+ android:layout_width="fill_parent" 
+ android:layout_height="wrap_content"
+ xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/ancientui_header_clock" />
+</FrameLayout>
