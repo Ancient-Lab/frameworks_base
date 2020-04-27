@@ -642,6 +642,9 @@
     <!-- Used to launch a common app (FlipFlap) for devices with flip cover. -->
     <protected-broadcast android:name="android.intent.action.LID_STATE_CHANGED" />
 
+    <!-- Used to force the state of battery led -->
+    <protected-broadcast android:name="android.intent.action.BATTERY_LED_STATE_OVERRIDE" />
+
     <!-- ====================================================================== -->
     <!--                          RUNTIME PERMISSIONS                           -->
     <!-- ====================================================================== -->
