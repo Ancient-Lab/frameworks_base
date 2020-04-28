@@ -20,5 +20,5 @@
   <!-- Default color for minute hand of Bubble clock. -->
   <color name="bubbleMinuteHandColor">#F5C983</color>
   <!-- Accent color for Typographic clock. -->
-  <color name="typeClockAccentColor">#F5C983</color>
+  <color name="typeClockAccentColor">@*android:color/gradient_start</color>
 </resources>
