@@ -255,7 +255,10 @@ public class SystemSensorManager extends SensorManager {
         }
         if (Settings.System.getInt(mContext.getContentResolver(),
                 Settings.System.SENSOR_BLOCK, 0) == 1) {
-            if (sensor.getType() == Sensor.TYPE_SIGNIFICANT_MOTION) {
+            int sensortype = sensor.getType();
+            if (sensortype == Sensor.TYPE_SIGNIFICANT_MOTION ||
+                    sensortype == Sensor.TYPE_ACCELEROMETER ||
+                    sensortype == Sensor.TYPE_LINEAR_ACCELERATION) {
                 String pkgName = mContext.getPackageName();
                 if (isBlockedApp(pkgName)) {
                     Log.w(TAG, "Preventing " + pkgName + " from draining battery using " +
