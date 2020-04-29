@@ -105,6 +105,7 @@ import com.android.systemui.statusbar.policy.KeyguardMonitor;
 import com.android.systemui.statusbar.policy.KeyguardUserSwitcher;
 import com.android.systemui.statusbar.policy.OnHeadsUpChangedListener;
 import com.android.systemui.statusbar.policy.ZenModeController;
+import com.android.systemui.tuner.TunerService; 
 import com.android.systemui.util.InjectionInflationController;
 
 import java.io.FileDescriptor;
@@ -124,7 +125,7 @@ public class NotificationPanelView extends PanelView implements
         OnHeadsUpChangedListener, QS.HeightListener, ZenModeController.Callback,
         ConfigurationController.ConfigurationListener, StateListener,
         PulseExpansionHandler.ExpansionCallback, DynamicPrivacyController.Listener,
-        NotificationWakeUpCoordinator.WakeUpListener {
+        NotificationWakeUpCoordinator.WakeUpListener, TunerService.Tunable {
 
     private static final boolean DEBUG = false;
 
