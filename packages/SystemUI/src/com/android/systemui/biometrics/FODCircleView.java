@@ -32,7 +32,6 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.PixelFormat;
 import android.graphics.Point;
-import android.graphics.drawable.AnimationDrawable;
 import android.hardware.biometrics.BiometricSourceType;
 import android.os.Handler;
 import android.os.UserHandle;
@@ -42,7 +41,6 @@ import android.os.UserHandle;
 import android.provider.Settings;
 import android.view.Display;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.Surface;
 import android.view.View;
@@ -100,8 +98,6 @@ public class FODCircleView extends ImageView implements ConfigurationListener {
 
     private Timer mBurnInProtectionTimer;
 
-    private FODAnimation mFODAnimation;
-
     private IFingerprintInscreenCallback mFingerprintInscreenCallback =
             new IFingerprintInscreenCallback.Stub() {
         @Override
@@ -135,9 +131,6 @@ public class FODCircleView extends ImageView implements ConfigurationListener {
         public void onKeyguardVisibilityChanged(boolean showing) {
             mIsKeyguard = showing;
             updatePosition();
-            if (mFODAnimation != null) {
-                mFODAnimation.setAnimationKeyguard(showing);
-            }
         }
 
         @Override
@@ -172,7 +165,6 @@ public class FODCircleView extends ImageView implements ConfigurationListener {
             if (biometricSourceType == BiometricSourceType.FINGERPRINT &&
                     msgId == -1){ // Auth error
                 hideCircle();
-                mHandler.post(() -> mFODAnimation.hideFODanimation());
             }
         }
 
@@ -226,8 +218,6 @@ public class FODCircleView extends ImageView implements ConfigurationListener {
         } catch (RemoteException e) {
             throw new RuntimeException("Failed to retrieve FOD circle position or size");
         }
-
-        mFODAnimation = new FODAnimation(context, mPositionX, mPositionY);
 
         Resources res = context.getResources();
 
@@ -308,17 +298,14 @@ public class FODCircleView extends ImageView implements ConfigurationListener {
 
         if (event.getAction() == MotionEvent.ACTION_DOWN && newIsInside) {
             showCircle();
-            mHandler.post(() -> mFODAnimation.showFODanimation());
             return true;
         } else if (event.getAction() == MotionEvent.ACTION_UP) {
             hideCircle();
-            mHandler.post(() -> mFODAnimation.hideFODanimation());
             return true;
         } else if (event.getAction() == MotionEvent.ACTION_MOVE) {
             return true;
         }
 
-        mHandler.post(() -> mFODAnimation.hideFODanimation());
         return false;
     }
 
@@ -534,7 +521,6 @@ public class FODCircleView extends ImageView implements ConfigurationListener {
         if (mIsDreaming) {
             mParams.x += mDreamingOffsetX;
             mParams.y += mDreamingOffsetY;
-            mFODAnimation.updateParams(mParams.y);
         }
 
         mWindowManager.updateViewLayout(this, mParams);
