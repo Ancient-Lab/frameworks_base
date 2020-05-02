@@ -5546,12 +5546,6 @@ public final class Settings {
         public static final String LOCKSCREEN_DATE_SELECTION = "lockscreen_date_selection";
 
         /**
-         * Change font style for the system lockscreen date
-         * @hide
-         */
-        public static final String LOCK_DATE_FONT_STYLE = "lock_date_font_style";
-
-        /**
          * Whether to show status bar on lockscreen
          * @hide
          */
