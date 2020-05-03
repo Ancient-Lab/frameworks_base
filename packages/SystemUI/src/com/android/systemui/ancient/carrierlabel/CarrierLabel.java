@@ -61,37 +61,46 @@ public class CarrierLabel extends TextView implements DarkReceiver, TunerService
     private int mCarrierColor = 0xffffffff;
     private int mTintColor = Color.WHITE;
 
-    private static final int FONT_NORMAL = 0;
-    private static final int FONT_ITALIC = 1;
+    private static final int FONT_HEADLINE = 0;
+    private static final int FONT_BODY = 1;
     private static final int FONT_BOLD = 2;
-    private static final int FONT_BOLD_ITALIC = 3;
-    private static final int FONT_LIGHT = 4;
-    private static final int FONT_LIGHT_ITALIC = 5;
-    private static final int FONT_THIN = 6;
-    private static final int FONT_THIN_ITALIC = 7;
+    private static final int FONT_NORMAL = 3;
+    private static final int FONT_ITALIC = 4;
+    private static final int FONT_BOLD_ITALIC = 5;
+    private static final int FONT_LIGHT = 6;    
+    private static final int FONT_THIN = 7;    
     private static final int FONT_CONDENSED = 8;
-    private static final int FONT_CONDENSED_ITALIC = 9;
-    private static final int FONT_CONDENSED_LIGHT = 10;
-    private static final int FONT_CONDENSED_LIGHT_ITALIC = 11;
-    private static final int FONT_CONDENSED_BOLD = 12;
-    private static final int FONT_CONDENSED_BOLD_ITALIC = 13;
-    private static final int FONT_MEDIUM = 14;
-    private static final int FONT_MEDIUM_ITALIC = 15;
-    private static final int FONT_BLACK = 16;
-    private static final int FONT_BLACK_ITALIC = 17;
-    private static final int FONT_ACLONICA = 25;
-    private static final int FONT_AMARANTE = 26;
-    private static final int FONT_BARIOL = 27;
-    private static final int FONT_CAGLIOSTRO = 28;
-    private static final int FONT_COOLSTORY = 29;
-    private static final int FONT_LGSMARTGOTHIC = 30;
-    private static final int FONT_ROSEMARY = 31;
-    private static final int FONT_SONYSKETCH = 32;
-    private static final int FONT_SURFER = 33;
-    private static final int FONT_COMICSANS = 34;
-    private static final int FONT_GOOGLESANS = 35;
-    private static final int FONT_ONEPLUSSLATE = 36;
-    private static final int FONT_SAMSUNGONE = 37;
+    private static final int FONT_CONDENSED_ITALIC = 9;    
+    private static final int FONT_CONDENSED_BOLD = 10;
+    private static final int FONT_CONDENSED_BOLD_ITALIC = 11;
+    private static final int FONT_MEDIUM = 12;
+    private static final int FONT_MEDIUM_ITALIC = 13;
+    private static final int FONT_ALBELREG = 14;
+    private static final int FONT_ADVENTPRO = 15;
+    private static final int FONT_ALIENLEAGUE = 16;
+    private static final int FONT_BIGNOODLEITALIC = 17;
+    private static final int FONT_BIKO = 18;
+    private static final int FONT_BLERN = 19;
+    private static final int FONT_CHERRYSWASH = 20;
+    private static final int FONT_CODYSTAR = 21;
+    private static final int FONT_GINORASANS = 22;
+    private static final int FONT_GOBOLDLIGHT = 23;
+    private static final int FONT_GOOGLESANS = 24;
+    private static final int FONT_INKFERNO = 25;
+    private static final int FONT_JURAREG = 26;
+    private static final int FONT_KELLYSLAB = 27;
+    private static final int FONT_METROPOLIS = 28;   
+    private static final int FONT_NEONNEON = 29;
+    private static final int FONT_POMPIERE = 30;
+    private static final int FONT_REEMKUFI = 31;
+    private static final int FONT_RIVIERA = 32;
+    private static final int FINT_ROADRAGE = 33;
+    private static final int FONT_SEDGWICK = 34;
+    private static final int FONT_SNOWSTORM = 35;
+    private static final int FONT_THEMEABLECLOCK = 36;
+    private static final int FONT_UNIONFONT = 37;
+    private static final int FONT_VIBUR = 38;
+    private static final int FONT_VOLTAIRE = 39;
 
     private static final String STATUS_BAR_SHOW_CARRIER =
             "system:" + Settings.System.STATUS_BAR_SHOW_CARRIER;
@@ -170,7 +179,7 @@ public class CarrierLabel extends TextView implements DarkReceiver, TunerService
                 break;
             case STATUS_BAR_CARRIER_FONT_STYLE:
                 mCarrierLabelFontStyle =
-                        TunerService.parseInteger(newValue, 14);
+                        TunerService.parseInteger(newValue, 12);
                 setCarrierLabel();
                 break;
             case STATUS_BAR_CARRIER_COLOR:
@@ -185,99 +194,126 @@ public class CarrierLabel extends TextView implements DarkReceiver, TunerService
 
     public void getFontStyle(int font) {
         switch (font) {
-            case FONT_NORMAL:
+            case FONT_HEADLINE:
             default:
+                setTypeface(Typeface.create(mContext.getResources().getString(R.string.clock_sysfont_headline_medium), Typeface.NORMAL));
+                break;
+            case FONT_BODY:
+                setTypeface(Typeface.create(mContext.getResources().getString(R.string.clock_sysfont_body_medium), Typeface.NORMAL));
+                break;
+            case FONT_BOLD:
+                setTypeface(Typeface.create("sans-serif", Typeface.BOLD));
+                break;
+            case FONT_NORMAL:
                 setTypeface(Typeface.create("sans-serif", Typeface.NORMAL));
                 break;
             case FONT_ITALIC:
                 setTypeface(Typeface.create("sans-serif", Typeface.ITALIC));
                 break;
-            case FONT_BOLD:
-                setTypeface(Typeface.create("sans-serif", Typeface.BOLD));
-                break;
             case FONT_BOLD_ITALIC:
                 setTypeface(Typeface.create("sans-serif", Typeface.BOLD_ITALIC));
-                break;
+                break;                
             case FONT_LIGHT:
                 setTypeface(Typeface.create("sans-serif-light", Typeface.NORMAL));
-                break;
-            case FONT_LIGHT_ITALIC:
-                setTypeface(Typeface.create("sans-serif-light", Typeface.ITALIC));
-                break;
+                break;         
             case FONT_THIN:
                 setTypeface(Typeface.create("sans-serif-thin", Typeface.NORMAL));
-                break;
-            case FONT_THIN_ITALIC:
-                setTypeface(Typeface.create("sans-serif-thin", Typeface.ITALIC));
-                break;
+                break;                
             case FONT_CONDENSED:
                 setTypeface(Typeface.create("sans-serif-condensed", Typeface.NORMAL));
                 break;
             case FONT_CONDENSED_ITALIC:
                 setTypeface(Typeface.create("sans-serif-condensed", Typeface.ITALIC));
                 break;
-            case FONT_CONDENSED_LIGHT:
-                setTypeface(Typeface.create("sans-serif-condensed-light", Typeface.NORMAL));
-                break;
-            case FONT_CONDENSED_LIGHT_ITALIC:
-                setTypeface(Typeface.create("sans-serif-condensed-light", Typeface.ITALIC));
-                break;
             case FONT_CONDENSED_BOLD:
                 setTypeface(Typeface.create("sans-serif-condensed", Typeface.BOLD));
                 break;
             case FONT_CONDENSED_BOLD_ITALIC:
                 setTypeface(Typeface.create("sans-serif-condensed", Typeface.BOLD_ITALIC));
-                break;
+                break;            
             case FONT_MEDIUM:
                 setTypeface(Typeface.create("sans-serif-medium", Typeface.NORMAL));
                 break;
             case FONT_MEDIUM_ITALIC:
                 setTypeface(Typeface.create("sans-serif-medium", Typeface.ITALIC));
+                break;                    
+            case FONT_ALBELREG:
+                setTypeface(Typeface.create("abelreg", Typeface.NORMAL));
                 break;
-            case FONT_BLACK:
-                setTypeface(Typeface.create("sans-serif-black", Typeface.NORMAL));
+            case FONT_ADVENTPRO:
+                setTypeface(Typeface.create("adventpro", Typeface.NORMAL));
                 break;
-            case FONT_BLACK_ITALIC:
-                setTypeface(Typeface.create("sans-serif-black", Typeface.ITALIC));
+            case FONT_ALIENLEAGUE:
+                setTypeface(Typeface.create("alien-league", Typeface.NORMAL));
                 break;
-            case FONT_ACLONICA:
-                setTypeface(Typeface.create("aclonica", Typeface.NORMAL));
+            case FONT_BIGNOODLEITALIC:
+                setTypeface(Typeface.create("bignoodle-italic", Typeface.NORMAL));
                 break;
-            case FONT_AMARANTE:
-                setTypeface(Typeface.create("amarante", Typeface.NORMAL));
+            case FONT_BIKO:
+                setTypeface(Typeface.create("biko", Typeface.NORMAL));
                 break;
-            case FONT_BARIOL:
-                setTypeface(Typeface.create("bariol", Typeface.NORMAL));
+            case FONT_BLERN:
+                setTypeface(Typeface.create("blern", Typeface.NORMAL));
                 break;
-            case FONT_CAGLIOSTRO:
-                setTypeface(Typeface.create("cagliostro", Typeface.NORMAL));
+            case FONT_CHERRYSWASH:
+                setTypeface(Typeface.create("cherryswash", Typeface.NORMAL));
                 break;
-            case FONT_COOLSTORY:
-                setTypeface(Typeface.create("coolstory", Typeface.NORMAL));
+            case FONT_CODYSTAR:
+                setTypeface(Typeface.create("codystar", Typeface.NORMAL));
                 break;
-            case FONT_LGSMARTGOTHIC:
-                setTypeface(Typeface.create("lgsmartgothic", Typeface.NORMAL));
+            case FONT_GINORASANS:
+                setTypeface(Typeface.create("ginora-sans", Typeface.NORMAL));
                 break;
-            case FONT_ROSEMARY:
-                setTypeface(Typeface.create("rosemary", Typeface.NORMAL));
-                break;
-            case FONT_SONYSKETCH:
-                setTypeface(Typeface.create("sonysketch", Typeface.NORMAL));
-                break;
-            case FONT_SURFER:
-                setTypeface(Typeface.create("surfer", Typeface.NORMAL));
-                break;
-            case FONT_COMICSANS:
-                setTypeface(Typeface.create("comicsans", Typeface.NORMAL));
+            case FONT_GOBOLDLIGHT:
+                setTypeface(Typeface.create("gobold-light-sys", Typeface.NORMAL));
                 break;
             case FONT_GOOGLESANS:
-                setTypeface(Typeface.create("googlesans", Typeface.NORMAL));
+                setTypeface(Typeface.create("googlesans-sys", Typeface.NORMAL));
                 break;
-            case FONT_ONEPLUSSLATE:
-                setTypeface(Typeface.create("oneplusslate", Typeface.NORMAL));
+            case FONT_INKFERNO:
+                setTypeface(Typeface.create("inkferno", Typeface.NORMAL));
                 break;
-            case FONT_SAMSUNGONE:
-                setTypeface(Typeface.create("samsungone", Typeface.NORMAL));
+            case FONT_JURAREG:
+                setTypeface(Typeface.create("jura-reg", Typeface.NORMAL));
+                break;
+            case FONT_KELLYSLAB:
+                setTypeface(Typeface.create("kellyslab", Typeface.NORMAL));
+                break;
+            case FONT_METROPOLIS:
+                setTypeface(Typeface.create("metropolis1920", Typeface.NORMAL));
+                break;
+            case FONT_NEONNEON:
+                setTypeface(Typeface.create("neonneon", Typeface.NORMAL));
+                break;
+             case FONT_POMPIERE:
+                setTypeface(Typeface.create("pompiere", Typeface.NORMAL));
+                break;
+             case FONT_REEMKUFI:
+                setTypeface(Typeface.create("reemkufi", Typeface.NORMAL));
+                break;
+             case FONT_RIVIERA:
+                setTypeface(Typeface.create("riviera", Typeface.NORMAL));
+                break;
+             case FINT_ROADRAGE:
+                setTypeface(Typeface.create("roadrage-sys", Typeface.NORMAL));
+                break;
+             case FONT_SEDGWICK:
+                setTypeface(Typeface.create("sedgwick-ave", Typeface.NORMAL));
+                break;
+             case FONT_SNOWSTORM:
+                setTypeface(Typeface.create("snowstorm-sys", Typeface.NORMAL));
+                break;
+             case FONT_THEMEABLECLOCK:
+                setTypeface(Typeface.create("themeable-clock", Typeface.NORMAL));
+                break;
+             case FONT_UNIONFONT:
+                setTypeface(Typeface.create("unionfont", Typeface.NORMAL));
+                break;
+             case FONT_VIBUR:
+                setTypeface(Typeface.create("vibur", Typeface.NORMAL));
+                break;
+             case FONT_VOLTAIRE:
+                setTypeface(Typeface.create("voltaire", Typeface.NORMAL));
                 break;
         }
     }
