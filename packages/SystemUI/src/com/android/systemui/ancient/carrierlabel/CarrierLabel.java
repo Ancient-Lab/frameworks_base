@@ -62,9 +62,9 @@ public class CarrierLabel extends TextView implements DarkReceiver, TunerService
     private int mTintColor = Color.WHITE;
 
     private static final int FONT_HEADLINE = 0;
-    private static final int FONT_BODY = 1;
-    private static final int FONT_BOLD = 2;
-    private static final int FONT_NORMAL = 3;
+    private static final int FONT_BODY = 1;   
+    private static final int FONT_NORMAL = 2;
+    private static final int FONT_BOLD = 3;
     private static final int FONT_ITALIC = 4;
     private static final int FONT_BOLD_ITALIC = 5;
     private static final int FONT_LIGHT = 6;    
@@ -95,7 +95,7 @@ public class CarrierLabel extends TextView implements DarkReceiver, TunerService
     private static final int FONT_REEMKUFI = 31;
     private static final int FONT_RIVIERA = 32;
     private static final int FINT_ROADRAGE = 33;
-    private static final int FONT_SEDGWICK = 34;
+    private static final int FONT_SEDGWICKAVE = 34;
     private static final int FONT_SNOWSTORM = 35;
     private static final int FONT_THEMEABLECLOCK = 36;
     private static final int FONT_UNIONFONT = 37;
@@ -201,12 +201,12 @@ public class CarrierLabel extends TextView implements DarkReceiver, TunerService
             case FONT_BODY:
                 setTypeface(Typeface.create(mContext.getResources().getString(R.string.clock_sysfont_body_medium), Typeface.NORMAL));
                 break;
-            case FONT_BOLD:
-                setTypeface(Typeface.create("sans-serif", Typeface.BOLD));
-                break;
             case FONT_NORMAL:
                 setTypeface(Typeface.create("sans-serif", Typeface.NORMAL));
                 break;
+            case FONT_BOLD:
+                setTypeface(Typeface.create("sans-serif", Typeface.BOLD));
+                break;    
             case FONT_ITALIC:
                 setTypeface(Typeface.create("sans-serif", Typeface.ITALIC));
                 break;
@@ -297,7 +297,7 @@ public class CarrierLabel extends TextView implements DarkReceiver, TunerService
              case FINT_ROADRAGE:
                 setTypeface(Typeface.create("roadrage-sys", Typeface.NORMAL));
                 break;
-             case FONT_SEDGWICK:
+             case FONT_SEDGWICKAVE:
                 setTypeface(Typeface.create("sedgwick-ave", Typeface.NORMAL));
                 break;
              case FONT_SNOWSTORM:
