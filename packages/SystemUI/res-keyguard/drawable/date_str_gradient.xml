@@ -4,7 +4,7 @@
 
     <gradient
         android:type="linear"
-        android:startColor="@color/accent_device_default_light"
+        android:startColor="@*android:color/gradient_start"
         android:endColor="@color/date_style_system_accent_follow"
         android:angle="45"/>
 
