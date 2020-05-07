@@ -1176,6 +1176,13 @@
     <!-- screenrecord -->
     <dimen name="screenrecord_dot_size">48dp</dimen>
 
+    <dimen name="custom_volume_dialog_seekbar_width">40dip</dimen>
+    <dimen name="custom_volume_dialog_seekbar_height">220dip</dimen>
+    <dimen name="volume_dialog_row_icon_margintop">-54dp</dimen>
+    <dimen name="volume_dialog_rows_padding_right">0.5dip</dimen>
+    <dimen name="volume_dialog_ringer_spacing">4dip</dimen>
+    <dimen name="volume_dialog_ringer_height">38dip</dimen>
+
     <dimen name="dismiss_all_button_elevation">10dp</dimen>
     <dimen name="dismiss_all_button_height">55dp</dimen>
     <dimen name="dismiss_all_button_margin_bottom">35dp</dimen>
