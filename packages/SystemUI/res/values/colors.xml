@@ -216,8 +216,7 @@
     <color name="recents_dismiss_all_background_color_ripple">#a8a8a8</color>
     <color name="recents_dismiss_all_icon_color">#8a000000</color>
 
-    <color name="anci_tint_custom">#ff000000</color>
-
+    <color name="volume_dialog_background">@android:color/white</color>
     <color name="volume_background_tint">#f2f2f2</color>
 
     <color name="ringer_icon_normal">#5c5c5c</color>
