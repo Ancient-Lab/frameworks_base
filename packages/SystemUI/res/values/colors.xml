@@ -224,7 +224,9 @@
 
     <color name="ringer_icon_mute">@android:color/white</color>
 
-   <color name="row_icon_dark">@color/ringer_icon_normal</color>
-   <color name="row_icon_white">@android:color/white</color>
+    <color name="row_icon_dark">@color/ringer_icon_normal</color>
+    <color name="row_icon_white">@android:color/white</color>
+
+    <color name="anci_tint_custom">#ff000000</color>
 
 </resources>
