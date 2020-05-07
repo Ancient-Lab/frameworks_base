@@ -1074,124 +1074,124 @@ public class KeyguardStatusView extends GridLayout implements
         switch (fontstyle) {
             case FONT_HEADLINE:
             default:
-                setTypeface(Typeface.create(mContext.getResources().getString(R.string.clock_sysfont_headline_medium), Typeface.NORMAL));
+                mOwnerInfo.setTypeface(Typeface.create(mContext.getResources().getString(R.string.clock_sysfont_headline_medium), Typeface.NORMAL));
                 break;
             case FONT_BODY:
-                setTypeface(Typeface.create(mContext.getResources().getString(R.string.clock_sysfont_body_medium), Typeface.NORMAL));
+                mOwnerInfo.setTypeface(Typeface.create(mContext.getResources().getString(R.string.clock_sysfont_body_medium), Typeface.NORMAL));
                 break;
             case FONT_NORMAL:
-                setTypeface(Typeface.create("sans-serif", Typeface.NORMAL));
+                mOwnerInfo.setTypeface(Typeface.create("sans-serif", Typeface.NORMAL));
                 break;
             case FONT_BOLD:
-                setTypeface(Typeface.create("sans-serif", Typeface.BOLD));
+                mOwnerInfo.setTypeface(Typeface.create("sans-serif", Typeface.BOLD));
                 break;    
             case FONT_ITALIC:
-                setTypeface(Typeface.create("sans-serif", Typeface.ITALIC));
+                mOwnerInfo.setTypeface(Typeface.create("sans-serif", Typeface.ITALIC));
                 break;
             case FONT_BOLD_ITALIC:
-                setTypeface(Typeface.create("sans-serif", Typeface.BOLD_ITALIC));
+                mOwnerInfo.setTypeface(Typeface.create("sans-serif", Typeface.BOLD_ITALIC));
                 break;                
             case FONT_LIGHT:
-                setTypeface(Typeface.create("sans-serif-light", Typeface.NORMAL));
+                mOwnerInfo.setTypeface(Typeface.create("sans-serif-light", Typeface.NORMAL));
                 break;         
             case FONT_THIN:
-                setTypeface(Typeface.create("sans-serif-thin", Typeface.NORMAL));
+                mOwnerInfo.setTypeface(Typeface.create("sans-serif-thin", Typeface.NORMAL));
                 break;                
             case FONT_CONDENSED:
-                setTypeface(Typeface.create("sans-serif-condensed", Typeface.NORMAL));
+                mOwnerInfo.setTypeface(Typeface.create("sans-serif-condensed", Typeface.NORMAL));
                 break;
             case FONT_CONDENSED_ITALIC:
-                setTypeface(Typeface.create("sans-serif-condensed", Typeface.ITALIC));
+                mOwnerInfo.setTypeface(Typeface.create("sans-serif-condensed", Typeface.ITALIC));
                 break;
             case FONT_CONDENSED_BOLD:
-                setTypeface(Typeface.create("sans-serif-condensed", Typeface.BOLD));
+                mOwnerInfo.setTypeface(Typeface.create("sans-serif-condensed", Typeface.BOLD));
                 break;
             case FONT_CONDENSED_BOLD_ITALIC:
-                setTypeface(Typeface.create("sans-serif-condensed", Typeface.BOLD_ITALIC));
+                mOwnerInfo.setTypeface(Typeface.create("sans-serif-condensed", Typeface.BOLD_ITALIC));
                 break;
             case FONT_MEDIUM:
-                setTypeface(Typeface.create("sans-serif-medium", Typeface.NORMAL));
+                mOwnerInfo.setTypeface(Typeface.create("sans-serif-medium", Typeface.NORMAL));
                 break;
             case FONT_MEDIUM_ITALIC:
-                setTypeface(Typeface.create("sans-serif-medium", Typeface.ITALIC));
+                mOwnerInfo.setTypeface(Typeface.create("sans-serif-medium", Typeface.ITALIC));
                 break;
             case FONT_ALBELREG:
-                setTypeface(Typeface.create("abelreg", Typeface.NORMAL));
+                mOwnerInfo.setTypeface(Typeface.create("abelreg", Typeface.NORMAL));
                 break;
             case FONT_ADVENTPRO:
-                setTypeface(Typeface.create("adventpro", Typeface.NORMAL));
+                mOwnerInfo.setTypeface(Typeface.create("adventpro", Typeface.NORMAL));
                 break;
             case FONT_ALIENLEAGUE:
-                setTypeface(Typeface.create("alien-league", Typeface.NORMAL));
+                mOwnerInfo.setTypeface(Typeface.create("alien-league", Typeface.NORMAL));
                 break;
             case FONT_BIGNOODLEITALIC:
-                setTypeface(Typeface.create("bignoodle-italic", Typeface.NORMAL));
+                mOwnerInfo.setTypeface(Typeface.create("bignoodle-italic", Typeface.NORMAL));
                 break;
             case FONT_BIKO:
-                setTypeface(Typeface.create("biko", Typeface.NORMAL));
+                mOwnerInfo.setTypeface(Typeface.create("biko", Typeface.NORMAL));
                 break;
             case FONT_BLERN:
-                setTypeface(Typeface.create("blern", Typeface.NORMAL));
+                mOwnerInfo.setTypeface(Typeface.create("blern", Typeface.NORMAL));
                 break;
             case FONT_CHERRYSWASH:
-                setTypeface(Typeface.create("cherryswash", Typeface.NORMAL));
+                mOwnerInfo.setTypeface(Typeface.create("cherryswash", Typeface.NORMAL));
                 break;
             case FONT_CODYSTAR:
-                setTypeface(Typeface.create("codystar", Typeface.NORMAL));
+                mOwnerInfo.setTypeface(Typeface.create("codystar", Typeface.NORMAL));
                 break;
             case FONT_GINORASANS:
-                setTypeface(Typeface.create("ginora-sans", Typeface.NORMAL));
+                mOwnerInfo.setTypeface(Typeface.create("ginora-sans", Typeface.NORMAL));
                 break;
             case FONT_GOBOLDLIGHT:
-                setTypeface(Typeface.create("gobold-light-sys", Typeface.NORMAL));
+                mOwnerInfo.setTypeface(Typeface.create("gobold-light-sys", Typeface.NORMAL));
                 break;
             case FONT_GOOGLESANS:
-                setTypeface(Typeface.create("googlesans-sys", Typeface.NORMAL));
+                mOwnerInfo.setTypeface(Typeface.create("googlesans-sys", Typeface.NORMAL));
                 break;
             case FONT_INKFERNO:
-                setTypeface(Typeface.create("inkferno", Typeface.NORMAL));
+                mOwnerInfo.setTypeface(Typeface.create("inkferno", Typeface.NORMAL));
                 break;
             case FONT_JURAREG:
-                setTypeface(Typeface.create("jura-reg", Typeface.NORMAL));
+                mOwnerInfo.setTypeface(Typeface.create("jura-reg", Typeface.NORMAL));
                 break;
             case FONT_KELLYSLAB:
-                setTypeface(Typeface.create("kellyslab", Typeface.NORMAL));
+                mOwnerInfo.setTypeface(Typeface.create("kellyslab", Typeface.NORMAL));
                 break;
             case FONT_METROPOLIS:
-                setTypeface(Typeface.create("metropolis1920", Typeface.NORMAL));
+                mOwnerInfo.setTypeface(Typeface.create("metropolis1920", Typeface.NORMAL));
                 break;
             case FONT_NEONNEON:
-                setTypeface(Typeface.create("neonneon", Typeface.NORMAL));
+                mOwnerInfo.setTypeface(Typeface.create("neonneon", Typeface.NORMAL));
                 break;
              case FONT_POMPIERE:
-                setTypeface(Typeface.create("pompiere", Typeface.NORMAL));
+                mOwnerInfo.setTypeface(Typeface.create("pompiere", Typeface.NORMAL));
                 break;
              case FONT_REEMKUFI:
-                setTypeface(Typeface.create("reemkufi", Typeface.NORMAL));
+                mOwnerInfo.setTypeface(Typeface.create("reemkufi", Typeface.NORMAL));
                 break;
              case FONT_RIVIERA:
-                setTypeface(Typeface.create("riviera", Typeface.NORMAL));
+                mOwnerInfo.setTypeface(Typeface.create("riviera", Typeface.NORMAL));
                 break;
              case FINT_ROADRAGE:
-                setTypeface(Typeface.create("roadrage-sys", Typeface.NORMAL));
+                mOwnerInfo.setTypeface(Typeface.create("roadrage-sys", Typeface.NORMAL));
                 break;
              case FONT_SEDGWICKAVE:
-                setTypeface(Typeface.create("sedgwick-ave", Typeface.NORMAL));
+                mOwnerInfo.setTypeface(Typeface.create("sedgwick-ave", Typeface.NORMAL));
                 break;
              case FONT_SNOWSTORM:
-                setTypeface(Typeface.create("snowstorm-sys", Typeface.NORMAL));
+                mOwnerInfo.setTypeface(Typeface.create("snowstorm-sys", Typeface.NORMAL));
                 break;
              case FONT_THEMEABLECLOCK:
-                setTypeface(Typeface.create("themeable-clock", Typeface.NORMAL));
+                mOwnerInfo.setTypeface(Typeface.create("themeable-clock", Typeface.NORMAL));
                 break;
              case FONT_UNIONFONT:
-                setTypeface(Typeface.create("unionfont", Typeface.NORMAL));
+                mOwnerInfo.setTypeface(Typeface.create("unionfont", Typeface.NORMAL));
                 break;
              case FONT_VIBUR:
-                setTypeface(Typeface.create("vibur", Typeface.NORMAL));
+                mOwnerInfo.setTypeface(Typeface.create("vibur", Typeface.NORMAL));
                 break;
              case FONT_VOLTAIRE:
-                setTypeface(Typeface.create("voltaire", Typeface.NORMAL));
+                mOwnerInfo.setTypeface(Typeface.create("voltaire", Typeface.NORMAL));
                 break;
         }
     }

@@ -109,4 +109,7 @@
     <dimen name="lock_date_font_size_24">24dp</dimen>
     <dimen name="lock_date_font_size_25">25dp</dimen>
 
+    <dimen name="widget_date_accent_box_padding_hor">10dp</dimen> 
+    <dimen name="widget_date_accent_box_padding_ver">6dp</dimen>
+
 </resources>
