@@ -45,6 +45,7 @@
             android:id="@+id/system_info_layout"
             android:clipChildren="false"
             android:layout_width="wrap_content"
+            android:layout_marginEnd="4.0dip"
             android:layout_height="fill_parent">
 
             <ImageView
@@ -75,6 +76,7 @@
         android:id="@+id/status_container"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
+        android:layout_marginEnd="4.0dip"
         android:layout_weight="1.0">
 
         <LinearLayout
