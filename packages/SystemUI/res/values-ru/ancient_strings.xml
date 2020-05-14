@@ -138,7 +138,7 @@
     <string name="force_stop_dlg_title">Принудительно остановить?</string>
     <string name="force_stop_dlg_text">Если вы принудительно остановите приложение то это может плохо сказаться на системе.</string>
     <string name="dlg_ok">@android:string/ok</string>
-    <string name="dlg_cancel">@android:string/отменить</string>
+    <string name="dlg_cancel">@android:string/cancel</string>
     <string name="guts_force_close_app">Закрыть приложение</string>
 
     <!-- PowerShare QS tile -->
