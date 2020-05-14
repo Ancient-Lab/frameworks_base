@@ -30,11 +30,9 @@ LOCAL_REQUIRED_MODULES := \
 	FontArbutusSourceOverlay \
 	FontArvoLatoOverlay \
 	FontRubikRubikOverlay \
-	IconPackCircularAndroidOverlay \
 	IconPackCircularPixelLauncherOverlay \
 	IconPackCircularPixelThemePickerOverlay \
 	IconPackCircularSettingsOverlay \
-	IconPackCircularSystemUIOverlay \
 	IconPackFilledAndroidOverlay \
 	IconPackFilledPixelLauncherOverlay \
 	IconPackFilledPixelThemePickerOverlay \
