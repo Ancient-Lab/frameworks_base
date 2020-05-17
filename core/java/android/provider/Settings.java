@@ -5291,6 +5291,64 @@ public final class Settings {
         private static final Validator STATUS_BAR_FILE_HEADER_IMAGE_VALIDATOR = ANY_STRING_VALIDATOR;
 
         /**
+         * Gaming mode master switch
+         * @hide
+         */
+        public static final String GAMING_MODE_ENABLED = "gaming_mode_enabled";
+
+        /**
+         * Gaming mode active state - to disable via notification / tile
+         * @hide
+         */
+        public static final String GAMING_MODE_ACTIVE = "gaming_mode_active";
+
+
+        /**
+         * Package name of apps for enabling Gaming mode
+         * @hide
+         */
+        public static final String GAMING_MODE_VALUES = "gaming_mode_values";
+        public static final String GAMING_MODE_DUMMY = "gaming_mode_dummy";
+
+        /**
+         * Whether to disable hardware keys in gaming mode
+         * @hide
+         */
+        public static final String GAMING_MODE_HW_KEYS_TOGGLE = "gaming_mode_hw_keys_toggle";
+
+        /**
+         * Whether to disable heads up gaming mode
+         * @hide
+         */
+        public static final String GAMING_MODE_HEADSUP_TOGGLE = "gaming_mode_headsup_toggle";
+
+        /**
+         * Ringer in gaming mode (0:OFF, 1:Vibrate, 2:DND, 3:Silent)
+         * @hide
+         */
+        public static final String GAMING_MODE_RINGER_MODE = "gaming_mode_ringer_mode";
+
+        /**
+         * Whether to show notifications/toasts (0:OFF, 1:notifications, 2:toasts, 3: all)
+         * @hide
+         */
+        public static final String GAMING_MODE_NOTIFICATIONS = "gaming_mode_notifications";
+
+        /**
+         * Whether to lock brightness in gaming mode
+         * @hide
+         */
+        public static final String GAMING_MODE_MANUAL_BRIGHTNESS_TOGGLE = "gaming_mode_manual_brightness_toggle";
+
+        /**
+         * Whether to automatically enable the gaming mode
+         * if the launched app is a game
+         * @hide
+         */
+        public static final String GAMING_MODE_DYNAMIC_STATE = "gaming_mode_dynamic_state";
+
+
+        /**
          * Indicates whether ANBI (Accidental navigation button interaction) is enabled.
          *
          * @hide
@@ -10358,6 +10416,14 @@ public final class Settings {
                 new SettingsValidators.DiscreteValueValidator(new String[] {"0", "1", "2"});
 
         /**
+         * Whether to show or hide the arrow for back gesture
+         * @hide
+         */
+        public static final String SHOW_BACK_ARROW_GESTURE = "show_back_arrow_gesture";
+
+        private static final Validator SHOW_BACK_ARROW_GESTURE_VALIDATOR = BOOLEAN_VALIDATOR;
+
+        /**
          * Current provider of proximity-based sharing services.
          * Default value in @string/config_defaultNearbySharingComponent.
          * No VALIDATOR as this setting will not be backed up.
@@ -10721,6 +10787,7 @@ public final class Settings {
             VALIDATORS.put(ASSIST_GESTURE_ENABLED, ASSIST_GESTURE_ENABLED_VALIDATOR);
             VALIDATORS.put(ASSIST_GESTURE_SILENCE_ALERTS_ENABLED,
                     ASSIST_GESTURE_SILENCE_ALERTS_ENABLED_VALIDATOR);
+            VALIDATORS.put(SHOW_BACK_ARROW_GESTURE, SHOW_BACK_ARROW_GESTURE_VALIDATOR);
             VALIDATORS.put(ASSIST_GESTURE_WAKE_ENABLED, ASSIST_GESTURE_WAKE_ENABLED_VALIDATOR);
             VALIDATORS.put(VR_DISPLAY_MODE, VR_DISPLAY_MODE_VALIDATOR);
             VALIDATORS.put(NOTIFICATION_BADGING, NOTIFICATION_BADGING_VALIDATOR);
