@@ -435,8 +435,13 @@ public abstract class BiometricDialogView extends LinearLayout {
 
                 final int navbarHeight = getResources().getDimensionPixelSize(
                         com.android.internal.R.dimen.navigation_bar_height);
+                final int fodMargin = getResources().getDimensionPixelSize(
+                        R.dimen.biometric_dialog_fod_margin);
 
                 LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) mBiometricIcon.getLayoutParams();
+                lp.topMargin = isGesturalNav ? fodMargin : (fodMargin > navbarHeight)
+                        ? (fodMargin - navbarHeight) : 0;
+
                 // Add Errortext above the biometric icon
                 mDialog.removeView(mErrorText);
                 mDialog.addView(mErrorText, mDialog.indexOfChild(mBiometricIcon));
