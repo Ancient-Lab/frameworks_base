@@ -4833,7 +4833,7 @@ public final class Settings {
         public static final String LOCKSCREEN_MEDIA_BLUR = "lockscreen_media_blur";
 
         private static final Validator LOCKSCREEN_MEDIA_BLUR_VALIDATOR =
-                new SettingsValidators.InclusiveIntegerRangeValidator(5, 100);
+                new SettingsValidators.InclusiveIntegerRangeValidator(1, 100);
 
         /**
          * Battery style
