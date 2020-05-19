@@ -250,8 +250,6 @@ public class QSFactoryImpl implements QSFactory {
                 return mUiModeNightTileProvider.get();
             case "caffeine":
                 return mCaffeineTileProvider.get();
-            case "gaming":
-                return mGamingModeTileProvider.get();
             case "heads_up":
                 return mHeadsUpTileProvider.get();
             case "lte":
@@ -264,6 +262,8 @@ public class QSFactoryImpl implements QSFactory {
                 return mCompassTileProvider.get();
             case "fpsinfo":
                 return mFPSInfoTileProvider.get();
+            case "gaming":
+                return mGamingModeTileProvider.get();
             case "hwkeys":
                 return mHWKeysTileProvider.get();
             case "usb_tether":
