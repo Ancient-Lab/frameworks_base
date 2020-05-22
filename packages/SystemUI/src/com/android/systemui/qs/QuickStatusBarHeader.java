@@ -63,6 +63,7 @@ import com.android.systemui.plugins.ActivityStarter;
 import com.android.systemui.plugins.DarkIconDispatcher;
 import com.android.systemui.plugins.DarkIconDispatcher.DarkReceiver;
 import com.android.systemui.qs.QSDetail.Callback;
+import com.android.systemui.statusbar.info.DataUsageView;
 import com.android.systemui.statusbar.phone.PhoneStatusBarView;
 import com.android.systemui.statusbar.phone.StatusBarIconController;
 import com.android.systemui.statusbar.phone.StatusBarIconController.TintedIconManager;
@@ -143,6 +144,7 @@ public class QuickStatusBarHeader extends RelativeLayout implements
     private DateView mDateView;
     private BatteryMeterView mBatteryRemainingIcon;
     private NetworkTraffic mTraffic;
+    private DataUsageView mDataUsageView;
 
     private TextView mSystemInfoText;
     private int mSystemInfoMode;
@@ -169,6 +171,9 @@ public class QuickStatusBarHeader extends RelativeLayout implements
                     this, UserHandle.USER_ALL);
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.STATUS_BAR_CUSTOM_HEADER), false,
+                    this, UserHandle.USER_ALL);
+            resolver.registerContentObserver(Settings.System
+                    .getUriFor(Settings.System.QS_DATAUSAGE), false,
                     this, UserHandle.USER_ALL);
             }
 
@@ -255,6 +260,7 @@ public class QuickStatusBarHeader extends RelativeLayout implements
 	mClockView.setQsHeader();
         mDateView = findViewById(R.id.date);
         mTraffic = findViewById(R.id.networkTraffic);
+        mDataUsageView = findViewById(R.id.data_sim_usage);
 
         // Tint for the battery icons are handled in setupHost()
         mBatteryRemainingIcon = findViewById(R.id.batteryRemainingIcon);
@@ -463,6 +469,7 @@ public class QuickStatusBarHeader extends RelativeLayout implements
                 UserHandle.USER_CURRENT) == 1;
         updateResources();
         updateStatusbarProperties();
+        updateDataUsageView();
      }
 
      private void updateQSBatteryMode() {
@@ -483,6 +490,13 @@ public class QuickStatusBarHeader extends RelativeLayout implements
         }
         mBatteryRemainingIcon.updatePercentView();
         mBatteryRemainingIcon.updateVisibility();
+     }
+
+     private void updateDataUsageView() {
+        if (mDataUsageView.isDataUsageEnabled())
+            mDataUsageView.setVisibility(View.VISIBLE);
+        else
+            mDataUsageView.setVisibility(View.GONE);
      }
 
      private void updateSBBatteryStyle() {
