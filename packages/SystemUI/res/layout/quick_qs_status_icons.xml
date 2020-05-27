@@ -58,21 +58,37 @@
 			android:id="@+id/batteryRemainingIcon"
 			android:layout_width="wrap_content"
 			android:layout_height="fill_parent"
+                        android:layout_marginStart="4dp"
 			android:paddingEnd="2.0dip"
 			app:textAppearance="@style/TextAppearance.QS.Status"/>
 
 	</LinearLayout>
 
-	<com.android.systemui.statusbar.info.DataUsageView
-           android:id="@+id/data_sim_usage"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:layout_marginStart="8dp"
-           android:gravity="center"
-	   android:textSize="12dp"				   
-           android:singleLine="true"
-           android:textAppearance="@style/TextAppearance.QS.Status"
-           android:visibility="gone" />
+        <LinearLayout
+            android:id="@+id/daily_data_usage_layout"
+            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_marginStart="4dp"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:clipChildren="false" >
+
+            <ImageView
+                android:id="@+id/daily_data_usage_icon"
+                android:layout_height="16sp"
+                android:layout_width="wrap_content"
+                android:src="@drawable/ic_data_saver_off"
+                android:visibility="gone" />
+
+            <com.android.systemui.statusbar.info.DataUsageView
+                android:id="@+id/data_sim_usage"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textAppearance="@style/TextAppearance.StatusBar.Clock"
+                android:singleLine="true"
+                android:visibility="gone" />
+        </LinearLayout>
 
 	<LinearLayout
 		android:gravity="center"
