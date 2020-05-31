@@ -6556,6 +6556,11 @@ public final class Settings {
         public static final String VIBRATE_ON_NOTIFICATIONS = "vibrate_on_notifications";
 
         /**
+         * @hide
+         */
+        public static final String QS_NEW_BG_ENABLED = "qs_new_bg_enabled";
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *

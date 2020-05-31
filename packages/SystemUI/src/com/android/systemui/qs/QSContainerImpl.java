@@ -76,6 +76,8 @@ public class QSContainerImpl extends FrameLayout implements
     private int mSideMargins;
     private boolean mQsDisabled;
     private Drawable mQsBackGround;
+    private Drawable mQsBackGroundNew;
+    private boolean mQsBgNewEnabled;
 
     private boolean mHeaderImageEnabled;
     private ImageView mBackgroundImage;
@@ -113,6 +115,7 @@ public class QSContainerImpl extends FrameLayout implements
         mQSCustomizer = (QSCustomizer) findViewById(R.id.qs_customize);
         mQSFooter = findViewById(R.id.qs_footer);
         mBackground = findViewById(R.id.quick_settings_background);
+        mQsBackGroundNew = getContext().getDrawable(R.drawable.qs_background_primary_new);
         mStatusBarBackground = findViewById(R.id.quick_settings_status_bar_background);
         mBackgroundGradient = findViewById(R.id.quick_settings_gradient_view);
         mSideMargins = getResources().getDimensionPixelSize(R.dimen.notification_side_paddings);
@@ -180,6 +183,9 @@ public class QSContainerImpl extends FrameLayout implements
             resolver.registerContentObserver(Settings.System
                     .getUriFor(Settings.System.QS_PANEL_BG_USE_FW),
 		    false, this, UserHandle.USER_ALL);
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.QS_NEW_BG_ENABLED),
+		    false, this, UserHandle.USER_ALL);
         }
 
         @Override
@@ -200,6 +206,8 @@ public class QSContainerImpl extends FrameLayout implements
                 Settings.System.QS_PANEL_BG_ALPHA, 255,
                 UserHandle.USER_CURRENT);
 
+        mQsBgNewEnabled = Settings.System.getIntForUser(getContext().getContentResolver(),
+                    Settings.System.QS_NEW_BG_ENABLED, 1, UserHandle.USER_CURRENT) == 1;
         mQsBackGroundColor = ColorUtils.getValidQsColor(Settings.System.getIntForUser(getContext().getContentResolver(),
                 Settings.System.QS_PANEL_BG_COLOR, ColorUtils.genRandomQsColor(),
                 UserHandle.USER_CURRENT));
@@ -216,15 +224,28 @@ public class QSContainerImpl extends FrameLayout implements
 
         private void setQsBackground() {
         if (mSetQsFromResources) {
-            mQsBackGround = getContext().getDrawable(R.drawable.qs_background_primary);
+            if (!mQsBgNewEnabled) {
+                mQsBackGround = getContext().getDrawable(R.drawable.qs_background_primary);
+            } else {
+                mQsBackGroundNew = getContext().getDrawable(R.drawable.qs_background_primary_new);
+            }
         } else {
-            if (mQsBackGround != null)
+            if (!mQsBgNewEnabled) {
                 mQsBackGround.setColorFilter(mCurrentColor, PorterDuff.Mode.SRC_ATOP);
+            } else {
+                mQsBackGroundNew.setColorFilter(mCurrentColor, PorterDuff.Mode.SRC_ATOP);
+            }
         }
-        if (mQsBackGround != null)
+        if (!mQsBgNewEnabled) {
             mQsBackGround.setAlpha(mQsBackGroundAlpha);
-        if (mQsBackGround != null && mBackground != null)
+        } else {
+            mQsBackGroundNew.setAlpha(mQsBackGroundAlpha);
+        }
+        if (!mQsBgNewEnabled && mBackground != null) {
             mBackground.setBackground(mQsBackGround);
+        } else {
+            mBackground.setBackground(mQsBackGroundNew);
+        }
     }
 
     @Override
