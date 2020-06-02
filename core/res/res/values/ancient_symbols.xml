@@ -188,12 +188,6 @@
     <!-- Whether device supports variable refresh rate -->
     <java-symbol type="bool" name="config_hasVariableRefreshRate" />
 
-    <!-- Library path of screen off fod handler -->
-    <java-symbol type="string" name="config_fodScreenOffHandlerLib" />
-
-    <!-- Class name of screen off fod handler -->
-    <java-symbol type="string" name="config_fodScreenOffHandlerClass" />
-
     <!-- App error dialog -->
     <java-symbol type="id" name="aerr_copy" />
     <java-symbol type="string" name="url_copy_success" />
