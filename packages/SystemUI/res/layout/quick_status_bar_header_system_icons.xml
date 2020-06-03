@@ -12,6 +12,8 @@
 	android:layout_alignParentTop="true" 
 	android:paddingStart="@dimen/status_bar_padding_start" 
 	android:paddingEnd="@dimen/status_bar_padding_end"
+        android:paddingTop="@dimen/status_bar_padding_top"
+
         xmlns:android="http://schemas.android.com/apk/res/android" 
 	xmlns:systemui="http://schemas.android.com/apk/res-auto">
                 <LinearLayout 
