@@ -280,6 +280,23 @@ public class Camera {
     private static final int CAMERA_FACE_DETECTION_SW = 1;
 
     /**
+     * @hide
+     */
+    public static boolean shouldExposeAuxCamera() {
+        /**
+         * Force to expose only two cameras
+         * if the package name does not falls in this bucket
+         */
+        String packageName = ActivityThread.currentOpPackageName();
+        List<String> packageList = Arrays.asList(
+                SystemProperties.get("vendor.camera.aux.packagelist", packageName).split(","));
+        List<String> packageBlacklist = Arrays.asList(
+                SystemProperties.get("vendor.camera.aux.packageblacklist", "").split(","));
+
+        return packageList.contains(packageName) && !packageBlacklist.contains(packageName);
+    }
+
+    /**
      * Returns the number of physical cameras available on this device.
      * The return value of this method might change dynamically if the device
      * supports external cameras and an external camera is connected or
@@ -295,26 +312,8 @@ public class Camera {
      *   cameras or an error was encountered enumerating them.
      */
     public static int getNumberOfCameras() {
-        boolean exposeAuxCamera = true;
-        String packageName = ActivityThread.currentOpPackageName();
-        /* Force to expose only two cameras
-         * if the package name does not falls in this bucket
-         */
-        String packageList = SystemProperties.get("vendor.camera.aux.packagelist", "");
-        String packageBlacklist = SystemProperties.get("vendor.camera.aux.packageblacklist", "");
-        if (!packageList.isEmpty()) {
-            exposeAuxCamera = false;
-            if (Arrays.asList(packageList.split(",")).contains(packageName)) {
-                exposeAuxCamera = true;
-            }
-        } else if (!packageBlacklist.isEmpty()) {
-            exposeAuxCamera = true;
-            if (Arrays.asList(packageBlacklist.split(",")).contains(packageName)) {
-                exposeAuxCamera = false;
-            }
-        }
         int numberOfCameras = _getNumberOfCameras();
-        if (exposeAuxCamera == false && (numberOfCameras > 2)) {
+        if (!shouldExposeAuxCamera() && numberOfCameras > 2) {
             numberOfCameras = 2;
         }
         return numberOfCameras;
@@ -322,8 +321,9 @@ public class Camera {
 
     /**
      * Returns the number of physical cameras available on this device.
+     *
+     * @hide
      */
-    /** @hide */
     public native static int _getNumberOfCameras();
 
     /**
@@ -335,7 +335,7 @@ public class Camera {
      *    low-level failure).
      */
     public static void getCameraInfo(int cameraId, CameraInfo cameraInfo) {
-        if(cameraId >= getNumberOfCameras()){
+        if (cameraId >= getNumberOfCameras()) {
             throw new RuntimeException("Unknown camera ID");
         }
         _getCameraInfo(cameraId, cameraInfo);
@@ -619,8 +619,8 @@ public class Camera {
 
     /** used by Camera#open, Camera#open(int) */
     Camera(int cameraId) {
-        if(cameraId >= getNumberOfCameras()){
-             throw new RuntimeException("Unknown camera ID");
+        if (cameraId >= getNumberOfCameras()) {
+            throw new RuntimeException("Unknown camera ID");
         }
         int err = cameraInitNormal(cameraId);
         if (checkInitErrors(err)) {
