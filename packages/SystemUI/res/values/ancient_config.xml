@@ -35,9 +35,6 @@
     <!-- Enable face auth only when swiping security view -->
     <bool name="config_faceAuthOnlyOnSecurityView">false</bool>
 
-    <!-- Whether to show biometric help only when failed -->
-    <bool name="config_biometricHelpShowOnlyWhenFailed">false</bool>
-
     <!-- Asus stitch editor component name -->
     <string name="config_stitchEditor">com.asus.stitchimage/com.asus.stitchimage.editor.ScreenshotEditorActivity</string>
 
