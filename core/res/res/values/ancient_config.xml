@@ -224,4 +224,6 @@
     <!-- Whether device has VOOC charging support -->
     <bool name="config_hasVoocCharger">false</bool>
 
+    <!-- Default fod pressed icon -->
+    <integer name="config_pressed_fod_icon">0</integer>
 </resources>
