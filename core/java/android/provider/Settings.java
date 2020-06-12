@@ -5000,6 +5000,9 @@ public final class Settings {
         public static final String NETWORK_TRAFFIC_EXPANDED_STATUS_BAR_STATE =
                 "network_traffic_expanded_status_bar_state";
 
+        /** @hide */
+        private static final Validator NETWORK_TRAFFIC_EXPANDED_STATUS_BAR_STATE_VALIDATOR = BOOLEAN_VALIDATOR;
+
          /**
          * Adaptive playback
          * Automatically pause media when the volume is muted and
@@ -5015,16 +5018,6 @@ public final class Settings {
          * @hide
          */
         public static final String ADAPTIVE_PLAYBACK_TIMEOUT = "adaptive_playback_timeout";
-
-	/**
-        * Defines the global heads up notification snooze=
-        * @hide
-        */
-        public static final String HEADS_UP_NOTIFICATION_SNOOZE = "heads_up_notification_snooze";
-
-
-        /** @hide */
-        private static final Validator NETWORK_TRAFFIC_EXPANDED_STATUS_BAR_STATE_VALIDATOR = BOOLEAN_VALIDATOR;
 
         /**
          * Network traffic location
