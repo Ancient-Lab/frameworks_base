@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:gravity="fill_horizontal|center">
+        <shape android:tint="@*android:color/config_progress_background_tint" 
+            android:shape="rectangle">
+            <size android:height="44.0dip" />
+            <solid android:color="@color/white_disabled" />
+            <corners android:radius="?android:dialogCornerRadius" />
+        </shape>
+    </item>
+    <item android:gravity="fill_horizontal|center">
+        <scale android:scaleWidth="100%">
+            <shape android:shape="rectangle">
+                <size android:height="44.0dip" />
+                <gradient android:startColor="@*android:color/gradient_start" 
+                    android:endColor="@*android:color/gradient_end" 
+                    android:angle="45.0" />
+                <corners android:radius="?android:dialogCornerRadius" />
+            </shape>
+        </scale>
+    </item>
+</layer-list>
