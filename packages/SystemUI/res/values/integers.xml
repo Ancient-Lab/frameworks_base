@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
   ~ Copyright (C) 2018 The Android Open Source Project
+  ~ Copyright 2020 Ancient OS
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~ you may not use this file except in compliance with the License.
@@ -26,5 +27,7 @@
          lightweight translation animations, this number can be reduced on lower end devices if any
          performance issues arise. -->
     <integer name="bubbles_max_rendered">5</integer>
+
+    <integer name="anci_grav_ui">17</integer>
 
 </resources>

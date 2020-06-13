@@ -38,8 +38,8 @@
 	   android:layout_alignParentBottom="true" 
 	   android:layout_alignParentStart="true">
             <LinearLayout 
-	       android:gravity="bottom|center" 
-	       android:layout_gravity="bottom|center" 
+	       android:gravity="@integer/anci_grav_ui" 
+	       android:layout_gravity="@integer/anci_grav_ui" 
 	       android:orientation="horizontal" 
 	       android:layout_width="fill_parent" 
 	       android:layout_height="wrap_content" 
