@@ -5,6 +5,7 @@ import android.graphics.Canvas;
 import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.os.AsyncTask;
+import android.os.Handler;
 import android.telephony.SubscriptionManager;
 import android.text.BidiFormatter;
 import android.text.format.Formatter;
@@ -26,12 +27,15 @@ public class DataUsageView extends TextView {
     private NetworkController mNetworkController;
     private static boolean shouldUpdateData;
     private String formatedinfo;
+    private Handler mHandler;
+    private static long mTime;
 
     public DataUsageView(Context context, AttributeSet attrs) {
         super(context, attrs);
 
         mContext = context;
         mNetworkController = Dependency.get(NetworkController.class);
+        mHandler = new Handler();
     }
 
     protected void onDraw(Canvas canvas) {
@@ -43,15 +47,26 @@ public class DataUsageView extends TextView {
         if (isDataUsageEnabled() != 0) {
             if(shouldUpdateData) {
                 shouldUpdateData = false;
-                AsyncTask.execute(new Runnable() {
+                updateDataUsage();
+            } else {
+                mHandler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        updateUsageData();
+                        updateDataUsage();
                     }
-                });
-                setText(formatedinfo);
+                }, 2000);
             }
         }
+    }
+
+    private void updateDataUsage() {
+        AsyncTask.execute(new Runnable() {
+            @Override
+            public void run() {
+                updateUsageData();
+            }
+        });
+        setText(formatedinfo);
     }
 
     private void updateUsageData() {
@@ -75,7 +90,12 @@ public class DataUsageView extends TextView {
     }
 
     public static void updateUsage() {
-        shouldUpdateData = true;
+        // limit to one update per second
+        long time = System.currentTimeMillis();
+        if (time - mTime > 1000) {
+            shouldUpdateData = true;
+        }
+        mTime = time;
     }
 
     private String formatDataUsage(long byteValue) {
