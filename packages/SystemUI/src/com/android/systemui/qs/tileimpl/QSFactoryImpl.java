@@ -41,7 +41,6 @@ import com.android.systemui.qs.tiles.DataSaverTile;
 import com.android.systemui.qs.tiles.DndTile;
 import com.android.systemui.qs.tiles.FlashlightTile;
 import com.android.systemui.qs.tiles.FPSInfoTile;
-import com.android.systemui.qs.tiles.GamingModeTile;
 import com.android.systemui.qs.tiles.HeadsUpTile;
 import com.android.systemui.qs.tiles.HotspotTile;
 import com.android.systemui.qs.tiles.HWKeysTile;
@@ -102,7 +101,6 @@ public class QSFactoryImpl implements QSFactory {
     private final Provider<DataSwitchTile> mDataSwitchTileProvider;
     private final Provider<CompassTile> mCompassTileProvider;
     private final Provider<FPSInfoTile> mFPSInfoTileProvider;
-    private final Provider<GamingModeTile> mGamingModeTileProvider;
     private final Provider<HWKeysTile> mHWKeysTileProvider;
     private final Provider<UsbTetherTile> mUsbTetherTileProvider;
     private final Provider<ScreenshotTile> mScreenshotTileProvider;
@@ -144,7 +142,6 @@ public class QSFactoryImpl implements QSFactory {
             Provider<DataSwitchTile> dataSwitchTileProvider,
             Provider<CompassTile> compassTileProvider,
             Provider<FPSInfoTile> fpsInfoTileProvider,
-            Provider<GamingModeTile> gamingModeTileProvider,
             Provider<HWKeysTile> hWKeysTileProvider,
             Provider<UsbTetherTile> usbTetherTileProvider,
             Provider<ScreenshotTile> screenshotTileProvider,
@@ -182,7 +179,6 @@ public class QSFactoryImpl implements QSFactory {
         mDataSwitchTileProvider = dataSwitchTileProvider;
         mCompassTileProvider = compassTileProvider;
         mFPSInfoTileProvider = fpsInfoTileProvider;
-        mGamingModeTileProvider = gamingModeTileProvider;
         mHWKeysTileProvider = hWKeysTileProvider;
         mUsbTetherTileProvider = usbTetherTileProvider;
         mScreenshotTileProvider = screenshotTileProvider;
@@ -262,8 +258,6 @@ public class QSFactoryImpl implements QSFactory {
                 return mCompassTileProvider.get();
             case "fpsinfo":
                 return mFPSInfoTileProvider.get();
-            case "gaming":
-                return mGamingModeTileProvider.get();
             case "hwkeys":
                 return mHWKeysTileProvider.get();
             case "usb_tether":
