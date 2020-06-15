@@ -21,6 +21,8 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
 import android.app.admin.DevicePolicyManager;
 import android.content.Context;
+import android.content.ContentResolver;
+import android.content.pm.PackageManager;
 import android.content.pm.PackageManager;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
@@ -105,7 +107,11 @@ public class KeyguardIndicationController implements StateListener,
     private KeyguardIndicationTextView mTextView;
     private KeyguardIndicationTextView mDisclosure;
     private LottieAnimationView mChargingIndicationView;
-    private int mChargingIndication = 1;
+    private LottieAnimationView mChargingIndicationBat;
+    private LottieAnimationView mChargingIndicationDrop;
+    private LottieAnimationView mChargingIndicationExplosion;
+    private LottieAnimationView mChargingIndicationWater;
+    private int mChargingIndication;
     private int mFODPositionY = 0;
     private final UserManager mUserManager;
     private final IBatteryStats mBatteryInfo;
@@ -139,6 +145,8 @@ public class KeyguardIndicationController implements StateListener,
     private String mMessageToShowOnScreenOn;
 
     private KeyguardUpdateMonitorCallback mUpdateMonitorCallback;
+                
+    private boolean mBiometricHelpShowOnlyWhenFailed = false;           
 
     private final DevicePolicyManager mDevicePolicyManager;
     private boolean mDozing;
@@ -210,11 +218,11 @@ public class KeyguardIndicationController implements StateListener,
         mKeyguardUpdateMonitor.registerCallback(mTickReceiver);
         mStatusBarStateController.addCallback(this);
         mUnlockMethodCache.addListener(this);
+            
+        mBiometricHelpShowOnlyWhenFailed = res.getBoolean(R.bool.config_biometricHelpShowOnlyWhenFailed);    
     }
 
     public void setIndicationArea(ViewGroup indicationArea) {
-        mChargingIndicationView = (LottieAnimationView) indicationArea.findViewById(
-              R.id.charging_indication);
         mIndicationArea = indicationArea;
         mTextView = indicationArea.findViewById(R.id.keyguard_indication_text);
         mInitialTextColorState = mTextView != null ?
@@ -222,6 +230,14 @@ public class KeyguardIndicationController implements StateListener,
         mDisclosure = indicationArea.findViewById(R.id.keyguard_indication_enterprise_disclosure);
         mChargingIndicationView = (LottieAnimationView) indicationArea.findViewById(
                 R.id.charging_indication);
+        mChargingIndicationBat = (LottieAnimationView) indicationArea.findViewById(
+              R.id.charging_indication_1);
+        mChargingIndicationDrop = (LottieAnimationView) indicationArea.findViewById(
+              R.id.charging_indication_2);
+        mChargingIndicationExplosion = (LottieAnimationView) indicationArea.findViewById(
+              R.id.charging_indication_3);
+        mChargingIndicationWater = (LottieAnimationView) indicationArea.findViewById(
+              R.id.charging_indication_4);
         if (hasActiveInDisplayFp()) {
             try {
                 IFingerprintInscreen daemon = IFingerprintInscreen.getService();
@@ -481,53 +497,69 @@ public class KeyguardIndicationController implements StateListener,
         }
     }
 
-    public void updateChargingIndication(int type) {
-        if (mChargingIndicationView == null) return;
-        mChargingIndication = type;
-        switch (mChargingIndication) {
-            default:
-            case 1: // Flash
-                mChargingIndicationView.setFileName("keyguard_charging_indication.json");
-                mChargingIndicationView.getLayoutParams().height = mContext.getResources().getDimensionPixelSize(
-                            R.dimen.keyguard_charging_indication_height);
-                mChargingIndicationView.getLayoutParams().width = mContext.getResources().getDimensionPixelSize(
-                            R.dimen.keyguard_charging_indication_width);
-                break;
-            case 2: // Battery
-                mChargingIndicationView.setFileName("keyguard_charge_battery.json");
-                mChargingIndicationView.getLayoutParams().height = mContext.getResources().getDimensionPixelSize(
-                            R.dimen.keyguard_charging_indication_width);
-                mChargingIndicationView.getLayoutParams().width = mContext.getResources().getDimensionPixelSize(
-                            R.dimen.keyguard_charging_indication_height);
-                break;
-            case 3: // Drop
-                mChargingIndicationView.setFileName("keyguard_charge_drop.json");
-                mChargingIndicationView.getLayoutParams().height = mContext.getResources().getDimensionPixelSize(
-                            R.dimen.keyguard_charging_indication_height);
-                mChargingIndicationView.getLayoutParams().width = mContext.getResources().getDimensionPixelSize(
-                            R.dimen.keyguard_charging_indication_height);
-                break;
-            case 4: // Explosion
-                mChargingIndicationView.setFileName("keyguard_charge_explosion.json");
-                mChargingIndicationView.getLayoutParams().height = mContext.getResources().getDimensionPixelSize(
-                            R.dimen.keyguard_charging_indication_height);
-                mChargingIndicationView.getLayoutParams().width = mContext.getResources().getDimensionPixelSize(
-                            R.dimen.keyguard_charging_indication_height);
-                break;
-            case 5: // Water
-                mChargingIndicationView.setFileName("keyguard_charge_water.json");
-                mChargingIndicationView.getLayoutParams().height = mContext.getResources().getDimensionPixelSize(
-                            R.dimen.keyguard_charging_indication_height);
-                mChargingIndicationView.getLayoutParams().width = mContext.getResources().getDimensionPixelSize(
-                            R.dimen.keyguard_charging_indication_height);
-                break;
-        }
+    private boolean hasActiveInDisplayFp() {
+        boolean hasInDisplayFingerprint = mContext.getResources().getBoolean(
+                com.android.internal.R.bool.config_supportsInDisplayFingerprint);
+        int userId = KeyguardUpdateMonitor.getCurrentUser();
+        FingerprintManager fpm = (FingerprintManager) mContext.getSystemService(Context.FINGERPRINT_SERVICE);
+        return hasInDisplayFingerprint && fpm.getEnrolledFingerprints(userId).size() > 0;
     }
+                
+    public void updateChargingIndication() {
+        final ContentResolver resolver = mContext.getContentResolver();
+        mChargingIndication = Settings.System.getIntForUser(resolver,
+                Settings.System.LOCKSCREEN_CHARGING_ANIMATION_STYLE , 1, UserHandle.USER_CURRENT);
 
-    private void updateChargingIndication() {
-        if (mChargingIndicationView == null) return;
-        if (mChargingIndication > 0 && mPowerPluggedIn  && !hasActiveInDisplayFp()) {
-            mChargingIndicationView.setVisibility(View.VISIBLE);
+        if (mPowerPluggedIn) {
+            switch (mChargingIndication) {
+                case 0: // hidden
+                    mChargingIndicationView.setVisibility(View.GONE);
+                    mChargingIndicationBat.setVisibility(View.GONE);
+                    mChargingIndicationDrop.setVisibility(View.GONE);
+                    mChargingIndicationExplosion.setVisibility(View.GONE);
+                    mChargingIndicationWater.setVisibility(View.GONE);
+                    break;
+                case 1: // Flash
+                    mChargingIndicationView.setVisibility(View.VISIBLE);
+                    mChargingIndicationView.playAnimation();
+                    mChargingIndicationBat.setVisibility(View.GONE);
+                    mChargingIndicationDrop.setVisibility(View.GONE);
+                    mChargingIndicationExplosion.setVisibility(View.GONE);
+                    mChargingIndicationWater.setVisibility(View.GONE);
+                    break;
+                case 2: // Battery
+                    mChargingIndicationBat.setVisibility(View.VISIBLE);
+                    mChargingIndicationBat.playAnimation();
+                    mChargingIndicationView.setVisibility(View.GONE);
+                    mChargingIndicationDrop.setVisibility(View.GONE);
+                    mChargingIndicationExplosion.setVisibility(View.GONE);
+                    mChargingIndicationWater.setVisibility(View.GONE);
+                    break;
+                case 3: // Drop
+                    mChargingIndicationDrop.setVisibility(View.VISIBLE);
+                    mChargingIndicationDrop.playAnimation();
+                    mChargingIndicationView.setVisibility(View.GONE);
+                    mChargingIndicationBat.setVisibility(View.GONE);
+                    mChargingIndicationExplosion.setVisibility(View.GONE);
+                    mChargingIndicationWater.setVisibility(View.GONE);
+                    break;
+                case 4: // Explosion
+                    mChargingIndicationExplosion.setVisibility(View.VISIBLE);
+                    mChargingIndicationExplosion.playAnimation();
+                    mChargingIndicationView.setVisibility(View.GONE);
+                    mChargingIndicationBat.setVisibility(View.GONE);
+                    mChargingIndicationDrop.setVisibility(View.GONE);
+                    mChargingIndicationWater.setVisibility(View.GONE);
+                    break;
+                case 5: // Water
+                    mChargingIndicationWater.setVisibility(View.VISIBLE);
+                    mChargingIndicationWater.playAnimation();
+                    mChargingIndicationView.setVisibility(View.GONE);
+                    mChargingIndicationBat.setVisibility(View.GONE);
+                    mChargingIndicationDrop.setVisibility(View.GONE);
+                    mChargingIndicationExplosion.setVisibility(View.GONE);
+                    break;
+            }
             if (hasActiveInDisplayFp()) {
                 if (mFODPositionY != 0) {
                     // Get screen height
@@ -556,22 +588,40 @@ public class KeyguardIndicationController implements StateListener,
                     ViewGroup.MarginLayoutParams params =
                             (ViewGroup.MarginLayoutParams) mChargingIndicationView.getLayoutParams();
                     params.setMargins(0, 0, 0, animationMargin);
-                    mChargingIndicationView.setLayoutParams(params);
+                    ViewGroup.MarginLayoutParams paramsBat =
+                            (ViewGroup.MarginLayoutParams) mChargingIndicationBat.getLayoutParams();
+                    paramsBat.setMargins(0, 0, 0, animationMargin);
+                    ViewGroup.MarginLayoutParams paramsDrop =
+                            (ViewGroup.MarginLayoutParams) mChargingIndicationDrop.getLayoutParams();
+                    paramsDrop.setMargins(0, 0, 0, animationMargin);
+                    ViewGroup.MarginLayoutParams paramsExp =
+                            (ViewGroup.MarginLayoutParams) mChargingIndicationExplosion.getLayoutParams();
+                    paramsExp.setMargins(0, 0, 0, animationMargin);
+                    ViewGroup.MarginLayoutParams paramsWat =
+                            (ViewGroup.MarginLayoutParams) mChargingIndicationWater.getLayoutParams();
+                    paramsWat.setMargins(0, 0, 0, animationMargin);
+                    if (mChargingIndication == 1) {
+                        mChargingIndicationView.setLayoutParams(params);
+                    } else if (mChargingIndication == 2) {
+                        mChargingIndicationBat.setLayoutParams(paramsBat);
+                    } else if (mChargingIndication == 3) {
+                        mChargingIndicationDrop.setLayoutParams(paramsDrop);
+                    } else if (mChargingIndication == 4) {
+                        mChargingIndicationExplosion.setLayoutParams(paramsExp);
+                    } else if (mChargingIndication == 5) {
+                        mChargingIndicationWater.setLayoutParams(paramsWat);
+                    }
                 }
             }
-            mChargingIndicationView.playAnimation();
         } else {
             mChargingIndicationView.setVisibility(View.GONE);
-        }
+            mChargingIndicationBat.setVisibility(View.GONE);
+            mChargingIndicationDrop.setVisibility(View.GONE);
+            mChargingIndicationExplosion.setVisibility(View.GONE);
+            mChargingIndicationWater.setVisibility(View.GONE);
+	}
     }
-
-    private boolean hasActiveInDisplayFp() {
-        boolean hasInDisplayFingerprint = mContext.getResources().getBoolean(
-                com.android.internal.R.bool.config_supportsInDisplayFingerprint);
-        int userId = KeyguardUpdateMonitor.getCurrentUser();
-        FingerprintManager fpm = (FingerprintManager) mContext.getSystemService(Context.FINGERPRINT_SERVICE);
-        return hasInDisplayFingerprint && fpm.getEnrolledFingerprints(userId).size() > 0;
-    }
+            
 
     // animates textView - textView moves up and bounces down
     private void animateText(KeyguardIndicationTextView textView, String indication) {
@@ -845,6 +895,9 @@ public class KeyguardIndicationController implements StateListener,
         @Override
         public void onBiometricHelp(int msgId, String helpString,
                 BiometricSourceType biometricSourceType) {
+            if (mBiometricHelpShowOnlyWhenFailed && msgId != -1){
+                return;
+            }    
             if (!mKeyguardUpdateMonitor.isUnlockingWithBiometricAllowed()) {
                 return;
             }

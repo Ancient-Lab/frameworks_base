@@ -42,6 +42,46 @@
             app:lottie_loop="true"
             android:visibility="gone" />
 
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/charging_indication_1"
+            android:layout_width="60dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center_horizontal"
+            android:clickable="false"
+            app:lottie_fileName="keyguard_charge_battery.json"
+            app:lottie_loop="true"
+            android:visibility="gone" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/charging_indication_2"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_horizontal"
+            android:clickable="false"
+            app:lottie_fileName="keyguard_charge_drop.json"
+            app:lottie_loop="true"
+            android:visibility="gone" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/charging_indication_3"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_horizontal"
+            android:clickable="false"
+            app:lottie_fileName="keyguard_charge_explosion.json"
+            app:lottie_loop="true"
+            android:visibility="gone" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/charging_indication_4"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_horizontal"
+            android:clickable="false"
+            app:lottie_fileName="keyguard_charge_water.json"
+            app:lottie_loop="true"
+            android:visibility="gone" />
+
         <com.android.systemui.statusbar.phone.KeyguardIndicationTextView
             android:id="@+id/keyguard_indication_enterprise_disclosure"
             android:layout_width="match_parent"
