@@ -5751,7 +5751,7 @@ public final class Settings {
         public static final String LOCKSCREEN_CHARGING_ANIMATION_STYLE = "lockscreen_charging_animation_style";
 
         private static final Validator LOCKSCREEN_CHARGING_ANIMATION_STYLE_VALIDATOR =
-                new SettingsValidators.InclusiveIntegerRangeValidator(0, 5);
+                new SettingsValidators.InclusiveIntegerRangeValidator(0, 10);
 
         /**
          * Gaming mode master switch
