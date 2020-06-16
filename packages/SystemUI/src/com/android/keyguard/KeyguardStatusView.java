@@ -1280,6 +1280,26 @@ public class KeyguardStatusView extends GridLayout implements
     private void updateSettings() {
         final ContentResolver resolver = getContext().getContentResolver();
 
+        final Resources res = getContext().getResources();
+        mShowWeather = Settings.System.getIntForUser(resolver,
+                Settings.System.LOCKSCREEN_WEATHER_ENABLED, 0,
+                UserHandle.USER_CURRENT) == 1;
+
+        mOmniStyle = Settings.System.getIntForUser(resolver,
+                Settings.System.LOCKSCREEN_WEATHER_STYLE, 1,
+                UserHandle.USER_CURRENT) == 0;
+
+        if (mWeatherView != null) {
+            if (mShowWeather && mOmniStyle) {
+                mWeatherView.setVisibility(View.VISIBLE);
+                mWeatherView.enableUpdates();
+            }
+            if (!mShowWeather || !mOmniStyle) {
+                mWeatherView.setVisibility(View.GONE);
+                mWeatherView.disableUpdates();
+            }
+        }
+
         mClockSelection = Settings.Secure.getIntForUser(resolver,
                 Settings.Secure.LOCKSCREEN_CLOCK_SELECTION, 2, UserHandle.USER_CURRENT);
 
@@ -1433,29 +1453,6 @@ public class KeyguardStatusView extends GridLayout implements
             mIActivityManager.stopUser(currentUserId, true /*force*/, null);
         } catch (RemoteException re) {
             Log.e(TAG, "Failed to logout user", re);
-        }
-    }
-
-    private void updateSettings() {
-        final ContentResolver resolver = getContext().getContentResolver();
-        final Resources res = getContext().getResources();
-        mShowWeather = Settings.System.getIntForUser(resolver,
-                Settings.System.LOCKSCREEN_WEATHER_ENABLED, 0,
-                UserHandle.USER_CURRENT) == 1;
-
-        mOmniStyle = Settings.System.getIntForUser(resolver,
-                Settings.System.LOCKSCREEN_WEATHER_STYLE, 1,
-                UserHandle.USER_CURRENT) == 0;
-
-        if (mWeatherView != null) {
-            if (mShowWeather && mOmniStyle) {
-                mWeatherView.setVisibility(View.VISIBLE);
-                mWeatherView.enableUpdates();
-            }
-            if (!mShowWeather || !mOmniStyle) {
-                mWeatherView.setVisibility(View.GONE);
-                mWeatherView.disableUpdates();
-            }
         }
     }
 }
