@@ -148,7 +148,7 @@ public class KeyguardSliceProviderGoogle extends KeyguardSliceProvider implement
         return slice;
     }
 
-    private void addWeather(ListBuilder listBuilder) {
+    /*private void addWeather(ListBuilder listBuilder) {
         SmartSpaceCard weatherCard = mSmartSpaceData.getWeatherCard();
         if (weatherCard != null && !weatherCard.isExpired()) {
             RowBuilder rowBuilder = new RowBuilder(mWeatherUri);
@@ -161,7 +161,7 @@ public class KeyguardSliceProviderGoogle extends KeyguardSliceProvider implement
             }
             listBuilder.addRow(rowBuilder);
         }
-    }
+    }*/
 
     @Override
     public void onSmartSpaceUpdated(SmartSpaceData smartSpaceData) {
