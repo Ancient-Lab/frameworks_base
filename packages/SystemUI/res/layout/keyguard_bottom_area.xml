@@ -82,7 +82,6 @@
             app:lottie_loop="true"
             android:visibility="gone" />
 
-
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/charging_indication_5"
             android:layout_width="@dimen/keyguard_charging_indication_width"

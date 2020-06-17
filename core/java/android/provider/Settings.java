@@ -5751,7 +5751,7 @@ public final class Settings {
         public static final String LOCKSCREEN_CHARGING_ANIMATION_STYLE = "lockscreen_charging_animation_style";
 
         private static final Validator LOCKSCREEN_CHARGING_ANIMATION_STYLE_VALIDATOR =
-                new SettingsValidators.InclusiveIntegerRangeValidator(0, 5);
+                new SettingsValidators.InclusiveIntegerRangeValidator(0, 10);
 
         /**
          * Gaming mode master switch
@@ -5809,6 +5809,23 @@ public final class Settings {
          * @hide
          */
         public static final String GAMING_MODE_DYNAMIC_STATE = "gaming_mode_dynamic_state";
+
+        /**
+         * @hide
+         */
+        public static final String OMNIJAWS_WEATHER_ICON_PACK = "omnijaws_weather_icon_pack";
+
+        /**
+         * @hide
+         */
+        public static final String LOCKSCREEN_WEATHER_ENABLED = "lockscreen_weather_enabled";
+
+        /**
+         * 0: OmniJaws Style
+         * 1: KeyguardSlice Style
+         * @hide
+         */
+        public static final String LOCKSCREEN_WEATHER_STYLE = "lockscreen_weather_style";
 
         /**
          * Settings to backup. This is here so that it's in the same place as the settings
