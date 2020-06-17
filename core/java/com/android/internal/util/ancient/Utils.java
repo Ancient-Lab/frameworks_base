@@ -80,6 +80,7 @@ public class Utils {
         "com.android.system.switch.oneplus", // 1
         "com.android.system.switch.narrow", // 2
         "com.android.system.switch.contained", // 3
+        "com.android.system.switch.telegram", // 4
     };
 
     private static IStatusBarService mStatusBarService = null;
