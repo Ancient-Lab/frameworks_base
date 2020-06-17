@@ -81,7 +81,7 @@
             <ImageView
                 android:id="@+id/daily_data_usage_icon"
                 android:layout_height="15sp"
-		android:tint="?android/textColorPrimary"
+		android:tint="@*android:attr/textColorPrimary"
                 android:layout_width="wrap_content"
 		android:layout_marginStart="-5dp"
                 android:src="@drawable/ic_data_saver_off"

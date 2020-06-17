@@ -410,8 +410,8 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
     public void hideSbWeather(boolean animate) {
         if (!mWeatherInHeaderView && mShowWeather != 0
 	    && mWeatherTextView != null && mWeatherImageView != null) {
-            animateHide(mWeatherTextView, animate);
-            animateHide(mWeatherImageView, animate);
+            animateHidden(mWeatherTextView, animate);
+            animateHidden(mWeatherImageView, animate);
 	}
     }
 
@@ -438,6 +438,12 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
                 .setStartDelay(0)
                 .setInterpolator(Interpolators.ALPHA_OUT)
                 .withEndAction(() -> v.setVisibility(invisible ? View.INVISIBLE : View.GONE));
+    }
+
+    private void animateHidden(final View v, boolean animate) {
+        if (v.getVisibility() == View.GONE)
+            return;
+        animateHidden(v, animate);
     }
 
     /**
@@ -721,10 +727,10 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
                 animateShow(mWeatherImageView, animate);
             } else if (mShowWeather == 3 || mShowWeather == 4){
                 animateShow(mWeatherTextView, animate);
-                animateHide(mWeatherImageView, animate);
+                animateHidden(mWeatherImageView, animate);
             } else if (mShowWeather == 5) {
                 animateShow(mWeatherImageView, animate);
-                animateHide(mWeatherTextView, animate);
+                animateHidden(mWeatherTextView, animate);
             }
         }
     }

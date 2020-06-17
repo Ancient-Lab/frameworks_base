@@ -524,12 +524,12 @@ public class NetworkTraffic extends TextView {
     public void useWallpaperTextColor(boolean shouldUseWallpaperTextColor) {
         if (shouldUseWallpaperTextColor) {
 	        final Resources resources = getResources();
-            mTintColor = resources.getColor(R.anci_tint_custom);
+            mTintColor = resources.getColor(R.color.anci_tint_custom);
             //mTintColor = Utils.getColorAttr(mContext, R.attr.wallpaperTextColor);
 	        updateTrafficDrawable();
         } else {
 	        final Resources resources = getResources();
-	        mTintColor = resources.getColor(R.anci_tint_custom);
+	        mTintColor = resources.getColor(R.color.anci_tint_custom);
 	        updateTrafficDrawable();
 	    }
     }
