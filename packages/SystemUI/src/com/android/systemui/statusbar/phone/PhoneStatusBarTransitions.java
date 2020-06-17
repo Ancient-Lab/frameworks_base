@@ -50,8 +50,8 @@ public final class PhoneStatusBarTransitions extends BarTransitions {
         mRightClock = statusBarView.findViewById(R.id.right_clock);
 	mLogoIcon = statusBarView.findViewById(R.id.status_bar_logo);
 	mLogoIconRight = statusBarView.findViewById(R.id.status_bar_logo_right);
-        mWeatherTextView = mView.findViewById(R.id.weather_temp);
-        mWeatherImageView = mView.findViewById(R.id.weather_image);
+        mWeatherTextView = statusBarView.findViewById(R.id.weather_temp);
+        mWeatherImageView = statusBarView.findViewById(R.id.weather_image);
         applyModeBackground(-1, getMode(), false /*animate*/);
         applyMode(getMode(), false /*animate*/);
     }
