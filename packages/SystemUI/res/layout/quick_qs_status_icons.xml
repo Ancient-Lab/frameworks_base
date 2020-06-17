@@ -25,7 +25,7 @@
 	android:clipToPadding="false"
 	android:layout_width="match_parent"
 	android:layout_height="@dimen/ancient_headerimg_size"
-	android:layout_marginTop="5.0dip"
+	android:layout_marginTop="@dimen/anci_stockui_margintop"
 	android:minHeight="20.0dip"
 	android:paddingStart="@dimen/status_bar_padding_start"
 	android:paddingEnd="@dimen/status_bar_padding_end"
@@ -65,18 +65,27 @@
 	</LinearLayout>
 
         <LinearLayout
-            android:id="@+id/daily_data_usage_layout"
             android:layout_height="24dp"
-            android:layout_width="wrap_content"
-            android:layout_marginStart="4dp"
+            android:layout_width="fill_parent"
             android:orientation="horizontal"
-            android:gravity="center"
             android:clipChildren="false" >
+
+	    <LinearLayout
+                android:id="@+id/daily_data_usage_layout"
+                android:layout_height="fill_parent"
+                android:layout_width="wrap_content"
+                android:orientation="horizontal"
+	        android:layout_weight="1.0"	      
+                android:clipChildren="false" >
 
             <ImageView
                 android:id="@+id/daily_data_usage_icon"
-                android:layout_height="16sp"
+                android:layout_height="15sp"
+                android:gravity="center_vertical"
+                android:layout_gravity="start|center"
+		android:tint="@color/anci_tint_custom"
                 android:layout_width="wrap_content"
+		android:layout_marginStart="-5dp"
                 android:src="@drawable/ic_data_saver_off"
                 android:visibility="gone" />
 
@@ -84,12 +93,36 @@
                 android:id="@+id/data_sim_usage"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:gravity="center"
+                android:gravity="center_vertical"
+	        android:layout_gravity="start|center"
 		android:textSize="12dp"				   
-                android:textAppearance="@style/TextAppearance.StatusBar.Clock"
+                android:textAppearance="@style/TextAppearance.QS.Status"
                 android:singleLine="true"
                 android:visibility="gone" />
         </LinearLayout>
+
+	    <LinearLayout
+	        android:gravity="right"      
+                android:layout_height="fill_parent"
+                android:layout_width="wrap_content"
+                android:orientation="horizontal"
+	        android:layout_weight="1.0"	      
+                android:clipChildren="false" >
+
+	      <com.android.systemui.statusbar.policy.NetworkTraffic
+                android:gravity="center"
+                android:id="@+id/networkTraffic"
+                android:paddingLeft="4.0dip"
+                android:paddingRight="4.0dip"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:singleLine="false"
+                android:lineSpacingMultiplier="1.2"
+                android:layout_marginEnd="4.0dip"/>
+
+	     </LinearLayout>
+
+	</LinearLayout>
 
 	<LinearLayout
 		android:gravity="center"
