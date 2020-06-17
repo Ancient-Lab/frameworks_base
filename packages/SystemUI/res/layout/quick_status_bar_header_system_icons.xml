@@ -1,50 +1,41 @@
 <LinearLayout 
-	android:gravity="center" 
-	android:orientation="horizontal" 
+	android:orientation="vertical" 
 	android:id="@+id/quick_status_bar_system_icons" 
 	android:background="@android:color/transparent" 
+	android:paddingTop="@dimen/status_bar_padding_top" 
 	android:clickable="true" 
 	android:clipChildren="false" 
 	android:clipToPadding="false" 
 	android:layout_width="fill_parent" 
 	android:layout_height="@dimen/ancient_minimal_height" 
-	android:layout_marginTop="5.0dip" 
+	android:layout_marginTop="5dp" 
 	android:layout_alignParentTop="true" 
 	android:paddingStart="@dimen/status_bar_padding_start" 
 	android:paddingEnd="@dimen/status_bar_padding_end"
-        android:paddingTop="@dimen/status_bar_padding_top"
-
-        xmlns:android="http://schemas.android.com/apk/res/android" 
+	xmlns:android="http://schemas.android.com/apk/res/android" 
 	xmlns:systemui="http://schemas.android.com/apk/res-auto">
-                <LinearLayout 
+    <RelativeLayout
+	android:layout_width="fill_parent" 
+	android:layout_height="fill_parent">
+        <include 
+          layout="@layout/ancientui_header_clock_stocklike" />
+    </RelativeLayout>
+    	    <com.android.systemui.statusbar.policy.Clock 
+        	android:textAppearance="@style/TextAppearance.StatusBar.Clock" 
 		android:gravity="start|center" 
-		android:orientation="horizontal" 
-		android:layout_width="0.0dip" 
-		android:layout_height="fill_parent" 
-		android:layout_weight="1.0">
-                <com.android.systemui.statusbar.policy.Clock 
-			android:textAppearance="@style/TextAppearance.StatusBar.Clock" 
-			android:gravity="start|center" 
-			android:id="@+id/clock" 
-			android:visibility="gone" 
-			android:layout_width="0.0dip" 
-			android:layout_height="0.0dip" 
-			android:minWidth="48.0dip" 
-			android:singleLine="true" 
-			android:paddingStart="@dimen/status_bar_left_clock_starting_padding" 
-			android:paddingEnd="@dimen/status_bar_left_clock_end_padding" 
-			systemui:showDark="false" />
-                </LinearLayout>
-                <android.widget.Space 
-		android:layout_gravity="center" 
-		android:id="@+id/space" 
+		android:id="@+id/clock" 
 		android:visibility="gone" 
 		android:layout_width="0.0dip" 
-		android:layout_height="fill_parent" />
-                <LinearLayout 
-		android:gravity="right" 
-		android:orientation="horizontal" 
-		android:layout_width="0.0dip" 
-		android:layout_height="fill_parent" 
-		android:layout_weight="1.0" />
+		android:layout_height="0.0dip" 
+		android:minWidth="48.0dip" 
+		android:singleLine="true" 
+		android:paddingStart="@dimen/status_bar_left_clock_starting_padding" 
+		android:paddingEnd="@dimen/status_bar_left_clock_end_padding" 
+		systemui:showDark="false" />
+    <android.widget.Space 
+	android:layout_gravity="center" 
+	android:id="@+id/space" 
+	android:visibility="gone" 
+	android:layout_width="0.0dip" 
+	android:layout_height="0.0dip" />
 </LinearLayout>
