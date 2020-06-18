@@ -79,7 +79,7 @@ import com.android.internal.util.ancient.OmniJawsClient;
 public class KeyguardSliceProvider extends SliceProvider implements
         NextAlarmController.NextAlarmChangeCallback, ZenModeController.Callback,
         NotificationMediaManager.MediaListener, StatusBarStateController.StateListener,
-	OmniJawsClient.OmniJawsObserver {
+    OmniJawsClient.OmniJawsObserver {
 
     private String TAG = KeyguardSliceProvider.class.getSimpleName();
     private static final boolean DEBUG = false;
@@ -386,7 +386,6 @@ public class KeyguardSliceProvider extends SliceProvider implements
             mContentResolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.LOCKSCREEN_WEATHER_ENABLED),
                     false, this, UserHandle.USER_ALL);
-
             mContentResolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.LOCKSCREEN_WEATHER_STYLE),
                     false, this, UserHandle.USER_ALL);

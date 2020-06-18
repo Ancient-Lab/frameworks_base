@@ -97,4 +97,5 @@
     <color name="recents_dismiss_all_background_color">@color/notification_material_background_color</color>
     <color name="recents_dismiss_all_background_color_ripple">@color/notification_material_background_color</color>
     <color name="recents_dismiss_all_icon_color">@android:color/white</color>
+    <color name="anci_tint_custom">#ffffffff</color>
 </resources>
