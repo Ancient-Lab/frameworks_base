@@ -25,7 +25,7 @@
         android:gravity="start"
         android:textStyle="bold"
         android:textAlignment="gravity"
-        android:textSize="13sp"
+        android:textSize="15sp"
         android:textColor="@color/notification_section_header_label_color"
         android:fontFamily="@*android:string/config_headlineFontFamilyMedium"
     />
