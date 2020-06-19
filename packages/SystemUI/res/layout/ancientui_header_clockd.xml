@@ -16,7 +16,7 @@
 -->
 
 <LinearLayout
- Android:gravity="start"
+ android:gravity="start"
  android:layout_gravity="start"
  android:orientation="horizontal" 
  android:layout_width="wrap_content" 
