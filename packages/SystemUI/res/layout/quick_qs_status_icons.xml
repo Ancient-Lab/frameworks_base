@@ -77,15 +77,56 @@
                 android:orientation="horizontal"
 	        android:layout_weight="1.0"	      
                 android:clipChildren="false" >
+             
+             <com.android.systemui.ancient.statusbarweather.QsHeaderWeatherImage
+        	android:id="@+id/weather_image"
+        	android:layout_width="25dp"
+        	android:layout_height="match_parent"
+        	android:layout_gravity="center_vertical"
+        	android:gravity="center_vertical|end"
+        	android:paddingStart="2dp"
+        	android:paddingEnd="2dp" />
+                
+             <com.android.systemui.ancient.statusbarweather.QsHeaderWeather
+	        android:id="@+id/weather_temp"
+	        android:layout_width="wrap_content"
+	        android:layout_height="match_parent"
+	        android:maxLines="1"
+                android:textColor="@color/anci_tint_custom"
+        	android:layout_gravity="center_vertical"
+        	android:gravity="center_vertical|end"
+        	android:textAppearance="@style/TextAppearance.StatusBar.Clock"
+        	android:paddingStart="2dp"
+        	android:paddingEnd="2dp" />
 
-            <ImageView
+        </LinearLayout>
+
+	    <LinearLayout
+	        android:gravity="right"      
+                android:layout_height="fill_parent"
+                android:layout_width="wrap_content"
+                android:orientation="horizontal"
+	        android:layout_weight="1.0"	      
+                android:clipChildren="false" >
+
+	    <com.android.systemui.statusbar.policy.NetworkTraffic
+                android:gravity="center"
+                android:id="@+id/networkTraffic"
+                android:paddingLeft="4.0dip"
+                android:paddingRight="4.0dip"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:singleLine="false"
+                android:lineSpacingMultiplier="1.2"
+                android:layout_marginEnd="2.0dip"/>
+
+             <ImageView
                 android:id="@+id/daily_data_usage_icon"
                 android:layout_height="15sp"
                 android:gravity="center_vertical"
                 android:layout_gravity="start|center"
 		android:tint="@color/anci_tint_custom"
                 android:layout_width="wrap_content"
-		android:layout_marginStart="-5dp"
                 android:src="@drawable/ic_data_saver_off"
                 android:visibility="gone" />
 
@@ -99,47 +140,6 @@
                 android:textAppearance="@style/TextAppearance.QS.Status"
                 android:singleLine="true"
                 android:visibility="gone" />
-        </LinearLayout>
-
-	    <LinearLayout
-	        android:gravity="right"      
-                android:layout_height="fill_parent"
-                android:layout_width="wrap_content"
-                android:orientation="horizontal"
-	        android:layout_weight="1.0"	      
-                android:clipChildren="false" >
-
-            <com.android.systemui.ancient.statusbarweather.QsHeaderWeather
-	        android:id="@+id/weather_temp"
-	        android:layout_width="wrap_content"
-	        android:layout_height="match_parent"
-	        android:maxLines="1"
-                android:textColor="@color/anci_tint_custom"
-        	android:layout_gravity="center_vertical"
-        	android:gravity="center_vertical|end"
-        	android:textAppearance="@style/TextAppearance.StatusBar.Clock"
-        	android:paddingStart="2dp"
-        	android:paddingEnd="2dp" />
-
-    	    <com.android.systemui.ancient.statusbarweather.QsHeaderWeatherImage
-        	android:id="@+id/weather_image"
-        	android:layout_width="22dp"
-        	android:layout_height="match_parent"
-        	android:layout_gravity="center_vertical"
-        	android:gravity="center_vertical|end"
-        	android:paddingStart="2dp"
-        	android:paddingEnd="2dp" />
-
-	    <com.android.systemui.statusbar.policy.NetworkTraffic
-                android:gravity="center"
-                android:id="@+id/networkTraffic"
-                android:paddingLeft="4.0dip"
-                android:paddingRight="4.0dip"
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:singleLine="false"
-                android:lineSpacingMultiplier="1.2"
-                android:layout_marginEnd="4.0dip"/>
 
 	     </LinearLayout>
 
