@@ -5212,22 +5212,22 @@ public final class Settings {
 
         /**
          * 0 = off
-     * 1 = left
-     * 2 = right
+	 * 1 = left
+	 * 2 = right
          */
         public static final String STATUS_BAR_LOGO = "status_bar_logo";
 
         /**
-     ** Statusbar logo Style
-     ** @hide
-     **/
-     public static final String STATUS_BAR_LOGO_STYLE = "status_bar_logo_style";
+	 ** Statusbar logo Style
+	 ** @hide
+	 **/
+	 public static final String STATUS_BAR_LOGO_STYLE = "status_bar_logo_style";
 
-    /**
-     ** Statusbar logo Color
-     ** @hide
+	/**
+	 ** Statusbar logo Color
+	 ** @hide
          **/
-    public static final String STATUS_BAR_LOGO_COLOR = "status_bar_logo_color";
+	public static final String STATUS_BAR_LOGO_COLOR = "status_bar_logo_color";
 
        /**
          * Whether to change the transparency of the qs panel
@@ -5541,7 +5541,7 @@ public final class Settings {
          */
         public static final String DISMISS_ALL_BUTTON = "dismiss_all_button";
 
-    /**
+	/**
          * Change font style for the system lockscreen clock widget
          * @hide
          */
@@ -5606,8 +5606,8 @@ public final class Settings {
          * @hide
          */
         public static final String LOCK_DATE_FONT_SIZE = "lock_date_font_size";
-        
-    /**
+	    
+	/**
          * Change fonts for the system lockscreen Owner info
          *
          * @hide
@@ -5621,7 +5621,7 @@ public final class Settings {
          */
         public static final String LOCKOWNER_FONT_SIZE= "lockowner_font_size";    
 
-    /**
+	/**
          * Controls whether to show R style notification headers
          * @hide
          */
@@ -5629,7 +5629,7 @@ public final class Settings {
 
         private static final Validator NOTIFICATION_HEADERS_VALIDATOR = BOOLEAN_VALIDATOR;    
 
-    /**
+	/**
          * Show data usage in QS header
          * @hide
          */
@@ -5848,6 +5848,12 @@ public final class Settings {
         public static final String STATUS_BAR_SHOW_WEATHER_LOCATION = "status_bar_show_weather_location";
 
         /**
+         * Holds current enabled volume panel implementation
+         * @hide
+         */
+        public static final String SYSTEMUI_PLUGIN_VOLUME = "systemui_plugin_volume";
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
@@ -5919,7 +5925,7 @@ public final class Settings {
             STATUSBAR_CLOCK_DATE_DISPLAY,
             STATUSBAR_CLOCK_DATE_STYLE,
             STATUSBAR_CLOCK_DATE_FORMAT,
-        STATUSBAR_CLOCK_DATE_POSITION,
+	    STATUSBAR_CLOCK_DATE_POSITION,
             ENABLE_CONDITIONS,
             ENABLE_SUGGESTIONS,
             VOLUME_ROCKER_WAKE,
@@ -6114,7 +6120,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(STATUSBAR_CLOCK_DATE_DISPLAY);
             PRIVATE_SETTINGS.add(STATUSBAR_CLOCK_DATE_STYLE);
             PRIVATE_SETTINGS.add(STATUSBAR_CLOCK_DATE_FORMAT);
-        PRIVATE_SETTINGS.add(STATUSBAR_CLOCK_DATE_POSITION);
+	    PRIVATE_SETTINGS.add(STATUSBAR_CLOCK_DATE_POSITION);
             PRIVATE_SETTINGS.add(ENABLE_SUGGESTIONS);
             PRIVATE_SETTINGS.add(VOLUME_ROCKER_WAKE);
             PRIVATE_SETTINGS.add(VOLUME_BUTTON_MUSIC_CONTROL);
@@ -6158,6 +6164,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(BACK_GESTURE_HEIGHT);
             PRIVATE_SETTINGS.add(SCREEN_OFF_ANIMATION);
             PRIVATE_SETTINGS.add(VOLTE_ICON_STYLE);
+            PRIVATE_SETTINGS.add(SYSTEMUI_PLUGIN_VOLUME);
             PRIVATE_SETTINGS.add(QS_BLUR);
             PRIVATE_SETTINGS.add(QS_BLUR_ALPHA);
             PRIVATE_SETTINGS.add(HIDE_SMART_REPLIES);
@@ -6287,7 +6294,7 @@ public final class Settings {
             VALIDATORS.put(STATUSBAR_CLOCK_DATE_DISPLAY, STATUSBAR_CLOCK_DATE_DISPLAY_VALIDATOR);
             VALIDATORS.put(STATUSBAR_CLOCK_DATE_STYLE, STATUSBAR_CLOCK_DATE_STYLE_VALIDATOR);
             VALIDATORS.put(STATUSBAR_CLOCK_DATE_FORMAT, STATUSBAR_CLOCK_DATE_FORMAT_VALIDATOR);
-        VALIDATORS.put(STATUSBAR_CLOCK_DATE_POSITION, STATUSBAR_CLOCK_DATE_POSITION_VALIDATOR);
+	    VALIDATORS.put(STATUSBAR_CLOCK_DATE_POSITION, STATUSBAR_CLOCK_DATE_POSITION_VALIDATOR);
             VALIDATORS.put(ENABLE_CONDITIONS, ENABLE_CONDITIONS_VALIDATOR);
             VALIDATORS.put(ENABLE_SUGGESTIONS, ENABLE_SUGGESTIONS_VALIDATOR);
             VALIDATORS.put(VOLUME_ROCKER_WAKE, VOLUME_ROCKER_WAKE_VALIDATOR);

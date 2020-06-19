@@ -115,15 +115,15 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
          mContentResolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.STATUSBAR_CLOCK_STYLE),
                     false, this, UserHandle.USER_ALL);
-	 mContentResolver.registerContentObserver(Settings.System.getUriFor(
+     mContentResolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.STATUS_BAR_LOGO),
                     false, this, UserHandle.USER_ALL);
-	 mContentResolver.registerContentObserver(Settings.System.getUriFor(
+     mContentResolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.STATUS_BAR_LOGO_STYLE),
-		    false, this, UserHandle.USER_ALL);
-	 mContentResolver.registerContentObserver(Settings.System.getUriFor(
+            false, this, UserHandle.USER_ALL);
+     mContentResolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.STATUS_BAR_LOGO_COLOR),
-		    false, this, UserHandle.USER_ALL);
+            false, this, UserHandle.USER_ALL);
          mContentResolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.STATUS_BAR_SHOW_WEATHER_TEMP),
                     false, this, UserHandle.USER_ALL);
@@ -138,10 +138,10 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
                 (uri.equals(Settings.System.getUriFor(Settings.System.STATUS_BAR_LOGO_STYLE))) ||
                 (uri.equals(Settings.System.getUriFor(Settings.System.STATUS_BAR_LOGO_COLOR)))){
                  updateLogoSettings(true);
-	    }
+        }
             else if ((uri.equals(Settings.System.getUriFor(Settings.System.STATUS_BAR_SHOW_WEATHER_TEMP))) ||
                 (uri.equals(Settings.System.getUriFor(Settings.System.STATUS_BAR_SHOW_WEATHER_LOCATION)))){
-	    }
+        }
             updateSettings(true);
         }
     }
@@ -189,12 +189,12 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
         mClockView = mStatusBar.findViewById(R.id.clock);
         mCenterClockLayout = (LinearLayout) mStatusBar.findViewById(R.id.center_clock_layout);
         mRightClock = mStatusBar.findViewById(R.id.right_clock);
-	mAncientLogo = mStatusBar.findViewById(R.id.status_bar_logo);
-	mAncientLogoRight = mStatusBar.findViewById(R.id.status_bar_logo_right);
+    mAncientLogo = mStatusBar.findViewById(R.id.status_bar_logo);
+    mAncientLogoRight = mStatusBar.findViewById(R.id.status_bar_logo_right);
         mWeatherTextView = mStatusBar.findViewById(R.id.weather_temp);
         mWeatherImageView = mStatusBar.findViewById(R.id.weather_image);
         updateSettings(false);
-	updateLogoSettings(false);
+    updateLogoSettings(false);
         showSystemIconArea(false);
         initEmergencyCryptkeeperText();
         animateHide(mClockView, false, false);
@@ -378,7 +378,7 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
     public void hideNotificationIconArea(boolean animate) {
         animateHide(mNotificationIconAreaInner, animate, true);
         animateHide(mCenteredIconArea, animate, true);
-	animateHide(mCenterClockLayout, animate, true);
+    animateHide(mCenterClockLayout, animate, true);
         animateHide(mCustomIconArea, animate, true);
         if (mShowLogo == 1) {
             animateHide(mAncientLogo, animate, false);
@@ -409,16 +409,16 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
 
     public void hideSbWeather(boolean animate) {
         if (!mWeatherInHeaderView && mShowWeather != 0
-	    && mWeatherTextView != null && mWeatherImageView != null) {
+        && mWeatherTextView != null && mWeatherImageView != null) {
             animateHidden(mWeatherTextView, animate);
             animateHidden(mWeatherImageView, animate);
-	}
+    }
     }
 
     public void showSbWeather(boolean animate) {
         if (!mWeatherInHeaderView && mShowWeather != 0) {
-	    updateSBWeather(animate);
-	}
+        updateSBWeather(animate);
+    }
     }
 
     /**
@@ -529,14 +529,10 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
                     Settings.System.STATUSBAR_CLOCK_STYLE, 0,
                     UserHandle.USER_CURRENT);
         }
-        mShowWeather = Settings.System.getIntForUser(getContext().getContentResolver(),
-                Settings.System.STATUS_BAR_SHOW_WEATHER_TEMP, 0, UserHandle.USER_CURRENT);
-        mWeatherInHeaderView = Settings.System.getIntForUser(getContext().getContentResolver(),
-                Settings.System.STATUS_BAR_SHOW_WEATHER_LOCATION, 0, UserHandle.USER_CURRENT) == 1;
         } catch (Exception e) {
         }
-	updateClockStyle(animate);
-        updateSBWeather(animate);
+    updateClockStyle(animate);
+
     }
 
     public void updateLogoSettings(boolean animate) {
@@ -680,14 +676,14 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
         }
 
         if (mShowLogo == 1) {
-	    mAncientLogo.setImageDrawable(null);
-	    mAncientLogo.setImageDrawable(logo);
- 	    mAncientLogo.setColorFilter(mLogoColor, PorterDuff.Mode.MULTIPLY);
-	} else if (mShowLogo == 2) {
-	    mAncientLogoRight.setImageDrawable(null);
-	    mAncientLogoRight.setImageDrawable(logo);
-	    mAncientLogoRight.setColorFilter(mLogoColor, PorterDuff.Mode.MULTIPLY);
-	}
+        mAncientLogo.setImageDrawable(null);
+        mAncientLogo.setImageDrawable(logo);
+        mAncientLogo.setColorFilter(mLogoColor, PorterDuff.Mode.MULTIPLY);
+    } else if (mShowLogo == 2) {
+        mAncientLogoRight.setImageDrawable(null);
+        mAncientLogoRight.setImageDrawable(logo);
+        mAncientLogoRight.setColorFilter(mLogoColor, PorterDuff.Mode.MULTIPLY);
+    }
 
         if (mNotificationIconAreaInner != null) {
             if (mShowLogo == 1) {
@@ -722,7 +718,7 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
     private void updateSBWeather(boolean animate) {
         if (!mWeatherInHeaderView && mShowWeather != 0) {
             if (mShowWeather == 1 || mShowWeather == 2
-	        || mShowWeather == 3 || mShowWeather == 4) {
+            || mShowWeather == 3 || mShowWeather == 4) {
                 animateShow(mWeatherTextView, animate);
                 animateShow(mWeatherImageView, animate);
             } else if (mShowWeather == 3 || mShowWeather == 4){
