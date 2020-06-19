@@ -410,8 +410,8 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
     public void hideSbWeather(boolean animate) {
         if (!mWeatherInHeaderView && mShowWeather != 0
 	    && mWeatherTextView != null && mWeatherImageView != null) {
-            animateHide(mWeatherTextView, animate);
-            animateHide(mWeatherImageView, animate);
+            animateHidden(mWeatherTextView, animate);
+            animateHidden(mWeatherImageView, animate);
 	}
     }
 
@@ -438,6 +438,12 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
                 .setStartDelay(0)
                 .setInterpolator(Interpolators.ALPHA_OUT)
                 .withEndAction(() -> v.setVisibility(invisible ? View.INVISIBLE : View.GONE));
+    }
+
+    private void animateHidden(final View v, boolean animate) {
+        if (v.getVisibility() == View.GONE)
+            return;
+        animateHidden(v, animate);
     }
 
     /**
@@ -515,10 +521,6 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
         mShowClock = Settings.System.getIntForUser(mContentResolver,
                 Settings.System.STATUS_BAR_CLOCK, 1,
                 UserHandle.USER_CURRENT) == 1;
-        mShowWeather = Settings.System.getIntForUser(getContext().getContentResolver(),
-                Settings.System.STATUS_BAR_SHOW_WEATHER_TEMP, 0, UserHandle.USER_CURRENT);
-        mWeatherInHeaderView = Settings.System.getIntForUser(getContext().getContentResolver(),
-                Settings.System.STATUS_BAR_SHOW_WEATHER_LOCATION, 0, UserHandle.USER_CURRENT) == 1;
         if (!mShowClock) {
             mClockStyle = 1; // internally switch to centered clock layout because
                              // left & right will show up again after QS pulldown
@@ -527,6 +529,10 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
                     Settings.System.STATUSBAR_CLOCK_STYLE, 0,
                     UserHandle.USER_CURRENT);
         }
+        mShowWeather = Settings.System.getIntForUser(getContext().getContentResolver(),
+                Settings.System.STATUS_BAR_SHOW_WEATHER_TEMP, 0, UserHandle.USER_CURRENT);
+        mWeatherInHeaderView = Settings.System.getIntForUser(getContext().getContentResolver(),
+                Settings.System.STATUS_BAR_SHOW_WEATHER_LOCATION, 0, UserHandle.USER_CURRENT) == 1;
         } catch (Exception e) {
         }
 	updateClockStyle(animate);
@@ -721,10 +727,10 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
                 animateShow(mWeatherImageView, animate);
             } else if (mShowWeather == 3 || mShowWeather == 4){
                 animateShow(mWeatherTextView, animate);
-                animateHide(mWeatherImageView, animate);
+                animateHidden(mWeatherImageView, animate);
             } else if (mShowWeather == 5) {
                 animateShow(mWeatherImageView, animate);
-                animateHide(mWeatherTextView, animate);
+                animateHidden(mWeatherTextView, animate);
             }
         }
     }
