@@ -16,8 +16,8 @@
 -->
 
 <LinearLayout 
- android:gravity="@integer/anci_grav_ui" 
- android:layout_gravity="@integer/anci_grav_ui" 
+ android:gravity="start"
+ android:layout_gravity="start"
  android:orientation="horizontal" 
  android:layout_width="fill_parent" 
  android:layout_height="wrap_content"
@@ -30,22 +30,14 @@
 	 android:layout_width="wrap_content" 
 	 android:layout_height="wrap_content" 
 	 android:layout_marginRight="2.0dip" 
-	 android:format12Hour="EEEE" 
-	 android:format24Hour="EEEE" />
-    <ImageView 
-	 android:layout_gravity="center" 
-	 android:id="@+id/anc_date_separator" 
-	 android:layout_width="2.0dip" 
-	 android:layout_height="14.0dip" 
-	 android:layout_marginLeft="2.0dip" 
-	 android:layout_marginRight="2.0dip" 
-	 android:src="?android:colorAccent" />
+	 android:format12Hour="EEE," 
+	 android:format24Hour="EEE," />
     <TextClock 
 	 android:textSize="14.0dip" 
 	 android:textStyle="normal" 
 	 android:id="@id/anc_date_month" 
 	 android:layout_width="wrap_content" 
 	 android:layout_height="wrap_content" 
-	 android:format12Hour="dd MMMM yyy" 
-	 android:format24Hour="dd MMMM yyy" />
+	 android:format12Hour="dd MMM yyy" 
+	 android:format24Hour="dd MMM yyy" />
 </LinearLayout>
