@@ -15,8 +15,9 @@
      limitations under the License.
 -->
 
-<LinearLayout 
-   android:layout_gravity="@integer/anci_grav_ui" 
+<LinearLayout
+   Android:gravity="start"
+   android:layout_gravity="start" 
    android:orientation="horizontal" 
    android:layout_width="wrap_content" 
    android:layout_height="wrap_content"
