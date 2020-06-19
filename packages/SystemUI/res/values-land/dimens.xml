@@ -41,5 +41,5 @@
          value in landscape since we have limited vertical space-->
     <dimen name="bubble_padding_top">4dp</dimen>
 
-    <dimen name="navigation_home_handle_width">305</dimen>
+    <dimen name="navigation_home_handle_width">305dp</dimen>
 </resources>
