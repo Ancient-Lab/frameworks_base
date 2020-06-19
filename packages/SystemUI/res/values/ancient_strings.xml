@@ -132,7 +132,7 @@
     <string name="quick_settings_music_pause">Pause</string>
 
     <!-- Alerting notification header label -->
-    <string name="notification_section_header_alerting">Alerting notifications</string>
+    <string name="notification_section_header_alerting">アラート `arāto notifications</string>
 
     <!-- Kill button in notification guts -->
     <string name="force_stop_dlg_title">Force stop?</string>
