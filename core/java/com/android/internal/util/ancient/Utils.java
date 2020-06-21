@@ -95,6 +95,7 @@ public class Utils {
         "com.android.systemui.qstile.attemptmountain", // 8
         "com.android.systemui.qstile.squaremedo", // 9
         "com.android.systemui.qstile.inkdrop", // 10
+        "com.android.systemui.qstile.cookie", // 11
     };
 
     private static IStatusBarService mStatusBarService = null;
