@@ -66,9 +66,6 @@
     <!-- Custom Carrier Label -->
     <dimen name="status_bar_carrier_height">14dp</dimen>
 
-    <!-- Size of the FOD animation -->
-    <dimen name="fod_animation_size">280dp</dimen>
-
     <!-- Pixel navbar -->
     <dimen name="halo_diameter">22dp</dimen>
     <dimen name="opa_diamond_translation">16dp</dimen>
@@ -120,5 +117,8 @@
 
     <!-- Weather condition icon  -->
     <dimen name="weather_icon_size">24dp</dimen>
+
+    <!-- Size of the FOD animation -->
+    <dimen name="fod_animation_size">280dp</dimen>  
 
 </resources>

@@ -3563,6 +3563,11 @@ public final class Settings {
         private static final Validator SCREEN_BRIGHTNESS_MODE_VALIDATOR = BOOLEAN_VALIDATOR;
 
         /**
+         * Weather to enable statusbar dual row
+         */
+        public static final String STATUSBAR_DUAL_ROW = "statusbar_dual_row";
+
+        /**
          * Shows system info in QS OFF:0, CPU temp:1, battery temp:2, cpu speed: 3 , gpu clock: 4, gpu busy: 5
          */
         public static final String QS_SYSTEM_INFO = "qs_system_info";
@@ -5868,6 +5873,24 @@ public final class Settings {
          * @hide
          */
         public static final String CRAFT_FOOTER_TEXT_STRING = "craft_footer_text_string";
+
+        /**
+         * FOD icon picker
+         * @hide
+         */
+        public static final String FOD_ICON = "fod_icon";
+
+        /**
+         * FOD recognizing animation
+         * @hide
+         */
+        public static final String FOD_RECOGNIZING_ANIMATION = "fod_recognizing_animation";
+
+        /**
+         * FOD recognizing animation picker
+         * @hide
+         */
+        public static final String FOD_ANIM = "fod_anim";
 
         /**
          * Settings to backup. This is here so that it's in the same place as the settings
