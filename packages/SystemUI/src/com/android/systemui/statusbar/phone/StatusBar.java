@@ -537,10 +537,12 @@ public class StatusBar extends SystemUI implements DemoMode,
     private boolean mWallpaperSupported;
 
     private int mChargingAnimation;
+
     private boolean mWallpaperSupportsAmbientMode;
+
     private VisualizerView mVisualizerView;
+
     private boolean mPocketJudgeAllowFP;
-    private VolumePluginManager mVolumePluginManager;
 
     private final BroadcastReceiver mWallpaperChangedReceiver = new BroadcastReceiver() {
         @Override
@@ -781,7 +783,6 @@ public class StatusBar extends SystemUI implements DemoMode,
         mFalsingManager = Dependency.get(FalsingManager.class);
         mWallpaperSupported =
                 mContext.getSystemService(WallpaperManager.class).isWallpaperSupported();
-        mVolumePluginManager = new VolumePluginManager(mContext, mHandler);
 
         // Connect in to the status bar manager service
         mCommandQueue = getComponent(CommandQueue.class);

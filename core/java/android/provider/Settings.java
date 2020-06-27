@@ -5853,12 +5853,6 @@ public final class Settings {
         public static final String STATUS_BAR_SHOW_WEATHER_LOCATION = "status_bar_show_weather_location";
 
         /**
-         * Holds current enabled volume panel implementation
-         * @hide
-         */
-        public static final String SYSTEMUI_PLUGIN_VOLUME = "systemui_plugin_volume";
-
-        /**
          * Whether footer #Ancient text shows
          * @hide
          */
@@ -6203,7 +6197,6 @@ public final class Settings {
             PRIVATE_SETTINGS.add(BACK_GESTURE_HEIGHT);
             PRIVATE_SETTINGS.add(SCREEN_OFF_ANIMATION);
             PRIVATE_SETTINGS.add(VOLTE_ICON_STYLE);
-            PRIVATE_SETTINGS.add(SYSTEMUI_PLUGIN_VOLUME);
             PRIVATE_SETTINGS.add(QS_BLUR);
             PRIVATE_SETTINGS.add(QS_BLUR_ALPHA);
             PRIVATE_SETTINGS.add(HIDE_SMART_REPLIES);
