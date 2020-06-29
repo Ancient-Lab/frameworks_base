@@ -120,5 +120,8 @@
 
     <!-- Size of the FOD animation -->
     <dimen name="fod_animation_size">280dp</dimen>  
+    
+    <!-- Alternate notch margin -->
+    <dimen name="dual_margin_side">2dp</dimen>  
 
 </resources>
