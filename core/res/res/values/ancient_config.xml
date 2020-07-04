@@ -184,4 +184,7 @@
          1: Right side -->
     <integer name="config_alertSliderLocation">0</integer>
 
+    <!-- Enable face auth when swiping security view -->
+    <bool name="config_faceAuthOnSecurityView">false</bool>
+
 </resources>

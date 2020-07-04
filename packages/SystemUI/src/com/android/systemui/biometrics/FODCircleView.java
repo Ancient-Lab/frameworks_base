@@ -155,6 +155,7 @@ public class FODCircleView extends ImageView implements ConfigurationListener {
                 mBurnInProtectionTimer.schedule(new BurnInProtectionTask(), 0, 60 * 1000);
             } else if (mBurnInProtectionTimer != null) {
                 mBurnInProtectionTimer.cancel();
+                updatePosition();
             }
         }
 
@@ -191,15 +192,6 @@ public class FODCircleView extends ImageView implements ConfigurationListener {
         public void onScreenTurnedOn() {
             if (mUpdateMonitor.isFingerprintDetectionRunning()) {
                 show();
-            }
-        }
-
-        @Override
-        public void onBiometricHelp(int msgId, String helpString,
-                BiometricSourceType biometricSourceType) {
-            if (biometricSourceType == BiometricSourceType.FINGERPRINT &&
-                    msgId == -1){ // Auth error
-                hideCircle();
             }
         }
 
@@ -417,7 +409,6 @@ public class FODCircleView extends ImageView implements ConfigurationListener {
         setDim(true);
         dispatchPress();
 
-        setImageDrawable(null);
         mPressedView.setImageResource(R.drawable.fod_icon_pressed);
         invalidate();
     }
@@ -463,9 +454,7 @@ public class FODCircleView extends ImageView implements ConfigurationListener {
     }
 
     private void updateAlpha() {
-        if (mIsCircleShowing) {
-            setAlpha(1.0f);
-        }
+        setAlpha(mIsDreaming ? 0.5f : 1.0f);
     }
 
     private void updateStyle() {
