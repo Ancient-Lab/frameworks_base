@@ -31,7 +31,8 @@
 	    android:layout_width="wrap_content" 
 	    android:layout_height="wrap_content" 
 	    android:format12Hour="hh" 
-	    android:format24Hour="HH" />
+	    android:format24Hour="HH"
+	    android:fontFamily="@*android:string/config_bodyFontFamily"/>
 
     <TextClock 
 	    android:textSize="10dip" 
@@ -41,8 +42,9 @@
 	    android:layout_height="wrap_content" 
 	    android:layout_marginLeft="1.0dip" 
 	    android:layout_marginRight="1.0dip" 
-	    android:format12Hour=":" 
-	    android:format24Hour=":" />
+	    android:format12Hour="." 
+	    android:format24Hour="."
+	    android:fontFamily="@*android:string/config_bodyFontFamily"/>
 
     <TextClock 
 	    android:textSize="14.0dip" 
@@ -51,6 +53,7 @@
 	    android:layout_width="wrap_content" 
 	    android:layout_height="wrap_content" 
 	    android:format12Hour="mm a" 
-	    android:format24Hour="mm" />
+	    android:format24Hour="mm"
+	    android:fontFamily="@*android:string/config_bodyFontFamily"/>
 
 </LinearLayout>
