@@ -6199,6 +6199,12 @@ public final class Settings {
         private static final Validator SLIM_RECENT_ENTER_EXIT_ANIMATION_VALIDATOR = ANY_INTEGER_VALIDATOR;
 
         /**
+         * QS Clock
+         * @hide
+         */
+        public static final String QS_CLOCK_STYLE = "qs_clock_style";
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *

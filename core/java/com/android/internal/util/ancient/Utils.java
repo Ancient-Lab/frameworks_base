@@ -106,6 +106,30 @@ public class Utils {
         "com.android.systemui.qstile.teardrop", // 19
     };
 
+    private static final String[] QS_CLOCK_THEMES = {
+        "com.android.systemui.qsclock.default", // 0
+        "com.android.systemui.qsclock.left", // 1
+        "com.android.systemui.qsclock.right", // 2
+        "com.android.systemui.qsclock.anci", // 3
+        "com.android.systemui.qsclock.anci0", // 4
+        "com.android.systemui.qsclock.anci1", // 5
+        "com.android.systemui.qsclock.anci2", // 6
+        "com.android.systemui.qsclock.anci3", // 7
+        "com.android.systemui.qsclock.anci4", // 8
+        "com.android.systemui.qsclock.anci5", // 9
+        "com.android.systemui.qsclock.anci6", // 10
+        "com.android.systemui.qsclock.anci7", // 11
+        "com.android.systemui.qsclock.anci8", // 12
+        "com.android.systemui.qsclock.anci9", // 13
+        "com.android.systemui.qsclock.anci10", // 14
+        "com.android.systemui.qsclock.anci11", // 15
+        "com.android.systemui.qsclock.anci12", // 16
+        "com.android.systemui.qsclock.anci13", // 17
+        "com.android.systemui.qsclock.anci14", // 18
+        "com.android.systemui.qsclock.anci15", // 19
+        "com.android.systemui.qsclock.anci16", // 20
+    };
+
     private static IStatusBarService mStatusBarService = null;
     private static IStatusBarService getStatusBarService() {
         synchronized (Utils.class) {
@@ -359,6 +383,34 @@ public class Utils {
             String qstiletheme = QS_TILE_THEMES[i];
             try {
                 om.setEnabled(qstiletheme,
+                        false /*disable*/, userId);
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    // Switches qs clock style to user selected.
+    public static void updateClockStyle(IOverlayManager om, int userId, int qsClockStyle) {
+        if (qsClockStyle == 0) {
+            stockClockStyle(om, userId);
+        } else {
+            try {
+                om.setEnabled(QS_CLOCK_THEMES[qsClockStyle],
+                        true, userId);
+            } catch (RemoteException e) {
+                Log.w(TAG, "Can't change qs clock icon", e);
+            }
+        }
+    }
+
+    // Switches qs clock style back to stock.
+    public static void stockClockStyle(IOverlayManager om, int userId) {
+        // skip index 0
+        for (int i = 0; i < QS_CLOCK_THEMES.length; i++) {
+            String qsclocktheme = QS_CLOCK_THEMES[i];
+            try {
+                om.setEnabled(qsclocktheme,
                         false /*disable*/, userId);
             } catch (RemoteException e) {
                 e.printStackTrace();

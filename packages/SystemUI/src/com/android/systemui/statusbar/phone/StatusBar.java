@@ -4297,6 +4297,9 @@ public class StatusBar extends SystemUI implements DemoMode,
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.QS_LABEL_USE_NEW_TINT),
                     false, this, UserHandle.USER_ALL);
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.QS_CLOCK_STYLE),
+                    false, this, UserHandle.USER_ALL);
         }
 
         @Override
@@ -4335,6 +4338,11 @@ public class StatusBar extends SystemUI implements DemoMode,
 		    uri.equals(Settings.System.getUriFor(Settings.System.QS_PANEL_BG_USE_NEW_TINT)) ||
                     uri.equals(Settings.System.getUriFor(Settings.System.QS_PANEL_BG_COLOR)) ||
                     uri.equals(Settings.System.getUriFor(Settings.System.QS_PANEL_BG_COLOR_WALL))) {
+                mQSPanel.getHost().reloadAllTiles();
+            } else if (uri.equals(Settings.System.getUriFor(
+                    Settings.System.QS_CLOCK_STYLE))) {
+                stockClockStyle();
+                updateClockStyle();
                 mQSPanel.getHost().reloadAllTiles();
             }
             update();
@@ -4378,6 +4386,18 @@ public class StatusBar extends SystemUI implements DemoMode,
     // Unload all qs tile styles back to stock
     public void stockTileStyle() {
         Utils.stockTileStyle(mOverlayManager, mLockscreenUserManager.getCurrentUserId());
+    }
+
+    // Switches qs clock style from stock to custom
+    public void updateClockStyle() {
+        int qsClockStyle = Settings.System.getIntForUser(mContext.getContentResolver(),
+                Settings.System.QS_CLOCK_STYLE, 0, mLockscreenUserManager.getCurrentUserId());
+        Utils.updateClockStyle(mOverlayManager, mLockscreenUserManager.getCurrentUserId(), qsClockStyle);
+    }
+
+    // Unload all qs clock styles back to stock
+    public void stockClockStyle() {
+        Utils.stockClockStyle(mOverlayManager, mLockscreenUserManager.getCurrentUserId());
     }
 
     private void updatePocketJudgeFP() {
