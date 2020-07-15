@@ -144,6 +144,30 @@ public class Utils {
         "com.android.analog.style.anci10", // 10
     };
 
+    private static final String[] QS_SETTING_THEMES = {
+        "com.android.setting.style.default", // 0
+        "com.android.setting.style.left", // 1
+        "com.android.setting.style.center", // 2
+        "com.android.setting.style.anci", // 3
+        "com.android.setting.style.anci0", // 4
+        "com.android.setting.style.anci1", // 5
+        "com.android.setting.style.anci2", // 6
+        "com.android.setting.style.anci3", // 7
+        "com.android.setting.style.anci4", // 8
+        "com.android.setting.style.anci5", // 9
+        "com.android.setting.style.anci6", // 10
+        "com.android.setting.style.anci7", // 11
+        "com.android.setting.style.anci8", // 12
+        "com.android.setting.style.anci9", // 13
+        "com.android.setting.style.anci10", // 14
+        "com.android.setting.style.anci11", // 15
+        "com.android.setting.style.anci12", // 16
+        "com.android.setting.style.anci13", // 17
+        "com.android.setting.style.anci14", // 18
+        "com.android.setting.style.anci15", // 19
+        "com.android.setting.style.anci16", // 20
+    };
+
     private static IStatusBarService mStatusBarService = null;
     private static IStatusBarService getStatusBarService() {
         synchronized (Utils.class) {
@@ -453,6 +477,34 @@ public class Utils {
             String qsanalogtheme = QS_ANALOG_THEMES[i];
             try {
                 om.setEnabled(qsanalogtheme,
+                        false /*disable*/, userId);
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    // Switches qs setting style to user selected.
+    public static void updateSettingStyle(IOverlayManager om, int userId, int qsSettingStyle) {
+        if (qsSettingStyle == 0) {
+            stockSettingStyle(om, userId);
+        } else {
+            try {
+                om.setEnabled(QS_SETTING_THEMES[qsSettingStyle],
+                        true, userId);
+            } catch (RemoteException e) {
+                Log.w(TAG, "Can't change qs setting icon", e);
+            }
+        }
+    }
+
+    // Switches qs setting style back to stock.
+    public static void stockSettingStyle(IOverlayManager om, int userId) {
+        // skip index 0
+        for (int i = 0; i < QS_SETTING_THEMES.length; i++) {
+            String qssettingtheme = QS_SETTING_THEMES[i];
+            try {
+                om.setEnabled(qssettingtheme,
                         false /*disable*/, userId);
             } catch (RemoteException e) {
                 e.printStackTrace();
