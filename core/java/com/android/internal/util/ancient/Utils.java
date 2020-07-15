@@ -130,6 +130,20 @@ public class Utils {
         "com.android.systemui.qsclock.anci16", // 20
     };
 
+    private static final String[] QS_ANALOG_THEMES = {
+        "com.android.analog.style.default", // 0
+        "com.android.analog.style.anci1", // 1
+        "com.android.analog.style.anci2", // 2
+        "com.android.analog.style.anci3", // 3
+        "com.android.analog.style.anci4", // 4
+        "com.android.analog.style.anci5", // 5
+        "com.android.analog.style.anci6", // 6
+        "com.android.analog.style.anci7", // 7
+        "com.android.analog.style.anci8", // 8
+        "com.android.analog.style.anci9", // 9
+        "com.android.analog.style.anci10", // 10
+    };
+
     private static IStatusBarService mStatusBarService = null;
     private static IStatusBarService getStatusBarService() {
         synchronized (Utils.class) {
@@ -411,6 +425,34 @@ public class Utils {
             String qsclocktheme = QS_CLOCK_THEMES[i];
             try {
                 om.setEnabled(qsclocktheme,
+                        false /*disable*/, userId);
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    // Switches qs analog style to user selected.
+    public static void updateAnalogStyle(IOverlayManager om, int userId, int qsAnalogStyle) {
+        if (qsAnalogStyle == 0) {
+            stockAnalogStyle(om, userId);
+        } else {
+            try {
+                om.setEnabled(QS_ANALOG_THEMES[qsAnalogStyle],
+                        true, userId);
+            } catch (RemoteException e) {
+                Log.w(TAG, "Can't change qs analog icon", e);
+            }
+        }
+    }
+
+    // Switches qs analog style back to stock.
+    public static void stockAnalogStyle(IOverlayManager om, int userId) {
+        // skip index 0
+        for (int i = 0; i < QS_ANALOG_THEMES.length; i++) {
+            String qsanalogtheme = QS_ANALOG_THEMES[i];
+            try {
+                om.setEnabled(qsanalogtheme,
                         false /*disable*/, userId);
             } catch (RemoteException e) {
                 e.printStackTrace();

@@ -4512,6 +4512,9 @@ public class StatusBar extends SystemUI implements DemoMode,
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.QS_CLOCK_STYLE),
                     false, this, UserHandle.USER_ALL);
+	    resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.QS_ANALOG_STYLE),
+                    false, this, UserHandle.USER_ALL);
         }
 
         @Override
@@ -4555,6 +4558,11 @@ public class StatusBar extends SystemUI implements DemoMode,
                     Settings.System.QS_CLOCK_STYLE))) {
                 stockClockStyle();
                 updateClockStyle();
+                mQSPanel.getHost().reloadAllTiles();
+	    } else if (uri.equals(Settings.System.getUriFor(
+                    Settings.System.QS_ANALOG_STYLE))) {
+                stockAnalogStyle();
+                updateAnalogStyle();
                 mQSPanel.getHost().reloadAllTiles();
             }
             update();
@@ -4610,6 +4618,18 @@ public class StatusBar extends SystemUI implements DemoMode,
     // Unload all qs clock styles back to stock
     public void stockClockStyle() {
         Utils.stockClockStyle(mOverlayManager, mLockscreenUserManager.getCurrentUserId());
+    }
+
+    // Switches qs analog style from stock to custom
+    public void updateAnalogStyle() {
+        int qsAnalogStyle = Settings.System.getIntForUser(mContext.getContentResolver(),
+                Settings.System.QS_ANALOG_STYLE, 0, mLockscreenUserManager.getCurrentUserId());
+        Utils.updateAnalogStyle(mOverlayManager, mLockscreenUserManager.getCurrentUserId(), qsAnalogStyle);
+    }
+
+    // Unload all qs analog styles back to stock
+    public void stockAnalogStyle() {
+        Utils.stockAnalogStyle(mOverlayManager, mLockscreenUserManager.getCurrentUserId());
     }
 
     private void updatePocketJudgeFP() {

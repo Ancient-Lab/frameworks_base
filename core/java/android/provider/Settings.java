@@ -6232,6 +6232,12 @@ public final class Settings {
          */
         public static final String LOCKSCREEN_LOCK_ICON = "lockscreen_lock_icon";
 
+	/**
+         * QS Analog
+         * @hide
+         */
+        public static final String QS_ANALOG_STYLE = "qs_analog_style";
+
         /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
