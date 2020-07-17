@@ -443,7 +443,8 @@ public abstract class QSTileImpl<TState extends State> implements QSTile, Lifecy
                 return Utils.getColorAttrDefaultColor(context, android.R.attr.textColorPrimary);
             case Tile.STATE_ACTIVE:
                 if (qsTileStyle == 7 || qsTileStyle == 9 || qsTileStyle == 10 || qsTileStyle == 12 ||
-                     qsTileStyle == 13 || qsTileStyle == 14 || qsTileStyle == 16 || qsTileStyle == 17) {
+                     qsTileStyle == 13 || qsTileStyle == 14 || qsTileStyle == 16 || qsTileStyle == 17 ||
+                     qsTileStyle == 20 || qsTileStyle == 21 || qsTileStyle == 22 || qsTileStyle == 23 || qsTileStyle == 24) {
                     return Utils.getColorAttrDefaultColor(context, android.R.attr.colorAccent);
                 } else {
                      if (setQsFromResources) {

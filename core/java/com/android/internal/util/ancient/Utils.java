@@ -104,6 +104,17 @@ public class Utils {
         "com.android.systemui.qstile.cosmos", // 17
         "com.android.systemui.qstile.squircle", // 18
         "com.android.systemui.qstile.teardrop", // 19
+        "com.android.systemui.qstile.anci1", // 20
+        "com.android.systemui.qstile.anci2", // 21
+        "com.android.systemui.qstile.anci3", // 22
+        "com.android.systemui.qstile.anci4", // 23
+        "com.android.systemui.qstile.anci5", // 24
+        "com.android.systemui.qstile.anci6", // 25
+        "com.android.systemui.qstile.anci7", // 26
+        "com.android.systemui.qstile.anci8", // 27
+        "com.android.systemui.qstile.anci9", // 28
+        "com.android.systemui.qstile.anci10", // 29
+        "com.android.systemui.qstile.anci11", // 30
     };
 
     private static final String[] QS_CLOCK_THEMES = {
