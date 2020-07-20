@@ -10,6 +10,6 @@
     <color name="edge_light_yellow">#fbbc06</color>
 
     <!-- Quicksettings main QS background-->
-    <color name="quick_settings_status_bar_background_color">#ff000000</color>
+    <color name="quick_settings_status_bar_background_color">#00000000</color>
 
 </resources>
