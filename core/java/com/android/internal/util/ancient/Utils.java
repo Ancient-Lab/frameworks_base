@@ -179,6 +179,12 @@ public class Utils {
         "com.android.setting.style.anci16", // 20
     };
 
+    private static final String[] QS_BARHEIGHT_THEMES = {
+        "com.android.system.bar.default", // 0
+        "com.android.system.bar.one", // 1
+        "com.android.system.bar.two", // 2
+    };
+
     private static IStatusBarService mStatusBarService = null;
     private static IStatusBarService getStatusBarService() {
         synchronized (Utils.class) {
@@ -528,6 +534,34 @@ public class Utils {
             String qssettingtheme = QS_SETTING_THEMES[i];
             try {
                 om.setEnabled(qssettingtheme,
+                        false /*disable*/, userId);
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    // Switches barheight style to user selected.
+    public static void updateBarheightStyle(IOverlayManager om, int userId, int qsBarheightStyle) {
+        if (qsBarheightStyle == 0) {
+            stockSettingStyle(om, userId);
+        } else {
+            try {
+                om.setEnabled(QS_BARHEIGHT_THEMES[qsBarheightStyle],
+                        true, userId);
+            } catch (RemoteException e) {
+                Log.w(TAG, "Can't change  statusbar height", e);
+            }
+        }
+    }
+
+    // Switches barheight style back to stock.
+    public static void stockBarheightStyle(IOverlayManager om, int userId) {
+        // skip index 0
+        for (int i = 0; i < QS_BARHEIGHT_THEMES.length; i++) {
+            String qsbarheighttheme = QS_BARHEIGHT_THEMES[i];
+            try {
+                om.setEnabled(qsbarheighttheme,
                         false /*disable*/, userId);
             } catch (RemoteException e) {
                 e.printStackTrace();

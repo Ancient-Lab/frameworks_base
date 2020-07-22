@@ -4518,6 +4518,9 @@ public class StatusBar extends SystemUI implements DemoMode,
 	    resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.QS_SETTING_STYLE),
                     false, this, UserHandle.USER_ALL);
+	    resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.QS_BARHEIGHT_STYLE),
+                    false, this, UserHandle.USER_ALL);
         }
 
         @Override
@@ -4571,6 +4574,11 @@ public class StatusBar extends SystemUI implements DemoMode,
                     Settings.System.QS_SETTING_STYLE))) {
                 stockSettingStyle();
                 updateSettingStyle();
+                mQSPanel.getHost().reloadAllTiles();
+            } else if (uri.equals(Settings.System.getUriFor(
+                    Settings.System.QS_BARHEIGHT_STYLE))) {
+                stockBarheightStyle();
+                updateBarheightStyle();
                 mQSPanel.getHost().reloadAllTiles();
             }
             update();
@@ -4650,6 +4658,18 @@ public class StatusBar extends SystemUI implements DemoMode,
     // Unload all qs settings styles back to stock
     public void stockSettingStyle() {
         Utils.stockSettingStyle(mOverlayManager, mLockscreenUserManager.getCurrentUserId());
+    }
+
+   // Switches barheight style from stock to custom
+   public void updateBarheightStyle() {
+        int qsBarheightStyle = Settings.System.getIntForUser(mContext.getContentResolver(),
+                Settings.System.QS_BARHEIGHT_STYLE, 0, mLockscreenUserManager.getCurrentUserId());
+        Utils.updateBarheightStyle(mOverlayManager, mLockscreenUserManager.getCurrentUserId(), qsBarheightStyle);
+    }
+
+     // Unload all barheight styles back to stock
+    public void stockBarheightStyle() {
+        Utils.stockBarheightStyle(mOverlayManager, mLockscreenUserManager.getCurrentUserId());
     }
 
     private void updatePocketJudgeFP() {

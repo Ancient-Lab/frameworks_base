@@ -6567,6 +6567,12 @@ public final class Settings {
         public static final String QS_NEW_BG_ENABLED = "qs_new_bg_enabled";
 
         /**
+         * Statusbar height
+         * @hide
+         */
+        public static final String QS_BARHEIGHT_STYLE = "qs_barheight_style";
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
