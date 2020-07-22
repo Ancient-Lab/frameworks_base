@@ -41,6 +41,14 @@
     <!-- Layout containing tooltips, alarm text, etc. -->
     <include layout="@layout/quick_settings_header_info" />
 
+    <FrameLayout
+        android:id="@+id/quick_qs_brightness_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/brightness_mirror_height"
+        android:layout_below="@id/quick_qs_panel">
+        <include layout="@layout/quick_settings_brightness_dialog" />
+    </FrameLayout>
+
     <com.android.systemui.qs.QuickQSPanel
         android:id="@+id/quick_qs_panel"
         android:layout_width="match_parent"
