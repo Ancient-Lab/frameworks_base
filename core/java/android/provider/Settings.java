@@ -5873,6 +5873,11 @@ public final class Settings {
          * @hide
          */
         public static final String FOD_ICON = "fod_icon";
+        public static final String FOD_PRESSED_STATE = "fod_pressed_state";
+
+        /** @hide */
+        private static final Validator FOD_PRESSED_STATE_VALIDATOR =
+                new SettingsValidators.InclusiveIntegerRangeValidator(0, 6);
 
         /**
          * FOD recognizing animation
