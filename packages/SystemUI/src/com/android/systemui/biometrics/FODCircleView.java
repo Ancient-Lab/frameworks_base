@@ -129,6 +129,17 @@ public class FODCircleView extends ImageView implements ConfigurationListener {
         R.drawable.fod_icon_transparent
     };
 
+    private int mPressedIcon;
+    private final int[] PRESSED_STYLES = {
+        R.drawable.fod_icon_pressed_miui_cyan_light,
+        R.drawable.fod_icon_pressed_miui_white_light,
+        R.drawable.fod_icon_pressed_vivo_cyan,
+        R.drawable.fod_icon_pressed_vivo_cyan_shadow,
+        R.drawable.fod_icon_pressed_vivo_cyan_shadow_et713,
+        R.drawable.fod_icon_pressed_vivo_green,
+        R.drawable.fod_icon_pressed_vivo_yellow_shadow
+    };
+
     private IFingerprintInscreenCallback mFingerprintInscreenCallback =
             new IFingerprintInscreenCallback.Stub() {
         @Override
@@ -311,10 +322,22 @@ public class FODCircleView extends ImageView implements ConfigurationListener {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        if (!mIsCircleShowing) {
-            canvas.drawCircle(mSize / 2, mSize / 2, mSize / 2.0f, mPaintFingerprintBackground);
-        }
         super.onDraw(canvas);
+
+        if (mIsCircleShowing) {
+            setImageResource(PRESSED_STYLES[mPressedIcon]);
+        }
+    }
+
+    @Override
+    protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
+        super.onLayout(changed, left, top, right, bottom);
+
+        if (mIsCircleShowing) {
+            dispatchPress();
+        } else {
+            dispatchRelease();
+        }
     }
 
     @Override
@@ -409,7 +432,7 @@ public class FODCircleView extends ImageView implements ConfigurationListener {
         setDim(true);
         dispatchPress();
 
-        mPressedView.setImageResource(R.drawable.fod_icon_pressed);
+        setImageResource(PRESSED_STYLES[mPressedIcon]);
         invalidate();
     }
 
@@ -462,6 +485,8 @@ public class FODCircleView extends ImageView implements ConfigurationListener {
                 Settings.System.FOD_RECOGNIZING_ANIMATION, 0) != 0;
         mSelectedIcon = Settings.System.getInt(mContext.getContentResolver(),
                 Settings.System.FOD_ICON, 0);
+        mPressedIcon = Settings.System.getInt(mContext.getContentResolver(),
+                Settings.System.FOD_PRESSED_STATE, 0);
         if (mFODAnimation != null) {
             mFODAnimation.update();
         }
