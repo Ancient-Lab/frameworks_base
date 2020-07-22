@@ -81,8 +81,10 @@ import javax.inject.Named;
 public class QSPanel extends LinearLayout implements Tunable, Callback, BrightnessMirrorListener,
         Dumpable {
 
-    private static final String QS_SHOW_AUTO_BRIGHTNESS = "qs_show_auto_brightness";
-    public static final String QS_SHOW_BRIGHTNESS_SLIDER = "qs_show_brightness_slider";
+    private static final String QS_SHOW_AUTO_BRIGHTNESS =
+            "system:" + Settings.System.QS_SHOW_AUTO_BRIGHTNESS;
+    public static final String QS_SHOW_BRIGHTNESS_SLIDER =
+            "system:" + Settings.System.QS_SHOW_BRIGHTNESS_SLIDER;
     public static final String QS_SHOW_HEADER = "qs_show_header";
 
     private static final String TAG = "QSPanel";
