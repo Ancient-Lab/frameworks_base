@@ -46,7 +46,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/brightness_mirror_height"
         android:layout_below="@id/quick_qs_panel">
-        <include layout="@layout/quick_settings_brightness_dialog" />
+        <include layout="@layout/quick_brightness_custom" />
     </FrameLayout>
 
     <com.android.systemui.qs.QuickQSPanel

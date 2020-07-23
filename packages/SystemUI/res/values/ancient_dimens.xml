@@ -52,8 +52,12 @@
     <!-- adding the ancient custom dimens -->
     <dimen name="ancient_qs_margintop">1dp</dimen>
     <dimen name="ancient_qs_margintoptop">50dp</dimen>
-    <dimen name="ancient_headerimg_size">150.95dp</dimen>
+    <dimen name="ancient_headerimg_size">163.5dp</dimen>
     <dimen name="ancient_minimal_height">25dp</dimen>
+
+    <!-- Custom Brightness -->
+    <dimen name="qs_brightness_custom_height">30dp</dimen>
+    <dimen name="qs_brightness_margintop">2dp</dimen>
 
     <!-- Qs visibility -->
     <dimen name="qs_tile_height_wo_label">64dp</dimen>
@@ -78,7 +82,7 @@
     <dimen name="opa_line_y_translation">16dp</dimen>
 
     <!-- Custom margin for qsquick -->
-    <dimen name="ancient_qsquick_margin">90dp</dimen>
+    <dimen name="ancient_qsquick_margin">105dp</dimen>
 
     <!-- The width/height of the charging indicator view on keyguard. -->
     <dimen name="keyguard_charging_indication_height">60dp</dimen>
