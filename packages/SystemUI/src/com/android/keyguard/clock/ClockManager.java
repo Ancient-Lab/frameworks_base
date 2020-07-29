@@ -162,6 +162,7 @@ public final class ClockManager {
         addBuiltinClock(() -> new MNMLMinimalClockController(res, layoutInflater, colorExtractor));
         addBuiltinClock(() -> new BubbleAnimationClockController(res, layoutInflater, colorExtractor, context));
         addBuiltinClock(() -> new RainbowCircleClockController(res, layoutInflater, colorExtractor, context));
+        addBuiltinClock(() -> new FireCircleClockController(res, layoutInflater, colorExtractor, context));
         addBuiltinClock(() -> new SwingClockController(res, layoutInflater, colorExtractor, context));
 
         // Store the size of the display for generation of clock preview.
