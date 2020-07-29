@@ -221,4 +221,7 @@
     <!-- Default state for LiveDisplay -->
     <bool name="config_liveDisplayAvailable">false</bool>
 
+    <!-- Whether device has vooc charging support -->
+    <bool name="config_hasVoocCharger">false</bool>
+
 </resources>
