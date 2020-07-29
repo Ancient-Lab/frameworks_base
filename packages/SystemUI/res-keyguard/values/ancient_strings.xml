@@ -28,4 +28,6 @@
 
     <string name="clock_title_swing" translatable="false">Swing animation</string>
     <string name="clock_title_bubble_animation" translatable="false">Bubble animation</string>
+    <string name="clock_title_rainbow_circle_animation" translatable="false">Rainbow circle</string>
+
 </resources>
