@@ -29,5 +29,6 @@
     <integer name="bubbles_max_rendered">5</integer>
 
     <integer name="anci_grav_ui">17</integer>
+    <integer name="nonotif_text">2</integer>
 
 </resources>

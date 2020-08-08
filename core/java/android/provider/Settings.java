@@ -6676,6 +6676,18 @@ public final class Settings {
         public static final String AMBIENT_BATTERY_PERCENT = "ambient_battery_percent";
 
         /**
+         * QS merge bg qs n notif
+         * @hide
+         */
+        public static final String QS_MERGEBG_STYLE = "qs_mergebg_style";
+
+        /**
+         * QS merge bg qs n notif
+         * @hide
+         */
+        public static final String QS_NAVBAR_STYLE = "qs_navbar_style";
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *

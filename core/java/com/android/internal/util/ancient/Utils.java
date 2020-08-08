@@ -185,6 +185,24 @@ public class Utils {
         "com.android.system.bar.two", // 2
     };
 
+    private static final String[] QS_MERGEBG_THEMES = {
+        "com.android.systemui.mergebg.style.default", // 0
+        "com.android.systemui.mergebg.style.anci1", // 1
+        "com.android.systemui.mergebg.style.anci2", // 2
+        "com.android.systemui.mergebg.style.anci3", // 3
+        "com.android.systemui.mergebg.style.anci4", // 4
+        "com.android.systemui.mergebg.style.anci5", // 5
+    };
+
+    private static final String[] QS_NAVBAR_THEMES = {
+        "com.android.systemui.navbar.style.default", // 0
+        "com.android.systemui.navbar.style.anci1", // 1
+        "com.android.systemui.navbar.style.anci2", // 2
+        "com.android.systemui.navbar.style.anci3", // 3
+        "com.android.systemui.navbar.style.anci4", // 4
+        "com.android.systemui.navbar.style.anci5", // 5
+    };
+
     private static IStatusBarService mStatusBarService = null;
     private static IStatusBarService getStatusBarService() {
         synchronized (Utils.class) {
@@ -562,6 +580,62 @@ public class Utils {
             String qsbarheighttheme = QS_BARHEIGHT_THEMES[i];
             try {
                 om.setEnabled(qsbarheighttheme,
+                        false /*disable*/, userId);
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    // Switches qs bgmerge style to user selected.
+    public static void updateMergebgStyle(IOverlayManager om, int userId, int qsMergebgStyle) {
+        if (qsMergebgStyle == 0) {
+            stockMergebgStyle(om, userId);
+        } else {
+            try {
+                om.setEnabled(QS_MERGEBG_THEMES[qsMergebgStyle],
+                        true, userId);
+            } catch (RemoteException e) {
+                Log.w(TAG, "Can't change qs bg merge", e);
+            }
+        }
+    }
+
+    // Switches qs bgmerge style back to stock.
+    public static void stockMergebgStyle(IOverlayManager om, int userId) {
+        // skip index 0
+        for (int i = 0; i < QS_MERGEBG_THEMES.length; i++) {
+            String qsmergebgtheme = QS_MERGEBG_THEMES[i];
+            try {
+                om.setEnabled(qsmergebgtheme,
+                        false /*disable*/, userId);
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    // Switches navbar style to user selected.
+    public static void updateNavbarStyle(IOverlayManager om, int userId, int qsNavbarStyle) {
+        if (qsNavbarStyle == 0) {
+            stockNavbarStyle(om, userId);
+        } else {
+            try {
+                om.setEnabled(QS_NAVBAR_THEMES[qsNavbarStyle],
+                        true, userId);
+            } catch (RemoteException e) {
+                Log.w(TAG, "Can't change navbar icon", e);
+            }
+        }
+    }
+
+    // Switches navbar style back to stock.
+    public static void stockNavbarStyle(IOverlayManager om, int userId) {
+        // skip index 0
+        for (int i = 0; i < QS_NAVBAR_THEMES.length; i++) {
+            String qsnavbartheme = QS_NAVBAR_THEMES[i];
+            try {
+                om.setEnabled(qsnavbartheme,
                         false /*disable*/, userId);
             } catch (RemoteException e) {
                 e.printStackTrace();

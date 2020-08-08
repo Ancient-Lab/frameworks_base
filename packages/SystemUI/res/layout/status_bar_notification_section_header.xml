@@ -18,17 +18,19 @@
 <com.android.systemui.statusbar.notification.stack.SectionHeaderView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/notification_section_header_height"
-    >
-
-    <LinearLayout
+    android:layout_height="@dimen/notification_section_header_height">
+    <ImageView 
+      android:layout_width="fill_parent" 
+      android:layout_height="fill_parent" 
+      android:src="@drawable/ancient_dot_bg_headernot" />
+      <LinearLayout
         android:id="@+id/content"
         android:layout_width="match_parent"
+        android:background="@drawable/ancient_dot_bg_headernot" 
         android:layout_height="match_parent"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="@dimen/headnotif_margin"
         android:gravity="center_vertical"
-        android:orientation="horizontal"
-        >
+        android:orientation="horizontal">
         <include layout="@layout/status_bar_notification_section_header_contents"/>
     </LinearLayout>
 

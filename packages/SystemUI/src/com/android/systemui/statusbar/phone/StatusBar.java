@@ -4519,6 +4519,12 @@ public class StatusBar extends SystemUI implements DemoMode,
 	    resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.QS_BARHEIGHT_STYLE),
                     false, this, UserHandle.USER_ALL);
+	    resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.QS_MERGEBG_STYLE),
+                    false, this, UserHandle.USER_ALL);
+	    resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.QS_NAVBAR_STYLE),
+                    false, this, UserHandle.USER_ALL);
         }
 
         @Override
@@ -4577,6 +4583,16 @@ public class StatusBar extends SystemUI implements DemoMode,
                     Settings.System.QS_BARHEIGHT_STYLE))) {
                 stockBarheightStyle();
                 updateBarheightStyle();
+                mQSPanel.getHost().reloadAllTiles();
+            } else if (uri.equals(Settings.System.getUriFor(
+                    Settings.System.QS_MERGEBG_STYLE))) {
+                stockMergebgStyle();
+                updateMergebgStyle();
+                mQSPanel.getHost().reloadAllTiles();
+            } else if (uri.equals(Settings.System.getUriFor(
+                    Settings.System.QS_NAVBAR_STYLE))) {
+                stockNavbarStyle();
+                updateNavbarStyle();
                 mQSPanel.getHost().reloadAllTiles();
             }
             update();
@@ -4665,9 +4681,33 @@ public class StatusBar extends SystemUI implements DemoMode,
         Utils.updateBarheightStyle(mOverlayManager, mLockscreenUserManager.getCurrentUserId(), qsBarheightStyle);
     }
 
-     // Unload all barheight styles back to stock
+    // Unload all barheight styles back to stock
     public void stockBarheightStyle() {
         Utils.stockBarheightStyle(mOverlayManager, mLockscreenUserManager.getCurrentUserId());
+    }
+
+    // Switches merge style from stock to custom
+    public void updateMergebgStyle() {
+        int qsMergebgStyle = Settings.System.getIntForUser(mContext.getContentResolver(),
+                Settings.System.QS_MERGEBG_STYLE, 0, mLockscreenUserManager.getCurrentUserId());
+        Utils.updateMergebgStyle(mOverlayManager, mLockscreenUserManager.getCurrentUserId(), qsMergebgStyle);
+    }
+
+     // Unload all merge styles back to stock
+    public void stockMergebgStyle() {
+        Utils.stockMergebgStyle(mOverlayManager, mLockscreenUserManager.getCurrentUserId());
+    }
+
+    // Switches navbar style from stock to custom
+    public void updateNavbarStyle() {
+        int qsNavbarStyle = Settings.System.getIntForUser(mContext.getContentResolver(),
+                Settings.System.QS_NAVBAR_STYLE, 0, mLockscreenUserManager.getCurrentUserId());
+        Utils.updateNavbarStyle(mOverlayManager, mLockscreenUserManager.getCurrentUserId(), qsNavbarStyle);
+    }
+
+     // Unload all navbar styles back to stock
+    public void stockNavbarStyle() {
+        Utils.stockNavbarStyle(mOverlayManager, mLockscreenUserManager.getCurrentUserId());
     }
 
     private void updatePocketJudgeFP() {

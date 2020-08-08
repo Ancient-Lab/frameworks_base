@@ -19,33 +19,44 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingStart="4dp"
-        android:paddingEnd="4dp"
         android:visibility="gone">
     <com.android.systemui.statusbar.AlphaOptimizedFrameLayout
         android:id="@+id/content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
-        <com.android.systemui.statusbar.notification.row.FooterViewButton
-            style="@android:style/Widget.Material.Button.Borderless"
-            android:id="@+id/manage_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:focusable="true"
-            android:visibility="gone" android:contentDescription="@string/accessibility_manage_notification"
-            android:text="@string/manage_notifications_text"
-            android:textColor="?android:colorAccent"
-            android:textAllCaps="false"/>
-        <com.android.systemui.statusbar.notification.row.FooterViewButton
-            style="@android:style/Widget.Material.Button.Borderless"
-            android:id="@+id/dismiss_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:focusable="true"
-            android:contentDescription="@string/accessibility_clear_all"
-            android:text="@string/clear_all_notifications_text"
-            android:textColor="?android:colorAccent"/>
+        <RelativeLayout 
+           android:layout_gravity="center" 
+           android:layout_width="fill_parent" 
+           android:layout_height="fill_parent">
+           <LinearLayout 
+             android:gravity="end|center" 
+             android:orientation="horizontal" 
+             android:background="@drawable/ancient_dot_bg_new" 
+             android:layout_width="fill_parent" 
+             android:layout_height="wrap_content" 
+             android:layout_alignParentRight="true">
+             <com.android.systemui.statusbar.notification.row.FooterViewButton
+               style="@android:style/Widget.Material.Button.Borderless"
+               android:id="@+id/manage_text"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_gravity="start"
+               android:focusable="true"
+               android:visibility="gone" android:contentDescription="@string/accessibility_manage_notification"
+               android:text="@string/manage_notifications_text"
+               android:textColor="?android:colorAccent"
+               android:textAllCaps="false"/>
+            <com.android.systemui.statusbar.notification.row.FooterViewButton
+              style="@android:style/Widget.Material.Button.Borderless"
+              android:id="@+id/dismiss_text"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_gravity="end"
+              android:focusable="true"
+              android:contentDescription="@string/accessibility_clear_all"
+              android:text="@string/clear_all_notifications_text"
+              android:textColor="?android:colorAccent"/>
+          </LinearLayout>
+        </RelativeLayout>
     </com.android.systemui.statusbar.AlphaOptimizedFrameLayout>
 </com.android.systemui.statusbar.notification.row.FooterView>
