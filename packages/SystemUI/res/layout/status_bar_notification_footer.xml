@@ -29,7 +29,7 @@
            android:layout_width="fill_parent" 
            android:layout_height="fill_parent">
            <LinearLayout 
-             android:gravity="end|center" 
+             android:gravity="@integer/anci_grav_ui" 
              android:orientation="horizontal" 
              android:background="@drawable/ancient_dot_bg_new" 
              android:layout_width="fill_parent" 
@@ -40,10 +40,11 @@
                android:id="@+id/manage_text"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
-               android:layout_gravity="start"
+               android:layout_gravity="@integer/anci_grav_ui"
                android:focusable="true"
-               android:visibility="gone" android:contentDescription="@string/accessibility_manage_notification"
-               android:text="@string/manage_notifications_text"
+               android:visibility="@integer/nonotif_text" 
+               android:contentDescription="@string/accessibility_manage_notification"
+               android:text="@string/footer_label"
                android:textColor="?android:colorAccent"
                android:textAllCaps="false"/>
             <com.android.systemui.statusbar.notification.row.FooterViewButton
@@ -51,7 +52,7 @@
               android:id="@+id/dismiss_text"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
-              android:layout_gravity="end"
+              android:layout_gravity="@integer/anci_grav_ui"
               android:focusable="true"
               android:contentDescription="@string/accessibility_clear_all"
               android:text="@string/clear_all_notifications_text"

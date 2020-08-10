@@ -30,5 +30,6 @@
 
     <integer name="anci_grav_ui">17</integer>
     <integer name="nonotif_text">2</integer>
+    <integer name="qsdate_cusint">0</integer>
 
 </resources>
