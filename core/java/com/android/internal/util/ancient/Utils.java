@@ -116,6 +116,11 @@ public class Utils {
         "com.android.systemui.qstile.anci9", // 28
         "com.android.systemui.qstile.anci10", // 29
         "com.android.systemui.qstile.anci11", // 30
+        "com.android.systemui.qstile.anci12", // 31
+        "com.android.systemui.qstile.anci13", // 32
+        "com.android.systemui.qstile.anci14", // 33
+        "com.android.systemui.qstile.anci15", // 34
+        "com.android.systemui.qstile.anci16", // 35
     };
 
     private static final String[] QS_CLOCK_THEMES = {
@@ -140,6 +145,11 @@ public class Utils {
         "com.android.systemui.qsclock.anci14", // 18
         "com.android.systemui.qsclock.anci15", // 19
         "com.android.systemui.qsclock.anci16", // 20
+        "com.android.systemui.qsclock.anci17", // 21
+        "com.android.systemui.qsclock.anci18", // 22
+        "com.android.systemui.qsclock.anci19", // 23
+        "com.android.systemui.qsclock.anci20", // 24
+        "com.android.systemui.qsclock.anci21", // 25
     };
 
     private static final String[] QS_ANALOG_THEMES = {
@@ -154,6 +164,11 @@ public class Utils {
         "com.android.analog.style.anci8", // 8
         "com.android.analog.style.anci9", // 9
         "com.android.analog.style.anci10", // 10
+        "com.android.analog.style.anci11", // 11
+        "com.android.analog.style.anci12", // 12
+        "com.android.analog.style.anci13", // 13
+        "com.android.analog.style.anci14", // 14
+        "com.android.analog.style.anci15", // 15
     };
 
     private static final String[] QS_SETTING_THEMES = {
@@ -178,6 +193,11 @@ public class Utils {
         "com.android.setting.style.anci14", // 18
         "com.android.setting.style.anci15", // 19
         "com.android.setting.style.anci16", // 20
+        "com.android.setting.style.anci17", // 21
+        "com.android.setting.style.anci18", // 22
+        "com.android.setting.style.anci19", // 23
+        "com.android.setting.style.anci20", // 24
+        "com.android.setting.style.anci21", // 25
     };
 
     private static final String[] QS_BARHEIGHT_THEMES = {
@@ -194,6 +214,11 @@ public class Utils {
         "com.android.systemui.mergebg.style.anci3", // 3
         "com.android.systemui.mergebg.style.anci4", // 4
         "com.android.systemui.mergebg.style.anci5", // 5
+        "com.android.systemui.mergebg.style.anci6", // 6
+        "com.android.systemui.mergebg.style.anci7", // 7
+        "com.android.systemui.mergebg.style.anci8", // 8
+        "com.android.systemui.mergebg.style.anci9", // 9
+        "com.android.systemui.mergebg.style.anci10", // 10
     };
 
     private static final String[] QS_NAVBAR_THEMES = {
