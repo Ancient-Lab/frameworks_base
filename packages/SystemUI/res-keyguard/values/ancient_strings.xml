@@ -25,4 +25,7 @@
     <string name="clock_title_mnml_box" translatable="false">MNML\'s Box</string>
     <string name="clock_title_mnml_minimal" translatable="false">MNML\'s Minimal</string>
     <string name="date_long_title_today">Today is %s</string>
+
+    <string name="clock_title_swing" translatable="false">Swing animation</string>
+    <string name="clock_title_bubble_animation" translatable="false">Bubble animation</string>
 </resources>
