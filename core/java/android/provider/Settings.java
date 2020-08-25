@@ -4935,6 +4935,15 @@ public final class Settings {
                 ANY_INTEGER_VALIDATOR;
 
         /**
+         * Change location of Audio Panel
+         * @hide
+         */
+        public static final String AUDIO_PANEL_LOCATION = "audio_panel_location";
+        /** @hide */
+        public static final Validator AUDIO_PANEL_LOCATION_VALIDATOR =
+		BOOLEAN_VALIDATOR;
+
+        /**
          * Disable dashboard conditions in settings
          * @hide
          */
@@ -7318,6 +7327,7 @@ public final class Settings {
             VALIDATORS.put(FOD_RECOGNIZING_ANIMATION, FOD_RECOGNIZING_ANIMATION_VALIDATOR);
             VALIDATORS.put(QS_SHOW_AUTO_BRIGHTNESS, QS_SHOW_AUTO_BRIGHTNESS_VALIDATOR);
             VALIDATORS.put(QS_SHOW_BRIGHTNESS_SLIDER, QS_SHOW_BRIGHTNESS_SLIDER_VALIDATOR);
+            VALIDATORS.put(AUDIO_PANEL_LOCATION, AUDIO_PANEL_LOCATION_VALIDATOR);
         }
 
         /**
