@@ -184,6 +184,7 @@ public class Utils {
         "com.android.system.bar.default", // 0
         "com.android.system.bar.one", // 1
         "com.android.system.bar.two", // 2
+        "com.android.system.bar.three", // 3
     };
 
     private static final String[] QS_MERGEBG_THEMES = {
