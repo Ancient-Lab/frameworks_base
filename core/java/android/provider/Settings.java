@@ -4728,6 +4728,12 @@ public final class Settings {
          */
         public static final String CUSTOM_AMBIENT_RAISE_GESTURE = "custom_ambient_raise_gesture";
 
+        /**
+         * Whether to pulse or wake screen with gestures related to proximity sensors
+         * @hide
+         */
+        public static final String PROXIMITY_SCREEN_WAKE = "proximity_screen_wake";
+
         /** @hide */
         public static final String AUDIO_PANEL_VIEW_MEDIA = "audio_panel_view_media";
 
