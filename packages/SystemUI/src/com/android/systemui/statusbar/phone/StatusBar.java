@@ -4528,6 +4528,12 @@ public class StatusBar extends SystemUI implements DemoMode,
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.QS_TILE_ICON_PRIMARY),
                     false, this, UserHandle.USER_ALL);
+	    resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.LOTTIEUI_HIDER),
+                    false, this, UserHandle.USER_ALL);
+	    resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.LOTTIESET_HIDER),
+                    false, this, UserHandle.USER_ALL);
         }
 
         @Override
@@ -4598,6 +4604,15 @@ public class StatusBar extends SystemUI implements DemoMode,
                 stockNavbarStyle();
                 updateNavbarStyle();
                 mQSPanel.getHost().reloadAllTiles();
+	    } else if (uri.equals(Settings.System.getUriFor(
+                    Settings.System.LOTTIEUI_HIDER))) {
+                stockHidderuiLottie();
+                updateHidderuiLottie();
+                mQSPanel.getHost().reloadAllTiles();
+            } else if (uri.equals(Settings.System.getUriFor(
+                    Settings.System.LOTTIESET_HIDER))) {
+                stockHiddersetLottie();
+                updateHiddersetLottie();
             }
             update();
             updateNavigationBarVisibility();
@@ -4712,6 +4727,30 @@ public class StatusBar extends SystemUI implements DemoMode,
      // Unload all navbar styles back to stock
     public void stockNavbarStyle() {
         Utils.stockNavbarStyle(mOverlayManager, mLockscreenUserManager.getCurrentUserId());
+    }
+
+    // Switches merge style from stock to custom
+    public void updateHidderuiLottie() {
+        int uiHidderuiLottie = Settings.System.getIntForUser(mContext.getContentResolver(),
+                Settings.System.LOTTIEUI_HIDER, 0, mLockscreenUserManager.getCurrentUserId());
+        Utils.updateHidderuiLottie(mOverlayManager, mLockscreenUserManager.getCurrentUserId(), uiHidderuiLottie);
+    }
+
+    // Unload all merge styles back to stock
+    public void stockHidderuiLottie() {
+        Utils.stockHidderuiLottie(mOverlayManager, mLockscreenUserManager.getCurrentUserId());
+    }
+
+    // Switches navbar style from stock to custom
+    public void updateHiddersetLottie() {
+        int setHiddersetLottie  = Settings.System.getIntForUser(mContext.getContentResolver(),
+                Settings.System.LOTTIESET_HIDER, 0, mLockscreenUserManager.getCurrentUserId());
+        Utils.updateHiddersetLottie(mOverlayManager, mLockscreenUserManager.getCurrentUserId(), setHiddersetLottie);
+    }
+
+     // Unload all navbar styles back to stock
+    public void stockHiddersetLottie() {
+        Utils.stockHiddersetLottie(mOverlayManager, mLockscreenUserManager.getCurrentUserId());
     }
 
     private void updatePocketJudgeFP() {

@@ -230,6 +230,20 @@ public class Utils {
         "com.android.systemui.navbar.style.anci5", // 5
     };
 
+    private static final String[] LOTTIEUI_HIDDEN = {
+        "com.android.systemui.lottie.default", // 0
+        "com.android.systemui.lottie.gone", // 1
+        "com.android.systemui.lottie.gone1", // 2
+        "com.android.systemui.lottie.gone2", // 3
+    };
+
+    private static final String[] LOTTIESET_HIDDEN = {
+        "com.android.setting.lottie.default", // 0
+        "com.android.setting.lottie.gone", // 1
+        "com.android.setting.lottie.gone1", // 2
+        "com.android.setting.lottie.gone2", // 3
+    };
+
     private static IStatusBarService mStatusBarService = null;
     private static IStatusBarService getStatusBarService() {
         synchronized (Utils.class) {
@@ -663,6 +677,62 @@ public class Utils {
             String qsnavbartheme = QS_NAVBAR_THEMES[i];
             try {
                 om.setEnabled(qsnavbartheme,
+                        false /*disable*/, userId);
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    // Switches hidder style to user selected.
+    public static void updateHidderuiLottie(IOverlayManager om, int userId, int uiHidderuiLottie) {
+        if (uiHidderuiLottie == 0) {
+            stockHidderuiLottie(om, userId);
+        } else {
+            try {
+                om.setEnabled(LOTTIEUI_HIDDEN[uiHidderuiLottie],
+                        true, userId);
+            } catch (RemoteException e) {
+                Log.w(TAG, "Can't hide it", e);
+            }
+        }
+    }
+
+    // Switches hidder style back to stock.
+    public static void stockHidderuiLottie(IOverlayManager om, int userId) {
+        // skip index 0
+        for (int i = 0; i < LOTTIEUI_HIDDEN.length; i++) {
+            String uihidertheme = LOTTIEUI_HIDDEN[i];
+            try {
+                om.setEnabled(uihidertheme,
+                        false /*disable*/, userId);
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    // Switches hidder style to user selected.
+    public static void updateHiddersetLottie(IOverlayManager om, int userId, int setHiddersetLottie) {
+        if (setHiddersetLottie == 0) {
+            stockHiddersetLottie(om, userId);
+        } else {
+            try {
+                om.setEnabled(LOTTIESET_HIDDEN[setHiddersetLottie],
+                        true, userId);
+            } catch (RemoteException e) {
+                Log.w(TAG, "Can't hide", e);
+            }
+        }
+    }
+
+    // Switches hidder style back to stock.
+    public static void stockHiddersetLottie(IOverlayManager om, int userId) {
+        // skip index 0
+        for (int i = 0; i < LOTTIESET_HIDDEN.length; i++) {
+            String sethidertheme = LOTTIESET_HIDDEN[i];
+            try {
+                om.setEnabled(sethidertheme,
                         false /*disable*/, userId);
             } catch (RemoteException e) {
                 e.printStackTrace();

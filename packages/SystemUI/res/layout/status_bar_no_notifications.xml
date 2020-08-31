@@ -15,29 +15,49 @@
   -->
 
 <!-- Extends Framelayout -->
-<com.android.systemui.statusbar.EmptyShadeView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="gone">
+<com.android.systemui.statusbar.EmptyShadeView 
+  android:visibility="gone" 
+  android:layout_width="fill_parent" 
+  android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" 
+  xmlns:app="http://schemas.android.com/apk/res-auto">
 
-   <com.android.systemui.statusbar.AlphaOptimizedFrameLayout 
-        android:gravity="center|top" 
-        android:layout_gravity="center|top" 
-        android:background="@drawable/ancient_dot_bg_new" 
-        android:layout_width="fill_parent" 
-        android:layout_height="35.0dip">
+    <com.android.systemui.statusbar.AlphaOptimizedFrameLayout 
+	    android:gravity="center|top" 
+	    android:layout_gravity="@integer/anci_grav_ui" 
+	    android:background="@drawable/ancient_dot_bg_new" 
+  	  android:layout_width="fill_parent" 
+	    android:layout_height="35.0dip">
 
-    <TextView
-            android:id="@+id/no_notifications"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="64dp"
-            android:textAppearance="?android:attr/textAppearanceButton"
-            android:gravity="top|center_horizontal"
-            android:textColor="@color/notification_section_header_label_color"
-            android:text="@string/empty_shade_text"
-            android:visibility="@integer/nonotif_text"/>
+      <LinearLayout 
+		    android:layout_gravity="@integer/anci_grav_ui" 
+		    android:orientation="horizontal" 
+		    android:layout_width="wrap_content" 
+		    android:layout_height="wrap_content" 
+		    android:layout_marginStart="@dimen/notification_section_header_padding_left" 
+		    android:layout_marginEnd="@dimen/notification_section_header_padding_left">
+
+        <com.airbnb.lottie.LottieAnimationView 
+			    android:clickable="false" 
+		      android:layout_width="20.0dip" 
+			    android:layout_height="20.0dip" 
+			    app:lottie_autoPlay="true" 
+                            android:visibility="@integer/nonotif_text"
+			    app:lottie_fileName="ribbon.json" 
+			    app:lottie_loop="true" />
+
+        <TextView 
+			    android:textAppearance="?android:textAppearanceButton" 
+			    android:textColor="@color/notification_section_header_label_color" 
+			    android:gravity="center|top" 
+			    android:id="@+id/no_notifications" 
+          android:visibility="@integer/nonotif_text" 
+			    android:layout_width="wrap_content" 
+			    android:layout_height="wrap_content" 
+			    android:minHeight="64.0dip" 
+			    android:text="@string/empty_shade_text" />
+
+        </LinearLayout>
 
     </com.android.systemui.statusbar.AlphaOptimizedFrameLayout>
 

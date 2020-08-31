@@ -15,18 +15,37 @@
   -->
 
 <!-- Used by both status_bar_notification_header and SectionHeaderView -->
-<merge xmlns:android="http://schemas.android.com/apk/res/android" >
-    <TextView
-        android:id="@+id/header_label"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:layout_marginStart="@dimen/notification_section_header_padding_left"
-        android:gravity="start"
-        android:textStyle="bold"
-        android:textAlignment="gravity"
-        android:textSize="13sp"
-        android:textColor="@color/notification_section_header_label_color"
-        android:fontFamily="@*android:string/config_headlineFontFamilyMedium"
-    />
-</merge>
+<LinearLayout 
+  android:gravity="@integer/anci_grav_ui" 
+  android:layout_gravity="@integer/anci_grav_ui" 
+  android:orientation="horizontal" 
+  android:layout_width="fill_parent" 
+  android:layout_height="fill_parent" 
+  android:layout_marginStart="@dimen/notification_section_header_padding_left" 
+  android:layout_marginEnd="@dimen/notification_section_header_padding_left"
+  xmlns:android="http://schemas.android.com/apk/res/android" 
+  xmlns:app="http://schemas.android.com/apk/res-auto">
+
+  <com.airbnb.lottie.LottieAnimationView 
+	  android:gravity="@integer/anci_grav_ui" 
+	  android:layout_gravity="@integer/anci_grav_ui" 
+	  android:clickable="false" 
+	  android:layout_width="17.0dip" 
+	  android:layout_height="17.0dip" 
+	  app:lottie_autoPlay="true" 
+	  app:lottie_fileName="ribbon.json" 
+	  app:lottie_loop="true" />
+
+  <TextView 
+	  android:textSize="13.0sp" 
+	  android:textStyle="bold" 
+	  android:textColor="@color/notification_section_header_label_color" 
+	  android:gravity="@integer/anci_grav_ui" 
+	  android:layout_gravity="@integer/anci_grav_ui" 
+	  android:id="@+id/header_label" 
+	  android:layout_width="wrap_content" 
+	  android:layout_height="fill_parent" 
+	  android:fontFamily="@*android:string/config_headlineFontFamilyMedium" 
+	  android:textAlignment="gravity" />
+
+</LinearLayout>
