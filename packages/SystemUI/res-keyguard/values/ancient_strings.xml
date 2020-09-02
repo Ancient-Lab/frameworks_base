@@ -32,5 +32,6 @@
     <string name="clock_title_fire_circle_animation" translatable="false">Fire circle</string>
     <string name="clock_title_blue_circle_animation" translatable="false">Blue circle</string>
     <string name="clock_title_bluev2_circle_animation" translatable="false">Blue v2 circle</string>
+    <string name="clock_title_explosion_animation" translatable="false">Explosion circle</string>
 
 </resources>
