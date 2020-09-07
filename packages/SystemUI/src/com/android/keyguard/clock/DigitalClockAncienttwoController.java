@@ -90,7 +90,7 @@ public class DigitalClockAncienttwoController implements ClockPlugin {
 
     private void createViews() {
         mView = (ClockLayout) mLayoutInflater
-                .inflate(R.layout.digital_clock_ancient, null);
+                .inflate(R.layout.digital_clock_ancienttwo, null);
         mAncienttwoJam = mView.findViewById(R.id.ancitwoJ);
 		mAncienttwoSpacer = mView.findViewById(R.id.ancitwoS);
         mAncienttwoMenit = mView.findViewById(R.id.ancitwoM);

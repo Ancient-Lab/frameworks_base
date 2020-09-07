@@ -32,5 +32,16 @@
     <integer name="nonotif_text">2</integer>
     <integer name="qsdate_cusint">0</integer>
     <integer name="brighticon_qs">-2</integer>
+    <item type="integer" name="ic_footeredit">#00000000</item>
+    <item type="integer" name="expanclock_margin">45.0dip</item>
+    <item type="integer" name="ic_setting_colorfill">#00000000</item>
+    <integer name="lottie_visibility">0</integer>
+    <integer name="lottie_notif_visibility">2</integer>
+    <integer name="lottie_stocklike">2</integer>
+    <integer name="lottie_header">0</integer>
+    <item type="integer" name="lottie_opacy">1.0</item>
+    <item type="integer" name="expanclock_bottom">10dp</item>
+    <integer name="weather_wrap">-2</integer>
+    <integer name="weather_match">-1</integer>
 
 </resources>

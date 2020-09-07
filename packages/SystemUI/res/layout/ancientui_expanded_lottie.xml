@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout 
+  android:layout_gravity="@integer/anci_grav_ui" 
+  android:layout_width="wrap_content" 
+  android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" 
+  xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.airbnb.lottie.LottieAnimationView 
+	    android:visibility="@integer/lottie_visibility" 
+	    android:clickable="false" 
+	    android:layout_width="@dimen/lottie_expanded_width" 
+	    android:layout_height="@dimen/lottie_expanded_height" 
+	    android:layout_marginTop="@dimen/lottie_expanded_margin" 
+	    android:alpha="@integer/lottie_opacy" 
+	    app:lottie_autoPlay="true" 
+	    app:lottie_loop="true" 
+	    app:lottie_rawRes="@raw/festival" />
+    <include 
+	    layout="@layout/ancientui_header_clockd" />
+</FrameLayout>

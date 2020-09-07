@@ -45,7 +45,7 @@
 	       android:layout_height="wrap_content" 
 	       android:layout_marginBottom="-10.0dip" 
 	       android:layout_alignParentBottom="true">
-                <include layout="@layout/ancientui_header_clockd" />
+                <include layout="@layout/ancientui_expanded_lottie" />
             </LinearLayout>
         </RelativeLayout>
         <LinearLayout 

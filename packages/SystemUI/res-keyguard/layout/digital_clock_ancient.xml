@@ -10,13 +10,11 @@
     <com.airbnb.lottie.LottieAnimationView 
 	  android:gravity="center" 
 	  android:layout_gravity="center_horizontal"
-	  android:paddingTop="70.0dip" 
 	  android:clickable="false" 
-	  android:layout_width="270.0dip" 
-	  android:layout_height="270.0dip" 
-	  android:alpha="0.3" 
+	  android:layout_width="fill_parent" 
+	  android:layout_height="150.0dip"
 	  app:lottie_autoPlay="true" 
-	  app:lottie_fileName="sandclock.json" 
+	  app:lottie_fileName="circles.json" 
 	  app:lottie_loop="true" />
     <LinearLayout 
 	  android:gravity="bottom|center" 
@@ -26,8 +24,7 @@
 	  android:layout_height="fill_parent">
         <AnalogClock 
 		  android:layout_width="100.0dip" 
-		  android:layout_height="100.0dip" 
-		  android:layout_marginTop="100.0dip" 
+		  android:layout_height="100.0dip"
 		  android:dial="@*android:drawable/analog_bg" 
 		  android:hand_hour="@*android:drawable/analog_jam" 
 		  android:hand_minute="@*android:drawable/analog_menit" />

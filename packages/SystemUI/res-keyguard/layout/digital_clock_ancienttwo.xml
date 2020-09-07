@@ -9,14 +9,12 @@
   xmlns:app="http://schemas.android.com/apk/res-auto">
     <com.airbnb.lottie.LottieAnimationView 
 	  android:gravity="bottom|center" 
-	  android:layout_gravity="center_vertical" 
-	  android:paddingLeft="80.0dip" 
-	  android:paddingTop="120.0dip" 
-	  android:paddingBottom="5.0dip" 
+	  android:layout_gravity="center_vertical"
 	  android:clickable="false" 
-	  android:layout_width="270.0dip" 
-	  android:layout_height="270.0dip" 
-	  android:layout_alignParentBottom="true" 
+	  android:layout_width="fill_parent" 
+	  android:layout_height="150.0dip" 
+	  android:layout_marginBottom="25.0dip" 
+	  android:layout_alignParentTop="true"
 	  android:rotation="-45.0" 
 	  app:lottie_autoPlay="true" 
 	  app:lottie_fileName="gen.json" 
@@ -27,7 +25,7 @@
 	  android:orientation="vertical" 
 	  android:layout_width="fill_parent" 
 	  android:layout_height="fill_parent" 
-	  android:layout_marginTop="60.0dip">
+	  android:layout_marginTop="10.0dip">
         <LinearLayout 
 		  android:gravity="bottom|center" 
 		  android:layout_gravity="center_vertical" 

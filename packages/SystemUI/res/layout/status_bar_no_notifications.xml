@@ -42,8 +42,8 @@
 		      android:layout_width="20.0dip" 
 			    android:layout_height="20.0dip" 
 			    app:lottie_autoPlay="true" 
-                            android:visibility="@integer/nonotif_text"
-			    app:lottie_fileName="ribbon.json" 
+                            android:visibility="@integer/lottie_notif_visibility"
+			    app:lottie_rawRes="@raw/ribbon"
 			    app:lottie_loop="true" />
 
         <TextView 

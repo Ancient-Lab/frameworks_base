@@ -30,10 +30,11 @@
 	  android:gravity="@integer/anci_grav_ui" 
 	  android:layout_gravity="@integer/anci_grav_ui" 
 	  android:clickable="false" 
+	  android:visibility="@integer/lottie_visibility"
 	  android:layout_width="17.0dip" 
 	  android:layout_height="17.0dip" 
 	  app:lottie_autoPlay="true" 
-	  app:lottie_fileName="ribbon.json" 
+	  app:lottie_rawRes="@raw/ribbon"
 	  app:lottie_loop="true" />
 
   <TextView 

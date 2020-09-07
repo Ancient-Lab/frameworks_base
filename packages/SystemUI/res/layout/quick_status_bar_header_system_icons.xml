@@ -18,7 +18,7 @@
 	android:layout_width="fill_parent" 
 	android:layout_height="fill_parent">
         <include 
-          layout="@layout/ancientui_header_clock_stocklike" />
+          layout="@layout/ancientui_header_stocklike_lottie" />
     </RelativeLayout>
     	    <com.android.systemui.statusbar.policy.Clock 
         	android:textAppearance="@style/TextAppearance.StatusBar.Clock" 

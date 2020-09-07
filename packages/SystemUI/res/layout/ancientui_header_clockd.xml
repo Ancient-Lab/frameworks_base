@@ -15,24 +15,14 @@
      limitations under the License.
 -->
 
-<FrameLayout 
-  android:layout_gravity="@integer/anci_grav_ui" 
-  android:layout_width="wrap_content" 
-  android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" 
-  xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.airbnb.lottie.LottieAnimationView 
-	  android:clickable="false" 
-	  android:layout_width="125.0dip" 
-	  android:layout_height="125.0dip" 
-	  app:lottie_autoPlay="true" 
-	  app:lottie_fileName="festival.json" 
-	  app:lottie_loop="true" />
-    <LinearLayout 
+<LinearLayout 
 	  android:orientation="horizontal" 
+	  android:layout_gravity="@integer/anci_grav_ui"
 	  android:layout_width="wrap_content" 
-	  android:layout_height="wrap_content" 
-	  android:layout_marginTop="50.0dip">
+	  android:layout_marginBottom="@integer/expanclock_bottom"
+	  android:layout_marginTop="@integer/expanclock_margin"
+	  android:layout_height="wrap_content"
+	  xmlns:android="http://schemas.android.com/apk/res/android">
         <TextClock 
 		  android:textSize="58.0dip" 
 		  android:textStyle="bold" 
@@ -60,5 +50,4 @@
 		  android:layout_height="wrap_content" 
 		  android:format12Hour="mm a" 
 		  android:format24Hour="mm" />
-    </LinearLayout>
-</FrameLayout>
+</LinearLayout>

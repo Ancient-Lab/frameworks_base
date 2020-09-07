@@ -52,7 +52,7 @@
     <!-- adding the ancient custom dimens -->
     <dimen name="ancient_qs_margintop">1dp</dimen>
     <dimen name="ancient_qs_margintoptop">50dp</dimen>
-    <dimen name="ancient_headerimg_size">163.5dp</dimen>
+    <dimen name="ancient_headerimg_size">183.5dp</dimen>
     <dimen name="ancient_minimal_height">25dp</dimen>
 
     <!-- Custom Brightness -->
@@ -82,7 +82,7 @@
     <dimen name="opa_line_y_translation">16dp</dimen>
 
     <!-- Custom margin for qsquick -->
-    <dimen name="ancient_qsquick_margin">105dp</dimen>
+    <dimen name="ancient_qsquick_margin">120dp</dimen>
 
     <!-- The width/height of the charging indicator view on keyguard. -->
     <dimen name="keyguard_charging_indication_height">60dp</dimen>
@@ -136,6 +136,13 @@
 
     <!--Add custom margin -->
     <dimen name="ancient_custom_minheight">24dp</dimen>
-    <dimen name="headnotif_margin">4dp</dimen>
+    <dimen name="headnotif_margin">1dp</dimen>
+    <dimen name="lottie_header_width">80.0dip</dimen>
+    <dimen name="lottie_header_height">40.0dip</dimen>
+    <dimen name="lottie_expanded_width">125.0dip</dimen>
+    <dimen name="lottie_expanded_height">125.0dip</dimen>
+    <dimen name="lottie_header_margin">20.0dip</dimen>
+    <dimen name="lottie_expanded_margin">30.0dip</dimen>
+    <dimen name="lottie_stocklikepad">0dp</dimen>
 
 </resources>

@@ -81,6 +81,23 @@
             android:layout_height="match_parent"
             android:layout_weight="@integer/qs_footer_actions_weight"
             android:gravity="center_vertical|end" >
+
+
+            <com.android.systemui.statusbar.AlphaOptimizedFrameLayout 
+			  android:clipChildren="false" 
+			  android:clipToPadding="false" 
+			  android:layout_width="@dimen/qs_footer_action_button_size" 
+			  android:layout_height="@dimen/qs_footer_action_button_size" 
+			  xmlns:app="http://schemas.android.com/apk/res-auto">
+
+            <com.airbnb.lottie.LottieAnimationView 
+				  android:visibility="@integer/lottie_visibility" 
+				  android:clickable="false" 
+				  android:layout_width="50.0dip" 
+				  android:layout_height="50.0dip" 
+				  app:lottie_autoPlay="true" 
+				  app:lottie_rawRes="@raw/editpen" 
+				  app:lottie_loop="true" />
             	
             <com.android.systemui.statusbar.AlphaOptimizedImageView
                 android:id="@android:id/edit"
@@ -93,15 +110,27 @@
                 android:contentDescription="@string/accessibility_quick_settings_edit"
                 android:focusable="true"
                 android:padding="@dimen/qs_footer_icon_padding"
-                android:src="@*android:drawable/ic_mode_edit"
+                android:src="@integer/ic_footeredit"
                 android:tint="?android:attr/colorForeground"/>
+
+            </com.android.systemui.statusbar.AlphaOptimizedFrameLayout>
             
             <com.android.systemui.statusbar.AlphaOptimizedFrameLayout
+                xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/settings_button_container"
                 android:layout_width="@dimen/qs_footer_action_button_size"
                 android:layout_height="@dimen/qs_footer_action_button_size"
                 android:clipChildren="false"
                 android:clipToPadding="false">
+
+                <com.airbnb.lottie.LottieAnimationView 
+				  android:visibility="@integer/lottie_visibility" 
+				  android:clickable="false" 
+				  android:layout_width="40.0dip" 
+				  android:layout_height="40.0dip" 
+				  app:lottie_autoPlay="true" 
+				  app:lottie_rawRes="@raw/ic_ui_setting3" 
+				  app:lottie_loop="true" />
 
                 <com.android.systemui.statusbar.phone.SettingsButton
                     android:id="@+id/settings_button"

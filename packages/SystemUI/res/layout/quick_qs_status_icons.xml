@@ -82,7 +82,7 @@
              <com.android.systemui.ancient.statusbarweather.QsHeaderWeatherImage
         	android:id="@+id/weather_image"
         	android:layout_width="25dp"
-        	android:layout_height="match_parent"
+        	android:layout_height="@integer/weather_match"
         	android:layout_gravity="center_vertical"
         	android:gravity="center_vertical|end"
         	android:paddingStart="2dp"
@@ -90,7 +90,7 @@
                 
              <com.android.systemui.ancient.statusbarweather.QsHeaderWeather
 	        android:id="@+id/weather_temp"
-	        android:layout_width="wrap_content"
+	        android:layout_width="@integer/weather_wrap"
 	        android:layout_height="match_parent"
 	        android:maxLines="1"
                 android:textColor="@color/anci_tint_custom"
@@ -154,7 +154,7 @@
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content">
 
-		<include layout="@layout/ancientui_quick_decoration"/>
+		<include layout="@layout/ancientui_header_lottie"/>
 
 	</LinearLayout>
 
