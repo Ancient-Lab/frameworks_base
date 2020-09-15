@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.android.keyguard.clock.ClockLayout 
+  android:paddingTop="10.0dip" 
+  android:paddingBottom="1.0dip" 
+  android:layout_width="fill_parent" 
+  android:layout_height="fill_parent" 
+  android:layout_alignParentBottom="true"
+  xmlns:android="http://schemas.android.com/apk/res/android" 
+  xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.airbnb.lottie.LottieAnimationView 
+	  android:gravity="center" 
+	  android:layout_gravity="center_horizontal" 
+	  android:paddingTop="50.0dip" 
+	  android:clickable="false" 
+	  android:layout_width="270.0dip" 
+	  android:layout_height="270.0dip" 
+	  app:lottie_autoPlay="true" 
+	  app:lottie_fileName="festival.json" 
+	  app:lottie_loop="true" />
+    <LinearLayout 
+	  android:gravity="bottom|center" 
+	  android:layout_gravity="center_vertical" 
+	  android:orientation="horizontal" 
+	  android:layout_width="fill_parent" 
+	  android:layout_height="fill_parent"
+      xmlns:android="http://schemas.android.com/apk/res/android">
+        <TextClock 
+		  android:textSize="60.0sp" 
+		  android:textColor="?android:colorAccent" 
+		  android:id="@+id/ancioneJ" 
+		  android:paddingTop="50.0dip" 
+		  android:paddingRight="4.0dip" 
+		  android:layout_width="wrap_content" 
+		  android:layout_height="wrap_content" 
+		  android:tint="?android:colorAccent" 
+		  android:format12Hour="hh" 
+		  android:format24Hour="kk" />
+        <TextClock 
+		  android:textSize="15.0sp" 
+		  android:textColor="?wallpaperTextColor" 
+		  android:id="@+id/ancioneS" 
+		  android:paddingTop="50.0dip" 
+		  android:layout_width="wrap_content" 
+		  android:layout_height="wrap_content"
+		  android:format12Hour=":" 
+		  android:format24Hour=":" />
+        <TextClock 
+		  android:textSize="30.0sp" 
+		  android:textColor="?wallpaperTextColor" 
+		  android:id="@+id/ancioneM" 
+		  android:paddingLeft="4.0dip" 
+		  android:paddingTop="50.0dip" 
+		  android:layout_width="wrap_content" 
+		  android:layout_height="wrap_content" 
+		  android:format12Hour="mm" 
+		  android:format24Hour="mm" />
+    </LinearLayout>
+</com.android.keyguard.clock.ClockLayout>

@@ -167,6 +167,11 @@ public final class ClockManager {
         addBuiltinClock(() -> new BlueV2CircleClockController(res, layoutInflater, colorExtractor, context));
         addBuiltinClock(() -> new ExplosionCircleClockController(res, layoutInflater, colorExtractor, context));
         addBuiltinClock(() -> new SwingClockController(res, layoutInflater, colorExtractor, context));
+        addBuiltinClock(() -> new DigitalClockAncientController(res, layoutInflater, colorExtractor));
+        addBuiltinClock(() -> new DigitalClockAncientoneController(res, layoutInflater, colorExtractor));
+        addBuiltinClock(() -> new DigitalClockAncienttwoController(res, layoutInflater, colorExtractor));
+        addBuiltinClock(() -> new DigitalClockAncientthreeController(res, layoutInflater, colorExtractor));
+        addBuiltinClock(() -> new DigitalClockAncientfourController(res, layoutInflater, colorExtractor));
 
         // Store the size of the display for generation of clock preview.
         DisplayMetrics dm = res.getDisplayMetrics();

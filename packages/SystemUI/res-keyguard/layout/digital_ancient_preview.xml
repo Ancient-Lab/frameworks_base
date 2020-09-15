@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout 
+  android:gravity="center" 
+  android:layout_gravity="center" 
+  android:layout_width="fill_parent" 
+  android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" 
+  xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout 
+	  android:gravity="center_horizontal" 
+	  android:layout_gravity="center_horizontal" 
+	  android:orientation="vertical" 
+	  android:layout_width="fill_parent" 
+	  android:layout_height="wrap_content" 
+	  android:layout_centerInParent="true">
+        <com.airbnb.lottie.LottieAnimationView 
+		  android:gravity="center_horizontal" 
+		  android:layout_gravity="center_horizontal" 
+		  android:id="@+id/charging_indication_6" 
+		  android:clickable="false" 
+		  android:layout_width="100.0dip" 
+		  android:layout_height="100.0dip" 
+		  app:lottie_autoPlay="true" 
+		  app:lottie_fileName="square_bubble.json" 
+		  app:lottie_loop="true" />
+        <AnalogClock 
+		  android:layout_width="100.0dip" 
+		  android:layout_height="100.0dip" 
+		  android:layout_marginTop="100.0dip" 
+		  android:dial="@*android:drawable/analog_bg" 
+		  android:hand_hour="@*android:drawable/analog_jam" 
+		  android:hand_minute="@*android:drawable/analog_menit" />
+        <LinearLayout 
+		  android:gravity="center_horizontal" 
+		  android:layout_gravity="center_horizontal" 
+		  android:orientation="horizontal" 
+		  android:layout_width="fill_parent" 
+		  android:layout_height="wrap_content" 
+		  android:layout_centerInParent="true">
+            <TextClock 
+			  android:textSize="25.0sp" 
+			  android:textColor="?android:colorAccent" 
+			  android:id="@+id/anciJ" 
+			  android:paddingRight="4.0dip" 
+			  android:layout_width="wrap_content" 
+			  android:layout_height="wrap_content" 
+			  android:format12Hour="hh" 
+			  android:format24Hour="kk" />
+            <TextClock 
+			  android:textSize="25.0sp" 
+			  android:textColor="?wallpaperTextColor" 
+			  android:id="@+id/anciS" 
+			  android:layout_width="wrap_content" 
+			  android:layout_height="wrap_content" 
+			  android:format12Hour=":" 
+			  android:format24Hour=":" />
+            <TextClock 
+			  android:textSize="25.0sp" 
+			  android:textColor="?wallpaperTextColor" 
+			  android:id="@+id/anciM" 
+			  android:paddingLeft="4.0dip" 
+			  android:layout_width="wrap_content" 
+			  android:layout_height="wrap_content" 
+			  android:format12Hour="mm" 
+			  android:format24Hour="mm" 
+			  style="@style/widget_big" />
+        </LinearLayout>
+        <TextClock 
+		  android:gravity="center_horizontal" 
+		  android:id="@+id/date" 
+		  android:layout_width="fill_parent" 
+		  android:layout_height="wrap_content" 
+		  android:layout_centerInParent="true" 
+		  android:format12Hour="EEE, MMM d" 
+		  android:format24Hour="EEE, MMM d"
+		  android:letterSpacing="0.03" 
+		  style="@style/widget_big" />
+    </LinearLayout>
+</RelativeLayout>
