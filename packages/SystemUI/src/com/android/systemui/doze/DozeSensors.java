@@ -324,7 +324,12 @@ public class DozeSensors {
                 mSensorThreshold = ProximitySensor.getBrightnessSensorThreshold(
                         mContext.getResources());
             } else {
-                sensor = mSensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY);
+                String mCustomProximity = mContext.getResources().getString(com.android.internal.R.string.config_customProximitySensor);
+                if (!mCustomProximity.isEmpty()) {
+                    sensor = mSensorManager.getCustomSensor(mCustomProximity);
+                } else {
+                    sensor = mSensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY);
+                }
                 mSensorThreshold = sensor == null ? 0 : sensor.getMaximumRange();
             }
             mSensor = sensor;

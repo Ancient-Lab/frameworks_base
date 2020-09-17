@@ -545,6 +545,26 @@ public abstract class SensorManager {
     }
 
     /**
+     * Use this method to get the custom sensor for a given type.
+     *
+     * @param type
+     *         of sensors requested
+     *
+     * @return the sensor matching the requested type if one exists and the application
+     *         has the necessary permissions, or null otherwise.
+     *
+     * @see Sensor
+     */
+    public Sensor getCustomSensor(String type) {
+        for (Sensor sensor : getSensorList(Sensor.TYPE_ALL)) {
+            if (type.equals(sensor.getStringType())) {
+                return sensor;
+            }
+        }
+        return null;
+    }
+
+    /**
      * Registers a listener for given sensors.
      *
      * @deprecated This method is deprecated, use

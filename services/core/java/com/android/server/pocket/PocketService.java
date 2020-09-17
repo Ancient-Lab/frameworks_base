@@ -151,7 +151,12 @@ public class PocketService extends SystemService implements IBinder.DeathRecipie
         handlerThread.start();
         mHandler = new PocketHandler(handlerThread.getLooper());
         mSensorManager = (SensorManager) mContext.getSystemService(Context.SENSOR_SERVICE);
-        mProximitySensor = mSensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY);
+        String mCustomProximity = mContext.getResources().getString(com.android.internal.R.string.config_customProximitySensor);
+        if (!mCustomProximity.isEmpty()) {
+            mProximitySensor = mSensorManager.getCustomSensor(mCustomProximity);
+        } else {
+            mProximitySensor = mSensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY);
+        }
         if (mProximitySensor != null) {
             mProximityMaxRange = mProximitySensor.getMaximumRange();
         }

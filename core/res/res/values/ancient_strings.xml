@@ -85,4 +85,7 @@
     <string name="accessibility_quick_settings_live_display_changed_night">LiveDisplay changed to night mode.</string>
     <string name="accessibility_quick_settings_live_display_changed_outdoor">LiveDisplay changed to outdoor mode.</string>
 
+    <!-- Custom proximity sensor to be used for pocket detection and doze -->
+    <java-symbol type="string" name="config_customProximitySensor" />
+
 </resources>
