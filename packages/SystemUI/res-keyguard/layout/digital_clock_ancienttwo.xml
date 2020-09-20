@@ -64,6 +64,7 @@
         <AnalogClock 
 		  android:layout_width="100.0dip" 
 		  android:layout_height="100.0dip" 
+		  android:layout_marginBottom="5dp"
 		  android:dial="@*android:drawable/analog_bg" 
 		  android:hand_hour="@*android:drawable/analog_jam" 
 		  android:hand_minute="@*android:drawable/analog_menit" />
