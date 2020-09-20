@@ -54,7 +54,7 @@
     <dimen name="ancient_qs_margintop">1.0dip</dimen>
     <dimen name="ancient_qs_margintoptop">50.0dip</dimen>
     <dimen name="qs_header_tooltip_height">160.0dip</dimen>
-    <dimen name="qs_panel_padding_top">150.0dip</dimen>
-    <dimen name="qs_quick_header_panel_height">140.0dip</dimen>
+    <dimen name="qs_panel_padding_top">170.0dip</dimen>
+    <dimen name="qs_quick_header_panel_height">170.0dip</dimen>
     
 </resources>
