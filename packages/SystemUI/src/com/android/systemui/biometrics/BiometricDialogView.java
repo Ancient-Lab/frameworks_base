@@ -73,7 +73,7 @@ public abstract class BiometricDialogView extends LinearLayout {
     private static final String KEY_ERROR_TEXT_STRING = "key_error_text_string";
     private static final String KEY_ERROR_TEXT_IS_TEMPORARY = "key_error_text_is_temporary";
     private static final String KEY_ERROR_TEXT_COLOR = "key_error_text_color";
-    private static final String FOD = "vendor.pa.biometrics.fingerprint.inscreen";
+    private static final String FOD = "vendor.lineage.biometrics.fingerprint.inscreen";
 
     private static final int ANIMATION_DURATION_SHOW = 250; // ms
     private static final int ANIMATION_DURATION_AWAY = 350; // ms
